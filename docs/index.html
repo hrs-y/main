@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYS-N.net</title>
+  <meta name="description" content="HYS-N.net — Harrison 的個人網站，關於人工智能、西方哲學與技術思考的單頁門戶。" />
+  <meta name="theme-color" content="#f3ecdd" />
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem("hysn-theme");
+        var theme = storedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute(
+          "data-theme",
+          window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+        );
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f3ecdd;
+      --bg-elev: rgba(250, 245, 234, 0.72);
+      --bg-soft: rgba(255, 252, 245, 0.56);
+      --panel: rgba(255, 251, 244, 0.72);
+      --text: #1d1a15;
+      --muted: #6d6459;
+      --muted-strong: #53493d;
+      --line: rgba(67, 57, 42, 0.16);
+      --line-strong: rgba(67, 57, 42, 0.26);
+      --accent: #8b6c3f;
+      --accent-soft: rgba(139, 108, 63, 0.14);
+      --accent-2: #5d6b55;
+      --shadow: 0 22px 60px rgba(57, 44, 26, 0.10);
+      --shadow-strong: 0 30px 90px rgba(57, 44, 26, 0.16);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --nav-height: 76px;
+      --max-width: 1160px;
+      --transition: 280ms cubic-bezier(.2,.8,.2,1);
+      --hero-glow: radial-gradient(circle at 50% 42%, rgba(205, 176, 124, 0.20), transparent 52%);
+      --bg-wash:
+        radial-gradient(circle at top left, rgba(190, 168, 129, 0.14), transparent 34%),
+        radial-gradient(circle at 85% 18%, rgba(112, 127, 97, 0.12), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.56), rgba(255,255,255,0));
+      --paper-line:
+        linear-gradient(180deg, rgba(88, 72, 49, 0.06) 0%, rgba(88, 72, 49, 0.00) 32%, rgba(88, 72, 49, 0.05) 100%);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #131312;
+      --bg-elev: rgba(28, 27, 25, 0.76);
+      --bg-soft: rgba(26, 25, 23, 0.56);
+      --panel: rgba(24, 23, 21, 0.72);
+      --text: #eee6d8;
+      --muted: #b3aa9c;
+      --muted-strong: #d0c5b5;
+      --line: rgba(207, 186, 147, 0.14);
+      --line-strong: rgba(207, 186, 147, 0.26);
+      --accent: #bc9a66;
+      --accent-soft: rgba(188, 154, 102, 0.16);
+      --accent-2: #7f8d72;
+      --shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+      --shadow-strong: 0 32px 92px rgba(0, 0, 0, 0.42);
+      --hero-glow: radial-gradient(circle at 50% 42%, rgba(181, 139, 83, 0.15), transparent 50%);
+      --bg-wash:
+        radial-gradient(circle at top left, rgba(140, 111, 69, 0.10), transparent 34%),
+        radial-gradient(circle at 85% 18%, rgba(103, 121, 96, 0.10), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      --paper-line:
+        linear-gradient(180deg, rgba(221, 204, 171, 0.04) 0%, rgba(221, 204, 171, 0.00) 32%, rgba(221, 204, 171, 0.03) 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        var(--bg-wash),
+        var(--paper-line),
+        var(--bg);
+      font-family: "Inter", "Noto Serif TC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      overflow-x: hidden;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::before {
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255,255,255,0.16), transparent 18%),
+        radial-gradient(circle at 75% 16%, rgba(255,255,255,0.08), transparent 24%),
+        radial-gradient(circle at 82% 88%, rgba(255,255,255,0.06), transparent 18%);
+      mix-blend-mode: screen;
+      opacity: 0.6;
+    }
+
+    body::after {
+      z-index: -1;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.35) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.30) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: radial-gradient(circle at center, black 22%, transparent 90%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .site-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      padding: 14px 12px 0;
+    }
+
+    .nav {
+      width: min(var(--max-width), calc(100% - 8px));
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: color-mix(in srgb, var(--bg-elev) 78%, transparent);
+      backdrop-filter: blur(18px) saturate(140%);
+      box-shadow: var(--shadow);
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--line-strong);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0)),
+        var(--accent-soft);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-text {
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .nav-toggle {
+      display: none;
+      margin-left: auto;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .nav-toggle:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+    }
+
+    .nav-toggle__bars,
+    .nav-toggle__bars::before,
+    .nav-toggle__bars::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 1.7px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .nav-toggle__bars {
+      position: relative;
+    }
+
+    .nav-toggle__bars::before {
+      position: absolute;
+      top: -6px;
+      left: 0;
+    }
+
+    .nav-toggle__bars::after {
+      position: absolute;
+      top: 6px;
+      left: 0;
+    }
+
+    .nav.is-open .nav-toggle__bars {
+      transform: rotate(45deg);
+    }
+
+    .nav.is-open .nav-toggle__bars::before {
+      transform: translateY(6px) rotate(90deg);
+    }
+
+    .nav.is-open .nav-toggle__bars::after {
+      opacity: 0;
+    }
+
+    .nav-panel {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color var(--transition), background var(--transition), transform var(--transition);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 7px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transform: scaleX(0.65);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      opacity: 0.9;
+      transform: scaleX(1);
+    }
+
+    .controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .lang-switch,
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 999px;
+    }
+
+    .lang-btn {
+      min-width: 46px;
+      height: 38px;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .lang-btn:hover,
+    .lang-btn:focus-visible {
+      color: var(--text);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .lang-btn.is-active {
+      background: var(--accent-soft);
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    .theme-toggle {
+      display: inline-grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible {
+      transform: translateY(-1px) rotate(8deg);
+      border-color: var(--line-strong);
+      outline: none;
+    }
+
+    .theme-toggle__icon {
+      font-size: 1.06rem;
+      line-height: 1;
+      transform: translateY(-1px);
+    }
+
+    main {
+      position: relative;
+      padding-top: calc(var(--nav-height) + 20px);
+    }
+
+    section {
+      scroll-margin-top: 110px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 10px);
+      display: grid;
+      place-items: center;
+      padding: 96px 20px 52px;
+      overflow: clip;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 6% 9%;
+      border: 1px solid var(--line);
+      border-radius: min(36px, 4vw);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0)),
+        var(--hero-glow);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+      opacity: 0.8;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 10% 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+      opacity: 0.9;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(980px, 100%);
+      text-align: center;
+      padding: 52px 24px;
+    }
+
+    .hero-kicker {
+      margin: 0 0 18px;
+      color: var(--muted-strong);
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-up 900ms 120ms forwards;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      font-weight: 600;
+      line-height: 0.98;
+      letter-spacing: 0.06em;
+      text-wrap: balance;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: fade-up 1100ms 260ms forwards, title-breathe 8s ease-in-out 1.6s infinite;
+      text-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+      color: color-mix(in srgb, var(--text) 90%, var(--accent) 10%);
+    }
+
+    .hero-divider {
+      width: min(120px, 24vw);
+      height: 1px;
+      margin: 26px auto 20px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-up 900ms 340ms forwards;
+    }
+
+    .hero-subtitle {
+      width: min(520px, 100%);
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(0.95rem, 1vw + 0.76rem, 1.06rem);
+      letter-spacing: 0.08em;
+      text-wrap: balance;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-up 900ms 420ms forwards;
+    }
+
+    .hero-summary {
+      width: min(700px, 100%);
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.2vw + 0.72rem, 1.12rem);
+      text-wrap: balance;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-up 900ms 520ms forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-up 900ms 620ms forwards;
+    }
+
+    .button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition), color var(--transition);
+      overflow: hidden;
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.15) 45%, transparent 100%);
+      transform: translateX(-120%);
+      transition: transform 620ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .button:hover::before,
+    .button:focus-visible::before {
+      transform: translateX(120%);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .button.primary {
+      color: #f6f0e6;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 92%, white 8%), var(--accent));
+      box-shadow: 0 14px 36px color-mix(in srgb, var(--accent) 28%, transparent);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      border-color: var(--line-strong);
+      background: var(--bg-soft);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .hero-ornaments {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: clip;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(8px);
+      opacity: 0.55;
+      animation: float 13s ease-in-out infinite;
+      mix-blend-mode: screen;
+    }
+
+    .orb-a {
+      width: 320px;
+      height: 320px;
+      left: -80px;
+      top: 18%;
+      background: radial-gradient(circle, rgba(177, 151, 110, 0.24), transparent 72%);
+    }
+
+    .orb-b {
+      width: 360px;
+      height: 360px;
+      right: -120px;
+      top: 12%;
+      animation-delay: -4s;
+      background: radial-gradient(circle, rgba(103, 122, 96, 0.22), transparent 72%);
+    }
+
+    .orb-c {
+      width: 260px;
+      height: 260px;
+      left: 50%;
+      bottom: 10%;
+      transform: translateX(-50%);
+      animation-delay: -7s;
+      background: radial-gradient(circle, rgba(188, 154, 102, 0.16), transparent 72%);
+    }
+
+    .sigil {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: min(66vw, 680px);
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid color-mix(in srgb, var(--line-strong) 72%, transparent);
+      opacity: 0.4;
+    }
+
+    .sigil::before,
+    .sigil::after {
+      content: "";
+      position: absolute;
+      inset: 9%;
+      border-radius: 50%;
+      border: 1px solid color-mix(in srgb, var(--line) 92%, transparent);
+    }
+
+    .sigil::after {
+      inset: 22%;
+      border-style: dashed;
+      opacity: 0.55;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 26px 0;
+    }
+
+    .panel {
+      position: relative;
+      overflow: clip;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0)),
+        var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px) saturate(130%);
+      padding: clamp(28px, 3vw, 42px);
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      opacity: 0.45;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-index {
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 600;
+      color: color-mix(in srgb, var(--accent) 78%, var(--text) 22%);
+      line-height: 0.9;
+      opacity: 0.88;
+    }
+
+    .section-kicker {
+      margin: 0 0 6px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .about-card {
+      min-height: 100%;
+      padding: 24px 22px 22px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)),
+        color-mix(in srgb, var(--bg-soft) 88%, transparent);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .about-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+    }
+
+    .about-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .tech-card {
+      position: relative;
+      min-height: 100%;
+      padding: 24px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0)),
+        color-mix(in srgb, var(--bg-soft) 90%, transparent);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+      overflow: hidden;
+    }
+
+    .tech-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -40% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 15%, transparent), transparent 65%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .tech-card:hover,
+    .tech-card:focus-within {
+      transform: translateY(-6px);
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-strong);
+      outline: none;
+    }
+
+    .tech-icon {
+      width: 76px;
+      height: 76px;
+      margin-bottom: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0)),
+        var(--accent-soft);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+
+    .icon-image {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.10));
+    }
+
+    .icon-fallback {
+      display: none;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+
+    .icon-fallback.is-visible {
+      display: inline-flex;
+    }
+
+    .tech-name {
+      margin: 0 0 8px;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .tech-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .projects-placeholder {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: stretch;
+    }
+
+    .placeholder-main,
+    .placeholder-aside {
+      padding: 24px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)),
+        color-mix(in srgb, var(--bg-soft) 92%, transparent);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .placeholder-main {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .placeholder-main::before {
+      content: "";
+      position: absolute;
+      inset: auto -12% -24% auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent), transparent 65%);
+      opacity: 0.9;
+    }
+
+    .placeholder-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--accent-soft) 80%, transparent);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .placeholder-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+    }
+
+    .placeholder-body {
+      position: relative;
+      z-index: 1;
+      width: min(560px, 100%);
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .placeholder-list {
+      display: grid;
+      gap: 12px;
+      align-content: center;
+      height: 100%;
+    }
+
+    .placeholder-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg-soft) 85%, transparent);
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .placeholder-item::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 16%, transparent);
+      flex-shrink: 0;
+    }
+
+    .contact-wrap {
+      display: grid;
+      gap: 20px;
+      place-items: center;
+      text-align: center;
+      min-height: 240px;
+    }
+
+    .contact-text {
+      max-width: 640px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      text-wrap: balance;
+    }
+
+    .contact-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 16px 24px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0)),
+        color-mix(in srgb, var(--bg-soft) 92%, transparent);
+      box-shadow: var(--shadow);
+      font-size: clamp(1rem, 1.4vw + 0.7rem, 1.16rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), color var(--transition), background var(--transition);
+    }
+
+    .contact-link::before {
+      content: "✦";
+      color: var(--accent);
+      font-size: 0.92rem;
+      transform: translateY(-1px);
+    }
+
+    .contact-link:hover,
+    .contact-link:focus-visible {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 44%, var(--line-strong) 56%);
+      box-shadow: var(--shadow-strong);
+      outline: none;
+    }
+
+    .site-footer {
+      padding: 30px 20px 50px;
+    }
+
+    .footer-inner {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.94rem;
+      letter-spacing: 0.04em;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 720ms cubic-bezier(.2,.8,.2,1), transform 720ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fade-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate3d(0, -14px, 0);
+      }
+    }
+
+    @keyframes title-breathe {
+      0%, 100% {
+        letter-spacing: 0.06em;
+        transform: translateY(0);
+      }
+      50% {
+        letter-spacing: 0.08em;
+        transform: translateY(-2px);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .about-grid,
+      .stack-grid,
+      .projects-placeholder {
+        grid-template-columns: 1fr;
+      }
+
+      .placeholder-main {
+        min-height: 220px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        position: relative;
+        align-items: center;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-panel {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: grid;
+        gap: 14px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: color-mix(in srgb, var(--bg-elev) 84%, transparent);
+        backdrop-filter: blur(18px) saturate(140%);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity var(--transition), transform var(--transition);
+      }
+
+      .nav.is-open .nav-panel {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-links,
+      .controls {
+        width: 100%;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+      }
+
+      .nav-link {
+        justify-content: flex-start;
+        padding: 12px 14px;
+        border-radius: 14px;
+      }
+
+      .nav-link::after {
+        display: none;
+      }
+
+      .controls {
+        margin-left: 0;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .site-header {
+        padding: 12px 10px 0;
+      }
+
+      .nav {
+        width: calc(100% - 4px);
+        padding: 10px 12px;
+      }
+
+      .brand-text {
+        font-size: 1.24rem;
+      }
+
+      .hero {
+        padding-top: 88px;
+      }
+
+      .hero-inner {
+        padding-inline: 10px;
+      }
+
+      .hero-kicker {
+        font-size: clamp(1.2rem, 5.4vw, 1.65rem);
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 9vw, 3rem);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .panel {
+        padding: 24px 18px;
+      }
+
+      .tech-card,
+      .placeholder-main,
+      .placeholder-aside,
+      .about-card {
+        padding: 20px;
+      }
+
+      .contact-link {
+        width: 100%;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+      }
+
+      .reveal,
+      .hero-kicker,
+      .hero-title,
+      .hero-divider,
+      .hero-subtitle,
+      .hero-summary,
+      .hero-actions {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <nav class="nav" id="siteNav" aria-label="Primary">
+        <a class="brand" href="#home" aria-label="HYS-N.net home">
+          <span class="brand-mark" aria-hidden="true">H</span>
+          <span class="brand-text">HYS-N.net</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navPanel">
+          <span class="nav-toggle__bars" aria-hidden="true"></span>
+          <span class="sr-only" id="navToggleLabel">Open menu</span>
+        </button>
+
+        <div class="nav-panel" id="navPanel">
+          <div class="nav-links">
+            <a class="nav-link" href="#home" data-i18n="nav.home">Home</a>
+            <a class="nav-link" href="#about" data-i18n="nav.about">About</a>
+            <a class="nav-link" href="#stack" data-i18n="nav.stack">Tech Stack</a>
+            <a class="nav-link" href="#projects" data-i18n="nav.projects">Projects</a>
+            <a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a>
+          </div>
+
+          <div class="controls">
+            <div class="lang-switch" role="group" aria-label="Language switcher">
+              <button class="lang-btn" type="button" data-lang="zh-Hant">繁</button>
+              <button class="lang-btn" type="button" data-lang="en">EN</button>
+              <button class="lang-btn" type="button" data-lang="de">DE</button>
+            </div>
+
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+              <span class="theme-toggle__icon" id="themeIcon" aria-hidden="true">☼</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-labelledby="hero-kicker">
+        <div class="hero-ornaments" aria-hidden="true">
+          <div class="orb orb-a"></div>
+          <div class="orb orb-b"></div>
+          <div class="orb orb-c"></div>
+          <div class="sigil"></div>
+        </div>
+
+        <div class="hero-inner">
+          <p class="hero-kicker" id="hero-kicker" data-i18n="hero.kicker">Harrison 的個人網站</p>
+          <h1 class="hero-title">Freiheit als Autonomie</h1>
+          <div class="hero-divider" aria-hidden="true"></div>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">—— Immanuel Kant</p>
+          <p class="hero-summary" data-i18n="hero.summary">
+            關於人工智能、西方哲學與技術實踐的個人門戶；在理性、自由與創造之間，整理思考，也安放未完成的構想。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#about" data-i18n="hero.ctaPrimary">閱讀關於我</a>
+            <a class="button secondary" href="#contact" data-i18n="hero.ctaSecondary">聯係我</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="panel">
+            <div class="section-head">
+              <div class="section-index" aria-hidden="true">I</div>
+              <div>
+                <p class="section-kicker" data-i18n="about.kicker">About</p>
+                <h2 class="section-title" id="about-title" data-i18n="about.title">關於我</h2>
+              </div>
+            </div>
+
+            <div class="about-grid">
+              <article class="about-card">
+                <p data-i18n="about.body1">
+                  我關注人工智能的發展，也長久沉浸於西方哲學的思想傳統，特別是理性、自由與秩序這些核心問題。
+                </p>
+              </article>
+              <article class="about-card">
+                <p data-i18n="about.body2">
+                  對我而言，程式不只是工具；它同時是一種方法，一種把抽象觀念轉化為結構、邏輯與形式的思考實踐。
+                </p>
+              </article>
+              <article class="about-card">
+                <p data-i18n="about.body3">
+                  這個網站是一個持續生長中的個人空間，用來收納興趣、筆記、技術探索，以及那些尚未完全成形的問題意識。
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="stack" aria-labelledby="stack-title">
+        <div class="container">
+          <div class="panel">
+            <div class="section-head">
+              <div class="section-index" aria-hidden="true">II</div>
+              <div>
+                <p class="section-kicker" data-i18n="stack.kicker">Tech Stack</p>
+                <h2 class="section-title" id="stack-title" data-i18n="stack.title">技術棧</h2>
+              </div>
+            </div>
+
+            <div class="stack-grid">
+              <article class="tech-card">
+                <div class="tech-icon" aria-hidden="true">
+                  <!-- Default: use CDN icon for C++. If CDN fails, it falls back to ./cpp.svg automatically.
+                       To force local only, simply change src to ./cpp.svg. -->
+                  <img
+                    class="icon-image"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                    data-fallback="./cpp.svg"
+                    alt="C++ icon"
+                  />
+                  <span class="icon-fallback">C++</span>
+                </div>
+                <h3 class="tech-name">C++</h3>
+                <p class="tech-desc" data-i18n="stack.cpp">
+                  一門講究精確、性能與控制力的語言，適合處理結構清晰、要求嚴謹的技術工作。
+                </p>
+              </article>
+
+              <article class="tech-card">
+                <div class="tech-icon" aria-hidden="true">
+                  <!-- Claude Code: using local fallback path by default.
+                       Replace src with another trusted icon URL later if you prefer a remote asset. -->
+                  <img
+                    class="icon-image"
+                    src="./claude-code.png"
+                    data-fallback="./claude-code.png"
+                    alt="Claude Code icon"
+                  />
+                  <span class="icon-fallback">CC</span>
+                </div>
+                <h3 class="tech-name">Claude Code</h3>
+                <p class="tech-desc" data-i18n="stack.claude">
+                  偏向深度協作與長上下文推理的編碼方式，適合打磨複雜想法與反覆修訂細節。
+                </p>
+              </article>
+
+              <article class="tech-card">
+                <div class="tech-icon" aria-hidden="true">
+                  <!-- Codex: using local fallback path by default.
+                       Replace src with another trusted icon URL later if you prefer a remote asset. -->
+                  <img
+                    class="icon-image"
+                    src="./codex.png"
+                    data-fallback="./codex.png"
+                    alt="Codex icon"
+                  />
+                  <span class="icon-fallback">CX</span>
+                </div>
+                <h3 class="tech-name">Codex</h3>
+                <p class="tech-desc" data-i18n="stack.codex">
+                  擅長把概念快速推進為可執行原型，在實作、試驗與整理流程上提供直接助力。
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+          <div class="panel">
+            <div class="section-head">
+              <div class="section-index" aria-hidden="true">III</div>
+              <div>
+                <p class="section-kicker" data-i18n="projects.kicker">Projects</p>
+                <h2 class="section-title" id="projects-title" data-i18n="projects.title">我的項目</h2>
+              </div>
+            </div>
+
+            <div class="projects-placeholder">
+              <div class="placeholder-main">
+                <span class="placeholder-badge" data-i18n="projects.badge">構思之中</span>
+                <h3 class="placeholder-title" data-i18n="projects.placeholderTitle">正在構思🤔</h3>
+                <p class="placeholder-body" data-i18n="projects.placeholderBody">
+                  某些想法仍停留在草圖與筆記之間，但它們的輪廓已經浮現，等待被進一步命名、推敲與落實。
+                </p>
+              </div>
+
+              <aside class="placeholder-aside" aria-label="Project notes">
+                <div class="placeholder-list">
+                  <div class="placeholder-item" data-i18n="projects.item1">概念筆記持續累積</div>
+                  <div class="placeholder-item" data-i18n="projects.item2">結構方向仍在調整</div>
+                  <div class="placeholder-item" data-i18n="projects.item3">未來條目將逐步公開</div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="panel">
+            <div class="section-head">
+              <div class="section-index" aria-hidden="true">IV</div>
+              <div>
+                <p class="section-kicker" data-i18n="contact.kicker">Contact</p>
+                <h2 class="section-title" id="contact-title" data-i18n="contact.title">聯係我</h2>
+              </div>
+            </div>
+
+            <div class="contact-wrap">
+              <p class="contact-text" data-i18n="contact.body">
+                若你想交流人工智能、技術實踐，或西方哲學中的某個問題，歡迎來信。
+              </p>
+              <a class="contact-link" href="mailto:contact@hysn.net">contact@hysn.net</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner" data-i18n="footer">
+        ©2026 hysn.net
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const translations = {
+      "zh-Hant": {
+        nav: {
+          home: "首頁",
+          about: "關於我",
+          stack: "技術棧",
+          projects: "我的項目",
+          contact: "聯係我"
+        },
+        hero: {
+          kicker: "Harrison的個人網站",
+          subtitle: "—— Immanuel Kant",
+          summary: "關於人工智能、西方哲學與技術實踐的個人門戶；在理性、自由與創造之間，整理思考，也安放未完成的構想。",
+          ctaPrimary: "閱讀關於我",
+          ctaSecondary: "聯係我"
+        },
+        about: {
+          kicker: "About",
+          title: "關於我",
+          body1: "我關注人工智能的發展，也長久沉浸於西方哲學的思想傳統，特別是理性、自由與秩序這些核心問題。",
+          body2: "對我而言，程式不只是工具；它同時是一種方法，一種把抽象觀念轉化為結構、邏輯與形式的思考實踐。",
+          body3: "這個網站是一個持續生長中的個人空間，用來收納興趣、筆記、技術探索，以及那些尚未完全成形的問題意識。"
+        },
+        stack: {
+          kicker: "Tech Stack",
+          title: "技術棧",
+          cpp: "一門講究精確、性能與控制力的語言，適合處理結構清晰、要求嚴謹的技術工作。",
+          claude: "偏向深度協作與長上下文推理的編碼方式，適合打磨複雜想法與反覆修訂細節。",
+          codex: "擅長把概念快速推進為可執行原型，在實作、試驗與整理流程上提供直接助力。"
+        },
+        projects: {
+          kicker: "Projects",
+          title: "我的項目",
+          badge: "構思之中",
+          placeholderTitle: "正在構思🤔",
+          placeholderBody: "某些想法仍停留在草圖與筆記之間，但它們的輪廓已經浮現，等待被進一步命名、推敲與落實。",
+          item1: "概念筆記持續累積",
+          item2: "結構方向仍在調整",
+          item3: "未來條目將逐步公開"
+        },
+        contact: {
+          kicker: "Contact",
+          title: "聯係我",
+          body: "若你想交流人工智能、技術實踐，或西方哲學中的某個問題，歡迎來信。"
+        },
+        footer: "©2026 hysn.net",
+        ui: {
+          openMenu: "開啟導覽",
+          closeMenu: "關閉導覽",
+          toggleToDark: "切換為深色模式",
+          toggleToLight: "切換為淺色模式"
+        }
+      },
+      en: {
+        nav: {
+          home: "Home",
+          about: "About",
+          stack: "Tech Stack",
+          projects: "Projects",
+          contact: "Contact"
+        },
+        hero: {
+          kicker: "Harrison’s Personal Website",
+          subtitle: "—— Immanuel Kant",
+          summary: "A personal portal for artificial intelligence, Western philosophy, and technical practice — a place to gather thought, structure, and unfinished ideas.",
+          ctaPrimary: "Read About Me",
+          ctaSecondary: "Contact"
+        },
+        about: {
+          kicker: "About",
+          title: "About",
+          body1: "I am deeply interested in artificial intelligence and equally drawn to the long tradition of Western philosophy, especially its questions of reason, freedom, and order.",
+          body2: "To me, programming is more than a tool for building; it is also a way of giving form to abstract thought through structure, logic, and method.",
+          body3: "This site is an evolving personal space for notes, technical exploration, and ideas that are still in the process of becoming clear."
+        },
+        stack: {
+          kicker: "Tech Stack",
+          title: "Tech Stack",
+          cpp: "A language of precision, performance, and control — well suited to rigorous work with strong structural demands.",
+          claude: "A workflow shaped by deep collaboration, long-context reasoning, and patient refinement of complex ideas.",
+          codex: "Useful for turning concepts into executable prototypes, especially during implementation, experimentation, and iteration."
+        },
+        projects: {
+          kicker: "Projects",
+          title: "Projects",
+          badge: "In Formation",
+          placeholderTitle: "Conceiving Ideas 🤔",
+          placeholderBody: "Some projects still dwell between sketch and note, but their contours are already emerging, waiting to be clarified and built.",
+          item1: "Concept notes accumulating",
+          item2: "Structures under revision",
+          item3: "Future entries to be published"
+        },
+        contact: {
+          kicker: "Contact",
+          title: "Contact",
+          body: "If you would like to exchange thoughts on artificial intelligence, technical work, or philosophy, feel free to write."
+        },
+        footer: "©2026 hysn.net",
+        ui: {
+          openMenu: "Open menu",
+          closeMenu: "Close menu",
+          toggleToDark: "Switch to dark mode",
+          toggleToLight: "Switch to light mode"
+        }
+      },
+      de: {
+        nav: {
+          home: "Start",
+          about: "Über mich",
+          stack: "Tech Stack",
+          projects: "Projekte",
+          contact: "Kontakt"
+        },
+        hero: {
+          kicker: "Harrisons persönliche Website",
+          subtitle: "—— Immanuel Kant",
+          summary: "Ein persönliches Portal zu künstlicher Intelligenz, westlicher Philosophie und technischer Praxis — ein Ort für Gedanken, Struktur und noch unfertige Entwürfe.",
+          ctaPrimary: "Über mich lesen",
+          ctaSecondary: "Kontakt"
+        },
+        about: {
+          kicker: "Über mich",
+          title: "Über mich",
+          body1: "Ich interessiere mich für künstliche Intelligenz und zugleich für die lange Tradition der westlichen Philosophie, besonders für ihre Fragen nach Vernunft, Freiheit und Ordnung.",
+          body2: "Programmieren ist für mich nicht nur ein Mittel zum Bauen, sondern auch eine Weise, abstrakten Gedanken durch Struktur, Logik und Methode Gestalt zu geben.",
+          body3: "Diese Seite ist ein wachsender persönlicher Raum für Notizen, technische Erkundungen und Ideen, die sich noch im Werden befinden."
+        },
+        stack: {
+          kicker: "Tech Stack",
+          title: "Tech Stack",
+          cpp: "Eine Sprache der Präzision, Leistung und Kontrolle — geeignet für anspruchsvolle Arbeit mit klarer Struktur.",
+          claude: "Ein Workflow für tiefe Zusammenarbeit, langes Kontextdenken und die sorgfältige Ausarbeitung komplexer Ideen.",
+          codex: "Hilfreich, um Konzepte rasch in ausführbare Prototypen zu überführen, besonders in Umsetzung und Experiment.",
+          }
+        ,
+        projects: {
+          kicker: "Projekte",
+          title: "Projekte",
+          badge: "Im Entstehen",
+          placeholderTitle: "In Ausarbeitung 🤔",
+          placeholderBody: "Manche Vorhaben verweilen noch zwischen Skizze und Notiz, doch ihre Konturen treten bereits hervor und warten auf weitere Ausarbeitung.",
+          item1: "Konzeptnotizen wachsen",
+          item2: "Strukturen werden überarbeitet",
+          item3: "Weitere Einträge folgen"
+        },
+        contact: {
+          kicker: "Kontakt",
+          title: "Kontakt",
+          body: "Wenn du dich über künstliche Intelligenz, technische Praxis oder Philosophie austauschen möchtest, freue ich mich über eine Nachricht."
+        },
+        footer: "©2026 hysn.net",
+        ui: {
+          openMenu: "Menü öffnen",
+          closeMenu: "Menü schließen",
+          toggleToDark: "Zum Dunkelmodus wechseln",
+          toggleToLight: "Zum Hellmodus wechseln"
+        }
+      }
+    };
+
+    const root = document.documentElement;
+    const nav = document.getElementById("siteNav");
+    const navToggle = document.getElementById("navToggle");
+    const navToggleLabel = document.getElementById("navToggleLabel");
+    const langButtons = document.querySelectorAll(".lang-btn");
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function resolveKey(obj, path) {
+      return path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : null), obj);
+    }
+
+    function detectLanguage() {
+      const stored = localStorage.getItem("hysn-lang");
+      if (stored && translations[stored]) return stored;
+
+      const browserLang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+      if (browserLang.startsWith("zh")) return "zh-Hant";
+      if (browserLang.startsWith("de")) return "de";
+      return "en";
+    }
+
+    function detectTheme() {
+      const stored = localStorage.getItem("hysn-theme");
+      if (stored === "dark" || stored === "light") return stored;
+      return prefersDark.matches ? "dark" : "light";
+    }
+
+    function applyLanguage(lang, persist = false) {
+      const selected = translations[lang] ? lang : "en";
+      root.lang = selected === "zh-Hant" ? "zh-Hant" : selected;
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        const value = resolveKey(translations[selected], key);
+        if (value !== null) element.textContent = value;
+      });
+
+      langButtons.forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.lang === selected);
+        button.setAttribute("aria-pressed", String(button.dataset.lang === selected));
+      });
+
+      updateUiLabels(selected);
+
+      if (persist) {
+        localStorage.setItem("hysn-lang", selected);
+      }
+    }
+
+    function applyTheme(theme, persist = false) {
+      const nextTheme = theme === "dark" ? "dark" : "light";
+      root.setAttribute("data-theme", nextTheme);
+      themeIcon.textContent = nextTheme === "dark" ? "☾" : "☼";
+      if (themeMeta) {
+        themeMeta.setAttribute("content", nextTheme === "dark" ? "#131312" : "#f3ecdd");
+      }
+
+      updateUiLabels(root.lang || detectLanguage());
+
+      if (persist) {
+        localStorage.setItem("hysn-theme", nextTheme);
+      }
+    }
+
+    function updateUiLabels(lang) {
+      const currentLang = translations[lang] ? lang : "en";
+      const isOpen = nav.classList.contains("is-open");
+      const currentTheme = root.getAttribute("data-theme") || "light";
+
+      navToggleLabel.textContent = isOpen
+        ? translations[currentLang].ui.closeMenu
+        : translations[currentLang].ui.openMenu;
+
+      navToggle.setAttribute("aria-label", navToggleLabel.textContent);
+      themeToggle.setAttribute(
+        "aria-label",
+        currentTheme === "dark"
+          ? translations[currentLang].ui.toggleToLight
+          : translations[currentLang].ui.toggleToDark
+      );
+    }
+
+    function toggleMenu(forceState) {
+      const shouldOpen = typeof forceState === "boolean" ? forceState : !nav.classList.contains("is-open");
+      nav.classList.toggle("is-open", shouldOpen);
+      navToggle.setAttribute("aria-expanded", String(shouldOpen));
+      updateUiLabels(root.lang || detectLanguage());
+    }
+
+    navToggle.addEventListener("click", () => toggleMenu());
+
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 900) toggleMenu(false);
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) toggleMenu(false);
+    });
+
+    langButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        applyLanguage(button.dataset.lang, true);
+      });
+    });
+
+    themeToggle.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") || detectTheme();
+      applyTheme(current === "dark" ? "light" : "dark", true);
+    });
+
+    prefersDark.addEventListener("change", (event) => {
+      if (!localStorage.getItem("hysn-theme")) {
+        applyTheme(event.matches ? "dark" : "light", false);
+      }
+    });
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+
+    document.querySelectorAll(".icon-image").forEach((img) => {
+      const fallbackEl = img.nextElementSibling;
+
+      const showTextFallback = () => {
+        img.style.display = "none";
+        if (fallbackEl) fallbackEl.classList.add("is-visible");
+      };
+
+      img.addEventListener("error", () => {
+        const fallbackSrc = img.dataset.fallback;
+        if (fallbackSrc && img.src !== new URL(fallbackSrc, location.href).href) {
+          img.src = fallbackSrc;
+          return;
+        }
+        showTextFallback();
+      });
+
+      img.addEventListener("load", () => {
+        img.style.display = "";
+        if (fallbackEl) fallbackEl.classList.remove("is-visible");
+      });
+
+      if (img.complete && img.naturalWidth === 0) {
+        showTextFallback();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") toggleMenu(false);
+    });
+
+    applyLanguage(detectLanguage(), false);
+    applyTheme(detectTheme(), false);
+  </script>
+</body>
+</html>
