@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HYS-N.net</title>
-  <meta name="description" content="HYS-N.net — Harrison 的個人網站，關於人工智能、西方哲學與技術思考的單頁門戶。" />
+  <meta name="description" content="HYS-N.net — Harrison的個人網站，關於人工智能、西方哲學、古典漢語與技術實踐。" />
   <meta name="theme-color" content="#f3ecdd" />
   <script>
     (function () {
@@ -456,12 +456,12 @@
     }
 
     .hero-kicker {
-      margin: 0 0 18px;
-      color: var(--muted-strong);
+      margin: 0 0 14px;
+      color: color-mix(in srgb, var(--text) 88%, var(--accent) 12%);
       font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-size: clamp(2rem, 5vw, 3.4rem);
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       opacity: 0;
       transform: translateY(16px);
       animation: fade-up 900ms 120ms forwards;
@@ -470,22 +470,22 @@
     .hero-title {
       margin: 0;
       font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-      font-size: clamp(2.6rem, 7vw, 5rem);
-      font-weight: 600;
-      line-height: 0.98;
-      letter-spacing: 0.06em;
+      font-size: clamp(1.5rem, 3vw, 2.35rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: 0.12em;
       text-wrap: balance;
       opacity: 0;
       transform: translateY(22px);
-      animation: fade-up 1100ms 260ms forwards, title-breathe 8s ease-in-out 1.6s infinite;
-      text-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
-      color: color-mix(in srgb, var(--text) 90%, var(--accent) 10%);
+      animation: fade-up 1100ms 260ms forwards, title-breathe 10s ease-in-out 1.8s infinite;
+      text-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+      color: color-mix(in srgb, var(--muted-strong) 86%, var(--accent) 14%);
     }
 
     .hero-divider {
       width: min(120px, 24vw);
       height: 1px;
-      margin: 26px auto 20px;
+      margin: 22px auto 18px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
       opacity: 0;
       transform: translateY(16px);
@@ -496,23 +496,12 @@
       width: min(520px, 100%);
       margin: 0 auto;
       color: var(--muted);
-      font-size: clamp(0.95rem, 1vw + 0.76rem, 1.06rem);
+      font-size: clamp(0.92rem, 1vw + 0.72rem, 1.02rem);
       letter-spacing: 0.08em;
       text-wrap: balance;
       opacity: 0;
       transform: translateY(16px);
       animation: fade-up 900ms 420ms forwards;
-    }
-
-    .hero-summary {
-      width: min(700px, 100%);
-      margin: 22px auto 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 1.2vw + 0.72rem, 1.12rem);
-      text-wrap: balance;
-      opacity: 0;
-      transform: translateY(16px);
-      animation: fade-up 900ms 520ms forwards;
     }
 
     .hero-actions {
@@ -709,33 +698,22 @@
       letter-spacing: 0.03em;
     }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+    .about-prose {
+      max-width: 860px;
+      margin: 0 auto;
+      color: var(--muted-strong);
+      font-size: clamp(1rem, 1.05vw + 0.8rem, 1.1rem);
+      line-height: 1.95;
+      text-wrap: pretty;
     }
 
-    .about-card {
-      min-height: 100%;
-      padding: 24px 22px 22px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)),
-        color-mix(in srgb, var(--bg-soft) 88%, transparent);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-      transition: transform var(--transition), border-color var(--transition), background var(--transition);
-    }
-
-    .about-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--line-strong);
-    }
-
-    .about-card p {
+    .about-prose p {
       margin: 0;
-      color: var(--muted);
-      font-size: 1rem;
+      text-indent: 2em;
+    }
+
+    .about-prose p + p {
+      margin-top: 1.1em;
     }
 
     .stack-grid {
@@ -869,6 +847,20 @@
       opacity: 0.9;
     }
 
+    .placeholder-main::after {
+      content: "";
+      position: absolute;
+      right: 6%;
+      top: 18%;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      border: 1px dashed color-mix(in srgb, var(--line-strong) 70%, transparent);
+      box-shadow: 0 0 0 18px color-mix(in srgb, var(--accent-soft) 20%, transparent);
+      opacity: 0.5;
+      animation: slow-spin 18s linear infinite;
+    }
+
     .placeholder-badge {
       position: relative;
       display: inline-flex;
@@ -882,6 +874,8 @@
       font-size: 0.92rem;
       font-weight: 600;
       color: var(--text);
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 16%, transparent);
+      animation: badge-pulse 3.8s ease-in-out infinite;
     }
 
     .placeholder-title {
@@ -1027,17 +1021,34 @@
 
     @keyframes title-breathe {
       0%, 100% {
-        letter-spacing: 0.06em;
+        letter-spacing: 0.12em;
         transform: translateY(0);
       }
       50% {
-        letter-spacing: 0.08em;
+        letter-spacing: 0.145em;
         transform: translateY(-2px);
       }
     }
 
+    @keyframes slow-spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes badge-pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+      }
+      50% {
+        box-shadow: 0 0 0 12px color-mix(in srgb, var(--accent) 0%, transparent);
+      }
+    }
+
     @media (max-width: 980px) {
-      .about-grid,
       .stack-grid,
       .projects-placeholder {
         grid-template-columns: 1fr;
@@ -1133,11 +1144,11 @@
       }
 
       .hero-kicker {
-        font-size: clamp(1.2rem, 5.4vw, 1.65rem);
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
       }
 
       .hero-title {
-        font-size: clamp(2rem, 9vw, 3rem);
+        font-size: clamp(1.18rem, 4.8vw, 1.6rem);
       }
 
       .hero-actions {
@@ -1160,8 +1171,7 @@
 
       .tech-card,
       .placeholder-main,
-      .placeholder-aside,
-      .about-card {
+      .placeholder-aside {
         padding: 20px;
       }
 
@@ -1190,7 +1200,6 @@
       .hero-title,
       .hero-divider,
       .hero-subtitle,
-      .hero-summary,
       .hero-actions {
         opacity: 1 !important;
         transform: none !important;
@@ -1246,13 +1255,10 @@
         </div>
 
         <div class="hero-inner">
-          <p class="hero-kicker" id="hero-kicker" data-i18n="hero.kicker">Harrison 的個人網站</p>
+          <p class="hero-kicker" id="hero-kicker" data-i18n="hero.kicker">Harrison的個人網站</p>
           <h1 class="hero-title">Freiheit als Autonomie</h1>
           <div class="hero-divider" aria-hidden="true"></div>
           <p class="hero-subtitle" data-i18n="hero.subtitle">—— Immanuel Kant</p>
-          <p class="hero-summary" data-i18n="hero.summary">
-            關於人工智能、西方哲學與技術實踐的個人門戶；在理性、自由與創造之間，整理思考，也安放未完成的構想。
-          </p>
           <div class="hero-actions">
             <a class="button primary" href="#about" data-i18n="hero.ctaPrimary">閱讀關於我</a>
             <a class="button secondary" href="#contact" data-i18n="hero.ctaSecondary">聯係我</a>
@@ -1271,22 +1277,19 @@
               </div>
             </div>
 
-            <div class="about-grid">
-              <article class="about-card">
-                <p data-i18n="about.body1">
-                  我關注人工智能的發展，也長久沉浸於西方哲學的思想傳統，特別是理性、自由與秩序這些核心問題。
-                </p>
-              </article>
-              <article class="about-card">
-                <p data-i18n="about.body2">
-                  對我而言，程式不只是工具；它同時是一種方法，一種把抽象觀念轉化為結構、邏輯與形式的思考實踐。
-                </p>
-              </article>
-              <article class="about-card">
-                <p data-i18n="about.body3">
-                  這個網站是一個持續生長中的個人空間，用來收納興趣、筆記、技術探索，以及那些尚未完全成形的問題意識。
-                </p>
-              </article>
+            <div class="about-prose">
+              <p data-i18n="about.body1">
+                我是一名學生，行走在幾條看似迥異、實則相通的道路上。
+              </p>
+              <p data-i18n="about.body2">
+                我著迷於人工智慧——不僅是技術本身，更是它所引發的深層問題：機器能否思考？智慧的邊界在哪裡？這些追問自然地將我引向西方哲學的長河。從蘇格拉底的詰問到維根斯坦的語言遊戲，哲學教會我在確信之前先學會懷疑，在回答之前先學會提問。
+              </p>
+              <p data-i18n="about.body3">
+                編程是我將想法落地的方式。寫代碼與寫論證有著相似的骨架：拆解問題、構建邏輯、反覆迭代，直到混沌化為秩序。
+              </p>
+              <p data-i18n="about.body4">
+                而古典漢語是我回望自身文化根源的路徑。古人以極精煉的文字承載廣闊的意涵，這種「少即是多」的美學，深刻影響了我思考與表達的方式。這四者在我看來並非四個獨立的興趣，而是同一種衝動的不同面向——理解世界如何運作，語言如何塑造思想，以及我們如何在傳統與前沿之間找到自己的位置。
+              </p>
             </div>
           </div>
         </div>
@@ -1318,7 +1321,7 @@
                 </div>
                 <h3 class="tech-name">C++</h3>
                 <p class="tech-desc" data-i18n="stack.cpp">
-                  一門講究精確、性能與控制力的語言，適合處理結構清晰、要求嚴謹的技術工作。
+                  一門講究精確、性能與控制力的語言，我藉助它來學習算法與計算機原理。
                 </p>
               </article>
 
@@ -1336,7 +1339,7 @@
                 </div>
                 <h3 class="tech-name">Claude Code</h3>
                 <p class="tech-desc" data-i18n="stack.claude">
-                  偏向深度協作與長上下文推理的編碼方式，適合打磨複雜想法與反覆修訂細節。
+                  偏向深度協作與長上下文推理的編碼方式，我使用它來規劃項目。
                 </p>
               </article>
 
@@ -1348,13 +1351,13 @@
                     class="icon-image"
                     src="./codex.png"
                     data-fallback="./codex.png"
-                    alt="Codex icon"
+                    alt="CodeX icon"
                   />
                   <span class="icon-fallback">CX</span>
                 </div>
-                <h3 class="tech-name">Codex</h3>
+                <h3 class="tech-name">CodeX</h3>
                 <p class="tech-desc" data-i18n="stack.codex">
-                  擅長把概念快速推進為可執行原型，在實作、試驗與整理流程上提供直接助力。
+                  擅長把概念快速推進為可執行原型，它協助我進行編碼工作。
                 </p>
               </article>
             </div>
@@ -1407,7 +1410,7 @@
 
             <div class="contact-wrap">
               <p class="contact-text" data-i18n="contact.body">
-                若你想交流人工智能、技術實踐，或西方哲學中的某個問題，歡迎來信。
+                若您有意探討西方哲學、人工智能或相關議題，或願為本站提供建議，歡迎來信交流。
               </p>
               <a class="contact-link" href="mailto:contact@hysn.net">contact@hysn.net</a>
             </div>
@@ -1436,23 +1439,23 @@
         hero: {
           kicker: "Harrison的個人網站",
           subtitle: "—— Immanuel Kant",
-          summary: "關於人工智能、西方哲學與技術實踐的個人門戶；在理性、自由與創造之間，整理思考，也安放未完成的構想。",
           ctaPrimary: "閱讀關於我",
           ctaSecondary: "聯係我"
         },
         about: {
           kicker: "About",
           title: "關於我",
-          body1: "我關注人工智能的發展，也長久沉浸於西方哲學的思想傳統，特別是理性、自由與秩序這些核心問題。",
-          body2: "對我而言，程式不只是工具；它同時是一種方法，一種把抽象觀念轉化為結構、邏輯與形式的思考實踐。",
-          body3: "這個網站是一個持續生長中的個人空間，用來收納興趣、筆記、技術探索，以及那些尚未完全成形的問題意識。"
+          body1: "我是一名學生，行走在幾條看似迥異、實則相通的道路上。",
+          body2: "我著迷於人工智慧——不僅是技術本身，更是它所引發的深層問題：機器能否思考？智慧的邊界在哪裡？這些追問自然地將我引向西方哲學的長河。從蘇格拉底的詰問到維根斯坦的語言遊戲，哲學教會我在確信之前先學會懷疑，在回答之前先學會提問。",
+          body3: "編程是我將想法落地的方式。寫代碼與寫論證有著相似的骨架：拆解問題、構建邏輯、反覆迭代，直到混沌化為秩序。",
+          body4: "而古典漢語是我回望自身文化根源的路徑。古人以極精煉的文字承載廣闊的意涵，這種「少即是多」的美學，深刻影響了我思考與表達的方式。這四者在我看來並非四個獨立的興趣，而是同一種衝動的不同面向——理解世界如何運作，語言如何塑造思想，以及我們如何在傳統與前沿之間找到自己的位置。"
         },
         stack: {
           kicker: "Tech Stack",
           title: "技術棧",
-          cpp: "一門講究精確、性能與控制力的語言，適合處理結構清晰、要求嚴謹的技術工作。",
-          claude: "偏向深度協作與長上下文推理的編碼方式，適合打磨複雜想法與反覆修訂細節。",
-          codex: "擅長把概念快速推進為可執行原型，在實作、試驗與整理流程上提供直接助力。"
+          cpp: "一門講究精確、性能與控制力的語言，我藉助它來學習算法與計算機原理。",
+          claude: "偏向深度協作與長上下文推理的編碼方式，我使用它來規劃項目。",
+          codex: "擅長把概念快速推進為可執行原型，它協助我進行編碼工作。"
         },
         projects: {
           kicker: "Projects",
@@ -1467,7 +1470,7 @@
         contact: {
           kicker: "Contact",
           title: "聯係我",
-          body: "若你想交流人工智能、技術實踐，或西方哲學中的某個問題，歡迎來信。"
+          body: "若您有意探討西方哲學、人工智能或相關議題，或願為本站提供建議，歡迎來信交流。"
         },
         footer: "©2026 hysn.net",
         ui: {
@@ -1488,23 +1491,23 @@
         hero: {
           kicker: "Harrison’s Personal Website",
           subtitle: "—— Immanuel Kant",
-          summary: "A personal portal for artificial intelligence, Western philosophy, and technical practice — a place to gather thought, structure, and unfinished ideas.",
           ctaPrimary: "Read About Me",
           ctaSecondary: "Contact"
         },
         about: {
           kicker: "About",
           title: "About",
-          body1: "I am deeply interested in artificial intelligence and equally drawn to the long tradition of Western philosophy, especially its questions of reason, freedom, and order.",
-          body2: "To me, programming is more than a tool for building; it is also a way of giving form to abstract thought through structure, logic, and method.",
-          body3: "This site is an evolving personal space for notes, technical exploration, and ideas that are still in the process of becoming clear."
+          body1: "I am a student, moving along several paths that may seem different on the surface yet are deeply connected underneath.",
+          body2: "I am fascinated by artificial intelligence—not only as a technology, but as a field that opens deeper questions: Can machines think? Where are the boundaries of intelligence? Such questions lead me naturally into the long river of Western philosophy. From the questioning of Socrates to Wittgenstein’s language games, philosophy has taught me to learn doubt before certainty, and questions before answers.",
+          body3: "Programming is the way I give form to ideas. Writing code and writing an argument share a similar structure: break down the problem, build the logic, and iterate until chaos becomes order.",
+          body4: "Classical Chinese is the path through which I return to the roots of my own culture. The ancients carried vast meaning with highly compressed language, and this aesthetic of ‘less is more’ has deeply shaped the way I think and express myself. To me, these four are not separate interests, but different faces of the same impulse: to understand how the world works, how language shapes thought, and how one may find one’s place between tradition and the frontier."
         },
         stack: {
           kicker: "Tech Stack",
           title: "Tech Stack",
-          cpp: "A language of precision, performance, and control — well suited to rigorous work with strong structural demands.",
-          claude: "A workflow shaped by deep collaboration, long-context reasoning, and patient refinement of complex ideas.",
-          codex: "Useful for turning concepts into executable prototypes, especially during implementation, experimentation, and iteration."
+          cpp: "A language of precision, performance, and control; I use it to study algorithms and computer science fundamentals.",
+          claude: "A coding workflow oriented toward deep collaboration and long-context reasoning; I use it to plan projects.",
+          codex: "Good at pushing ideas quickly into executable prototypes; it helps me with hands-on coding work."
         },
         projects: {
           kicker: "Projects",
@@ -1519,7 +1522,7 @@
         contact: {
           kicker: "Contact",
           title: "Contact",
-          body: "If you would like to exchange thoughts on artificial intelligence, technical work, or philosophy, feel free to write."
+          body: "If you would like to discuss Western philosophy, artificial intelligence, or related questions—or offer suggestions for this site—you are warmly welcome to write."
         },
         footer: "©2026 hysn.net",
         ui: {
@@ -1540,25 +1543,24 @@
         hero: {
           kicker: "Harrisons persönliche Website",
           subtitle: "—— Immanuel Kant",
-          summary: "Ein persönliches Portal zu künstlicher Intelligenz, westlicher Philosophie und technischer Praxis — ein Ort für Gedanken, Struktur und noch unfertige Entwürfe.",
           ctaPrimary: "Über mich lesen",
           ctaSecondary: "Kontakt"
         },
         about: {
           kicker: "Über mich",
           title: "Über mich",
-          body1: "Ich interessiere mich für künstliche Intelligenz und zugleich für die lange Tradition der westlichen Philosophie, besonders für ihre Fragen nach Vernunft, Freiheit und Ordnung.",
-          body2: "Programmieren ist für mich nicht nur ein Mittel zum Bauen, sondern auch eine Weise, abstrakten Gedanken durch Struktur, Logik und Methode Gestalt zu geben.",
-          body3: "Diese Seite ist ein wachsender persönlicher Raum für Notizen, technische Erkundungen und Ideen, die sich noch im Werden befinden."
+          body1: "Ich bin ein Student und bewege mich auf mehreren Wegen, die auf den ersten Blick verschieden wirken, im Innersten aber miteinander verbunden sind.",
+          body2: "Künstliche Intelligenz fasziniert mich nicht nur als Technik, sondern auch durch die tieferen Fragen, die sie hervorruft: Können Maschinen denken? Wo liegen die Grenzen der Intelligenz? Solche Fragen führen mich ganz natürlich in den langen Strom der westlichen Philosophie. Von den Fragen des Sokrates bis zu Wittgensteins Sprachspielen hat mich die Philosophie gelehrt, vor der Gewissheit erst den Zweifel und vor der Antwort erst die Frage zu lernen.",
+          body3: "Programmieren ist die Weise, in der ich Gedanken zur Form bringe. Code zu schreiben und ein Argument zu entwickeln, haben ein ähnliches Gerüst: Probleme zerlegen, Logik aufbauen und immer wieder überarbeiten, bis aus Chaos Ordnung wird.",
+          body4: "Das klassische Chinesisch ist für mich ein Weg zurück zu den kulturellen Wurzeln meiner eigenen Tradition. Die Alten trugen weite Bedeutungen in äußerst verdichteter Sprache, und diese Ästhetik des ‚Weniger ist mehr‘ prägt mein Denken und Schreiben tief. Diese vier Bereiche sind für mich keine getrennten Interessen, sondern verschiedene Ausdrucksformen derselben Bewegung: zu verstehen, wie die Welt funktioniert, wie Sprache Denken formt und wie wir zwischen Tradition und Avantgarde unseren eigenen Ort finden."
         },
         stack: {
           kicker: "Tech Stack",
           title: "Tech Stack",
-          cpp: "Eine Sprache der Präzision, Leistung und Kontrolle — geeignet für anspruchsvolle Arbeit mit klarer Struktur.",
-          claude: "Ein Workflow für tiefe Zusammenarbeit, langes Kontextdenken und die sorgfältige Ausarbeitung komplexer Ideen.",
-          codex: "Hilfreich, um Konzepte rasch in ausführbare Prototypen zu überführen, besonders in Umsetzung und Experiment.",
-          }
-        ,
+          cpp: "Eine Sprache der Präzision, Leistung und Kontrolle; ich nutze sie, um Algorithmen und Grundlagen der Informatik zu lernen.",
+          claude: "Eine Arbeitsweise für tiefe Zusammenarbeit und langes Kontextdenken; ich nutze sie zur Projektplanung.",
+          codex: "Gut darin, Konzepte rasch in ausführbare Prototypen zu verwandeln; es unterstützt mich bei der eigentlichen Programmierarbeit."
+        },
         projects: {
           kicker: "Projekte",
           title: "Projekte",
@@ -1572,7 +1574,7 @@
         contact: {
           kicker: "Kontakt",
           title: "Kontakt",
-          body: "Wenn du dich über künstliche Intelligenz, technische Praxis oder Philosophie austauschen möchtest, freue ich mich über eine Nachricht."
+          body: "Wenn Sie sich über westliche Philosophie, künstliche Intelligenz oder verwandte Themen austauschen oder Anregungen für diese Website geben möchten, freue ich mich über eine Nachricht."
         },
         footer: "©2026 hysn.net",
         ui: {
