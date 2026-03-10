@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HYS-N.net</title>
-  <meta name="description" content="HYS-N.net — Harrison的個人網站，關於人工智能、西方哲學、古典漢語與技術實踐。" />
+  <title>HYSN.NET</title>
+  <meta name="description" content="HYSN.NET — Harrison的個人網站，關於人工智能、西方哲學、古典漢語與技術實踐。" />
   <meta name="theme-color" content="#f3ecdd" />
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%23F3ECDD"/><path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="%232A241C" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
   <script>
     (function () {
       try {
@@ -215,6 +216,12 @@
       font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: 0.08em;
+    }
+
+    .brand-mark svg {
+      width: 30px;
+      height: 30px;
+      display: block;
     }
 
     .brand-text {
@@ -770,6 +777,13 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
     }
 
+    .tech-icon svg {
+      width: 44px;
+      height: 44px;
+      display: block;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.10));
+    }
+
     .icon-image {
       width: 44px;
       height: 44px;
@@ -1211,9 +1225,9 @@
   <div class="site-shell">
     <header class="site-header">
       <nav class="nav" id="siteNav" aria-label="Primary">
-        <a class="brand" href="#home" aria-label="HYS-N.net home">
-          <span class="brand-mark" aria-hidden="true">H</span>
-          <span class="brand-text">HYS-N.net</span>
+        <a class="brand" href="#home" aria-label="HYSN.NET home">
+          <span class="brand-mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#F3ECDD"/><path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="#2A241C" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="brand-text">HYSN.NET</span>
         </a>
 
         <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navPanel">
@@ -1327,15 +1341,7 @@
 
               <article class="tech-card">
                 <div class="tech-icon" aria-hidden="true">
-                  <!-- Claude Code: using local fallback path by default.
-                       Replace src with another trusted icon URL later if you prefer a remote asset. -->
-                  <img
-                    class="icon-image"
-                    src="./claude-code.png"
-                    data-fallback="./claude-code.png"
-                    alt="Claude Code icon"
-                  />
-                  <span class="icon-fallback">CC</span>
+                  <svg height="1em" style="flex:none;line-height:1" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Antigravity</title><path clip-rule="evenodd" d="M20.998 10.949H24v3.102h-3v3.028h-1.487V20H18v-2.921h-1.487V20H15v-2.921H9V20H7.488v-2.921H6V20H4.487v-2.921H3V14.05H0V10.95h3V5h17.998v5.949zM6 10.949h1.488V8.102H6v2.847zm10.51 0H18V8.102h-1.49v2.847z" fill="#D97757" fill-rule="evenodd"></path></svg>
                 </div>
                 <h3 class="tech-name">Claude Code</h3>
                 <p class="tech-desc" data-i18n="stack.claude">
@@ -1345,15 +1351,7 @@
 
               <article class="tech-card">
                 <div class="tech-icon" aria-hidden="true">
-                  <!-- Codex: using local fallback path by default.
-                       Replace src with another trusted icon URL later if you prefer a remote asset. -->
-                  <img
-                    class="icon-image"
-                    src="./codex.png"
-                    data-fallback="./codex.png"
-                    alt="CodeX icon"
-                  />
-                  <span class="icon-fallback">CX</span>
+                  <svg height="1em" style="flex:none;line-height:1" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Codex</title><path d="M19.503 0H4.496A4.496 4.496 0 000 4.496v15.007A4.496 4.496 0 004.496 24h15.007A4.496 4.496 0 0024 19.503V4.496A4.496 4.496 0 0019.503 0z" fill="#fff"></path><path d="M9.064 3.344a4.578 4.578 0 012.285-.312c1 .115 1.891.54 2.673 1.275.01.01.024.017.037.021a.09.09 0 00.043 0 4.55 4.55 0 013.046.275l.047.022.116.057a4.581 4.581 0 012.188 2.399c.209.51.313 1.041.315 1.595a4.24 4.24 0 01-.134 1.223.123.123 0 00.03.115c.594.607.988 1.33 1.183 2.17.289 1.425-.007 2.71-.887 3.854l-.136.166a4.548 4.548 0 01-2.201 1.388.123.123 0 00-.081.076c-.191.551-.383 1.023-.74 1.494-.9 1.187-2.222 1.846-3.711 1.838-1.187-.006-2.239-.44-3.157-1.302a.107.107 0 00-.105-.024c-.388.125-.78.143-1.204.138a4.441 4.441 0 01-1.945-.466 4.544 4.544 0 01-1.61-1.335c-.152-.202-.303-.392-.414-.617a5.81 5.81 0 01-.37-.961 4.582 4.582 0 01-.014-2.298.a124.a124 0 00.006-.056.a085.a085 0 00-.027-.048 4.467 4.467 0 01-1.034-1.651 3.896 3.896 0 01-.251-1.192 5.189 5.189 0 01.141-1.6c.337-1.112.982-1.985 1.933-2.618.212-.141.413-.251.601-.33.215-.089.43-.164.646-.227.a098.a098 0 00.065-.066 4.51 4.51 0 01.829-1.615 4.535 4.535 0 011.837-1.388zm3.482 10.565a.637.637 0 000 1.272h3.636a.637.637 0 100-1.272h-3.636zM8.462 9.23a.637.637 0 00-1.106.631l1.272 2.224-1.266 2.136a.636.636 0 101.095.649l1.454-2.455a.636.636 0 00.005-.64L8.462 9.23z" fill="url(#lobe-icons-codex-fill)"></path><defs><linearGradient gradientUnits="userSpaceOnUse" id="lobe-icons-codex-fill" x1="12" x2="12" y1="3" y2="21"><stop stop-color="#B1A7FF"></stop><stop offset=".5" stop-color="#7A9DFF"></stop><stop offset="1" stop-color="#3941FF"></stop></linearGradient></defs></svg>
                 </div>
                 <h3 class="tech-name">CodeX</h3>
                 <p class="tech-desc" data-i18n="stack.codex">
@@ -1378,18 +1376,18 @@
 
             <div class="projects-placeholder">
               <div class="placeholder-main">
-                <span class="placeholder-badge" data-i18n="projects.badge">構思之中</span>
-                <h3 class="placeholder-title" data-i18n="projects.placeholderTitle">正在構思🤔</h3>
+                <span class="placeholder-badge" data-i18n="projects.badge">已公開</span>
+                <h3 class="placeholder-title" data-i18n="projects.placeholderTitle">HYSN.NET</h3>
                 <p class="placeholder-body" data-i18n="projects.placeholderBody">
-                  某些想法仍停留在草圖與筆記之間，但它們的輪廓已經浮現，等待被進一步命名、推敲與落實。
+                  這個個人網站本身就是一個Project🤣
                 </p>
               </div>
 
               <aside class="placeholder-aside" aria-label="Project notes">
                 <div class="placeholder-list">
-                  <div class="placeholder-item" data-i18n="projects.item1">概念筆記持續累積</div>
-                  <div class="placeholder-item" data-i18n="projects.item2">結構方向仍在調整</div>
-                  <div class="placeholder-item" data-i18n="projects.item3">未來條目將逐步公開</div>
+                  <div class="placeholder-item" data-i18n="projects.item1">Blog正在開發中</div>
+                  <div class="placeholder-item" data-i18n="projects.item2">更多項目將逐步公開</div>
+                  <div class="placeholder-item" data-i18n="projects.item3">構想與內容仍在整理中</div>
                 </div>
               </aside>
             </div>
@@ -1421,7 +1419,7 @@
 
     <footer class="site-footer">
       <div class="footer-inner" data-i18n="footer">
-        ©2026 hysn.net
+        ©2026 HYSN.NET
       </div>
     </footer>
   </div>
@@ -1460,19 +1458,19 @@
         projects: {
           kicker: "Projects",
           title: "我的項目",
-          badge: "構思之中",
-          placeholderTitle: "正在構思🤔",
-          placeholderBody: "某些想法仍停留在草圖與筆記之間，但它們的輪廓已經浮現，等待被進一步命名、推敲與落實。",
-          item1: "概念筆記持續累積",
-          item2: "結構方向仍在調整",
-          item3: "未來條目將逐步公開"
+          badge: "已公開",
+          placeholderTitle: "HYSN.NET",
+          placeholderBody: "這個個人網站本身就是一個Project🤣",
+          item1: "Blog正在開發中",
+          item2: "更多項目將逐步公開",
+          item3: "構想與內容仍在整理中"
         },
         contact: {
           kicker: "Contact",
           title: "聯係我",
           body: "若您有意探討西方哲學、人工智能或相關議題，或願為本站提供建議，歡迎來信交流。"
         },
-        footer: "©2026 hysn.net",
+        footer: "©2026 HYSN.NET",
         ui: {
           openMenu: "開啟導覽",
           closeMenu: "關閉導覽",
@@ -1512,19 +1510,19 @@
         projects: {
           kicker: "Projects",
           title: "Projects",
-          badge: "In Formation",
-          placeholderTitle: "Conceiving Ideas 🤔",
-          placeholderBody: "Some projects still dwell between sketch and note, but their contours are already emerging, waiting to be clarified and built.",
-          item1: "Concept notes accumulating",
-          item2: "Structures under revision",
-          item3: "Future entries to be published"
+          badge: "Published",
+          placeholderTitle: "HYSN.NET",
+          placeholderBody: "This personal website is itself a project 🤣",
+          item1: "Blog is under development",
+          item2: "More projects will be published gradually",
+          item3: "Ideas and content are still being refined"
         },
         contact: {
           kicker: "Contact",
           title: "Contact",
           body: "If you would like to discuss Western philosophy, artificial intelligence, or related questions—or offer suggestions for this site—you are warmly welcome to write."
         },
-        footer: "©2026 hysn.net",
+        footer: "©2026 HYSN.NET",
         ui: {
           openMenu: "Open menu",
           closeMenu: "Close menu",
@@ -1564,19 +1562,19 @@
         projects: {
           kicker: "Projekte",
           title: "Projekte",
-          badge: "Im Entstehen",
-          placeholderTitle: "In Ausarbeitung 🤔",
-          placeholderBody: "Manche Vorhaben verweilen noch zwischen Skizze und Notiz, doch ihre Konturen treten bereits hervor und warten auf weitere Ausarbeitung.",
-          item1: "Konzeptnotizen wachsen",
-          item2: "Strukturen werden überarbeitet",
-          item3: "Weitere Einträge folgen"
+          badge: "Veröffentlicht",
+          placeholderTitle: "HYSN.NET",
+          placeholderBody: "Diese persönliche Website ist selbst ein Projekt 🤣",
+          item1: "Der Blog ist in Entwicklung",
+          item2: "Weitere Projekte werden schrittweise veröffentlicht",
+          item3: "Ideen und Inhalte werden noch ausgearbeitet"
         },
         contact: {
           kicker: "Kontakt",
           title: "Kontakt",
           body: "Wenn Sie sich über westliche Philosophie, künstliche Intelligenz oder verwandte Themen austauschen oder Anregungen für diese Website geben möchten, freue ich mich über eine Nachricht."
         },
-        footer: "©2026 hysn.net",
+        footer: "©2026 HYSN.NET",
         ui: {
           openMenu: "Menü öffnen",
           closeMenu: "Menü schließen",
