@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 · HYSN.NET</title>
+  <meta name="description" content="404 — HYSN.NET" />
+  <meta name="theme-color" content="#f3ecdd" />
+  <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F3ECDD'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%232A241C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F3ECDD'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%232A241C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F3ECDD'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%232A241C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem("hysn-theme");
+        var theme = storedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute(
+          "data-theme",
+          window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+        );
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f3ecdd;
+      --bg-elev: rgba(250, 245, 234, 0.72);
+      --bg-soft: rgba(255, 252, 245, 0.56);
+      --panel: rgba(255, 251, 244, 0.72);
+      --text: #1d1a15;
+      --muted: #6d6459;
+      --muted-strong: #53493d;
+      --line: rgba(67, 57, 42, 0.16);
+      --line-strong: rgba(67, 57, 42, 0.26);
+      --accent: #8b6c3f;
+      --accent-soft: rgba(139, 108, 63, 0.14);
+      --shadow: 0 22px 60px rgba(57, 44, 26, 0.10);
+      --shadow-strong: 0 30px 90px rgba(57, 44, 26, 0.16);
+      --radius: 28px;
+      --max-width: 1160px;
+      --transition: 280ms cubic-bezier(.2,.8,.2,1);
+      --hero-glow: radial-gradient(circle at 50% 42%, rgba(205, 176, 124, 0.20), transparent 52%);
+      --bg-wash:
+        radial-gradient(circle at top left, rgba(190, 168, 129, 0.14), transparent 34%),
+        radial-gradient(circle at 85% 18%, rgba(112, 127, 97, 0.12), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.56), rgba(255,255,255,0));
+      --paper-line:
+        linear-gradient(180deg, rgba(88, 72, 49, 0.06) 0%, rgba(88, 72, 49, 0.00) 32%, rgba(88, 72, 49, 0.05) 100%);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #131312;
+      --bg-elev: rgba(28, 27, 25, 0.76);
+      --bg-soft: rgba(26, 25, 23, 0.56);
+      --panel: rgba(24, 23, 21, 0.72);
+      --text: #eee6d8;
+      --muted: #b3aa9c;
+      --muted-strong: #d0c5b5;
+      --line: rgba(207, 186, 147, 0.14);
+      --line-strong: rgba(207, 186, 147, 0.26);
+      --accent: #bc9a66;
+      --accent-soft: rgba(188, 154, 102, 0.16);
+      --shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+      --shadow-strong: 0 32px 92px rgba(0, 0, 0, 0.42);
+      --hero-glow: radial-gradient(circle at 50% 42%, rgba(181, 139, 83, 0.15), transparent 50%);
+      --bg-wash:
+        radial-gradient(circle at top left, rgba(140, 111, 69, 0.10), transparent 34%),
+        radial-gradient(circle at 85% 18%, rgba(103, 121, 96, 0.10), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      --paper-line:
+        linear-gradient(180deg, rgba(221, 204, 171, 0.04) 0%, rgba(221, 204, 171, 0.00) 32%, rgba(221, 204, 171, 0.03) 100%);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background: var(--bg-wash), var(--paper-line), var(--bg);
+      font-family: "Inter", "Noto Serif TC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      overflow-x: hidden;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::before {
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255,255,255,0.16), transparent 18%),
+        radial-gradient(circle at 75% 16%, rgba(255,255,255,0.08), transparent 24%),
+        radial-gradient(circle at 82% 88%, rgba(255,255,255,0.06), transparent 18%);
+      mix-blend-mode: screen;
+      opacity: 0.6;
+    }
+
+    body::after {
+      z-index: -1;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.35) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.30) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: radial-gradient(circle at center, black 22%, transparent 90%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .site-shell {
+      position: relative;
+      isolation: isolate;
+      min-height: 100vh;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      padding: 14px 12px 0;
+    }
+
+    .nav {
+      width: min(var(--max-width), calc(100% - 8px));
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: color-mix(in srgb, var(--bg-elev) 78%, transparent);
+      backdrop-filter: blur(18px) saturate(140%);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark svg {
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    .brand-text {
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .lang-switch,
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 999px;
+    }
+
+    .lang-btn {
+      min-width: 46px;
+      height: 38px;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .lang-btn:hover,
+    .lang-btn:focus-visible {
+      color: var(--text);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .lang-btn.is-active {
+      background: var(--accent-soft);
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    .theme-toggle {
+      display: inline-grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible {
+      transform: translateY(-1px) rotate(8deg);
+      border-color: var(--line-strong);
+      outline: none;
+    }
+
+    .theme-toggle__icon {
+      font-size: 1.06rem;
+      line-height: 1;
+      transform: translateY(-1px);
+    }
+
+    main {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 108px 20px 40px;
+      position: relative;
+      overflow: clip;
+    }
+
+    .hero-ornaments {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: clip;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(8px);
+      opacity: 0.55;
+      animation: float 13s ease-in-out infinite;
+      mix-blend-mode: screen;
+    }
+
+    .orb-a {
+      width: 320px;
+      height: 320px;
+      left: -80px;
+      top: 18%;
+      background: radial-gradient(circle, rgba(177, 151, 110, 0.24), transparent 72%);
+    }
+
+    .orb-b {
+      width: 360px;
+      height: 360px;
+      right: -120px;
+      top: 12%;
+      animation-delay: -4s;
+      background: radial-gradient(circle, rgba(103, 122, 96, 0.22), transparent 72%);
+    }
+
+    .orb-c {
+      width: 260px;
+      height: 260px;
+      left: 50%;
+      bottom: 10%;
+      transform: translateX(-50%);
+      animation-delay: -7s;
+      background: radial-gradient(circle, rgba(188, 154, 102, 0.16), transparent 72%);
+    }
+
+    .sigil {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: min(66vw, 680px);
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid color-mix(in srgb, var(--line-strong) 72%, transparent);
+      opacity: 0.4;
+    }
+
+    .sigil::before,
+    .sigil::after {
+      content: "";
+      position: absolute;
+      inset: 9%;
+      border-radius: 50%;
+      border: 1px solid color-mix(in srgb, var(--line) 92%, transparent);
+    }
+
+    .sigil::after {
+      inset: 22%;
+      border-style: dashed;
+      opacity: 0.55;
+    }
+
+    .error-shell {
+      position: relative;
+      z-index: 2;
+      width: min(860px, 100%);
+    }
+
+    .panel {
+      position: relative;
+      overflow: clip;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0)),
+        var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px) saturate(130%);
+      padding: clamp(28px, 4vw, 52px);
+      text-align: center;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      opacity: 0.45;
+    }
+
+    .error-code {
+      margin: 0 0 10px;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(4rem, 14vw, 8rem);
+      line-height: 0.9;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: color-mix(in srgb, var(--accent) 78%, var(--text) 22%);
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-up 900ms 120ms forwards;
+    }
+
+    .error-title {
+      margin: 0;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(1.8rem, 4.6vw, 3rem);
+      line-height: 1.05;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fade-up 1000ms 220ms forwards;
+    }
+
+    .error-divider {
+      width: min(120px, 24vw);
+      height: 1px;
+      margin: 22px auto 18px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-up 900ms 320ms forwards;
+    }
+
+    .error-body {
+      max-width: 560px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.2vw + 0.72rem, 1.08rem);
+      text-wrap: balance;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fade-up 1000ms 420ms forwards;
+    }
+
+    .error-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fade-up 1000ms 560ms forwards;
+    }
+
+    .button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition), color var(--transition);
+      overflow: hidden;
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.15) 45%, transparent 100%);
+      transform: translateX(-120%);
+      transition: transform 620ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .button:hover::before,
+    .button:focus-visible::before {
+      transform: translateX(120%);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .button.primary {
+      color: #f6f0e6;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 92%, white 8%), var(--accent));
+      box-shadow: 0 14px 36px color-mix(in srgb, var(--accent) 28%, transparent);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      border-color: var(--line-strong);
+      background: var(--bg-soft);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .site-footer {
+      padding: 0 20px 40px;
+    }
+
+    .footer-inner {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.94rem;
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes fade-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -14px, 0); }
+    }
+
+    @media (max-width: 720px) {
+      .site-header {
+        padding: 12px 10px 0;
+      }
+
+      .nav {
+        width: calc(100% - 4px);
+        padding: 10px 12px;
+      }
+
+      .brand-text {
+        font-size: 1.24rem;
+      }
+
+      .panel {
+        padding: 28px 20px;
+      }
+
+      .error-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+      }
+      .error-code,
+      .error-title,
+      .error-divider,
+      .error-body,
+      .error-actions {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="https://www.hysn.net" aria-label="HYSN.NET home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+              <rect width="64" height="64" rx="14" fill="#F3ECDD"/>
+              <path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="#2A241C" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand-text">HYSN.NET</span>
+        </a>
+
+        <div class="controls">
+          <div class="lang-switch" role="group" aria-label="Language switcher">
+            <button class="lang-btn" type="button" data-lang="zh-Hant">繁</button>
+            <button class="lang-btn" type="button" data-lang="en">EN</button>
+            <button class="lang-btn" type="button" data-lang="de">DE</button>
+          </div>
+
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+            <span class="theme-toggle__icon" id="themeIcon" aria-hidden="true">☼</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero-ornaments" aria-hidden="true">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+        <div class="orb orb-c"></div>
+        <div class="sigil"></div>
+      </div>
+
+      <section class="error-shell" aria-labelledby="error-title">
+        <div class="panel">
+          <p class="error-code">404</p>
+          <h1 class="error-title" id="error-title" data-i18n="error.title">此頁不存在</h1>
+          <div class="error-divider" aria-hidden="true"></div>
+          <p class="error-body" data-i18n="error.body">
+            你要找的頁面不存在，請返回首頁或上一頁。
+          </p>
+          <div class="error-actions">
+            <a class="button primary" href="https://www.hysn.net" data-i18n="error.home">返回首頁</a>
+            <button class="button secondary" type="button" onclick="history.back()" data-i18n="error.back">返回上一頁</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner" data-i18n="footer">©2026 HYSN.NET</div>
+    </footer>
+  </div>
+
+  <script>
+    const translations = {
+      "zh-Hant": {
+        error: {
+          title: "此頁不存在",
+          body: "你要找的頁面不存在，請返回首頁或上一頁。",
+          home: "返回首頁",
+          back: "返回上一頁"
+        },
+        footer: "©2026 HYSN.NET"
+      },
+      "en": {
+        error: {
+          title: "Page Not Found",
+          body: "The page you are looking for does not exist. Please return to the homepage or the previous page.",
+          home: "Back Home",
+          back: "Go Back"
+        },
+        footer: "©2026 HYSN.NET"
+      },
+      "de": {
+        error: {
+          title: "Seite Nicht Gefunden",
+          body: "Die gesuchte Seite existiert nicht. Bitte kehren Sie zur Startseite oder zur vorherigen Seite zurück.",
+          home: "Zur Startseite",
+          back: "Zurück"
+        },
+        footer: "©2026 HYSN.NET"
+      }
+    };
+
+    const root = document.documentElement;
+    const langButtons = document.querySelectorAll(".lang-btn");
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function resolveKey(obj, path) {
+      return path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : null), obj);
+    }
+
+    function detectLanguage() {
+      const stored = localStorage.getItem("hysn-lang");
+      if (stored && translations[stored]) return stored;
+      const browserLang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+      if (browserLang.startsWith("zh")) return "zh-Hant";
+      if (browserLang.startsWith("de")) return "de";
+      return "en";
+    }
+
+    function detectTheme() {
+      const stored = localStorage.getItem("hysn-theme");
+      if (stored === "dark" || stored === "light") return stored;
+      return prefersDark.matches ? "dark" : "light";
+    }
+
+    function applyLanguage(lang, persist = false) {
+      const selected = translations[lang] ? lang : "en";
+      root.lang = selected === "zh-Hant" ? "zh-Hant" : selected;
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        const value = resolveKey(translations[selected], key);
+        if (value !== null) element.textContent = value;
+      });
+
+      langButtons.forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.lang === selected);
+        button.setAttribute("aria-pressed", String(button.dataset.lang === selected));
+      });
+
+      if (persist) localStorage.setItem("hysn-lang", selected);
+    }
+
+    function applyTheme(theme, persist = false) {
+      const nextTheme = theme === "dark" ? "dark" : "light";
+      root.setAttribute("data-theme", nextTheme);
+      themeIcon.textContent = nextTheme === "dark" ? "☾" : "☼";
+      if (themeMeta) themeMeta.setAttribute("content", nextTheme === "dark" ? "#131312" : "#f3ecdd");
+      themeToggle.setAttribute("aria-label", nextTheme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      if (persist) localStorage.setItem("hysn-theme", nextTheme);
+    }
+
+    langButtons.forEach((button) => {
+      button.addEventListener("click", () => applyLanguage(button.dataset.lang, true));
+    });
+
+    themeToggle.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") || detectTheme();
+      applyTheme(current === "dark" ? "light" : "dark", true);
+    });
+
+    prefersDark.addEventListener("change", (event) => {
+      if (!localStorage.getItem("hysn-theme")) {
+        applyTheme(event.matches ? "dark" : "light", false);
+      }
+    });
+
+    applyLanguage(detectLanguage(), false);
+    applyTheme(detectTheme(), false);
+  </script>
+</body>
+</html>
