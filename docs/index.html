@@ -6,7 +6,9 @@
   <title>HYSN.NET</title>
   <meta name="description" content="HYSN.NET — Harrison的個人網站，關於人工智能、西方哲學、古典漢語與技術實踐。" />
   <meta name="theme-color" content="#f3ecdd" />
-  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%23F3ECDD"/><path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="%232A241C" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
+  <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F3ECDD'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%232A241C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F3ECDD'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%232A241C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F3ECDD'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%232A241C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
   <script>
     (function () {
       try {
@@ -204,18 +206,9 @@
     .brand-mark {
       display: inline-grid;
       place-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      border: 1px solid var(--line-strong);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0)),
-        var(--accent-soft);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
-      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
     }
 
     .brand-mark svg {
@@ -705,6 +698,19 @@
       letter-spacing: 0.03em;
     }
 
+    .section-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
     .about-prose {
       max-width: 860px;
       margin: 0 auto;
@@ -941,6 +947,18 @@
       flex-shrink: 0;
     }
 
+    .listening-wrap {
+      display: grid;
+      gap: 16px;
+    }
+
+    .spotify-embed {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      display: block;
+    }
+
     .contact-wrap {
       display: grid;
       gap: 20px;
@@ -1004,6 +1022,14 @@
       text-align: center;
       font-size: 0.94rem;
       letter-spacing: 0.04em;
+    }
+
+    .footer-legal {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      letter-spacing: 0;
     }
 
     .reveal {
@@ -1241,6 +1267,7 @@
             <a class="nav-link" href="#about" data-i18n="nav.about">About</a>
             <a class="nav-link" href="#stack" data-i18n="nav.stack">Tech Stack</a>
             <a class="nav-link" href="#projects" data-i18n="nav.projects">Projects</a>
+            <a class="nav-link" href="#listening" data-i18n="nav.listening">我在聼</a>
             <a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a>
           </div>
 
@@ -1275,7 +1302,7 @@
           <p class="hero-subtitle" data-i18n="hero.subtitle">—— Immanuel Kant</p>
           <div class="hero-actions">
             <a class="button primary" href="#about" data-i18n="hero.ctaPrimary">閱讀關於我</a>
-            <a class="button secondary" href="#contact" data-i18n="hero.ctaSecondary">聯係我</a>
+            <a class="button secondary" href="#contact" data-i18n="hero.ctaSecondary">聯繫我</a>
           </div>
         </div>
       </section>
@@ -1323,8 +1350,6 @@
             <div class="stack-grid">
               <article class="tech-card">
                 <div class="tech-icon" aria-hidden="true">
-                  <!-- Default: use CDN icon for C++. If CDN fails, it falls back to ./cpp.svg automatically.
-                       To force local only, simply change src to ./cpp.svg. -->
                   <img
                     class="icon-image"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
@@ -1351,7 +1376,7 @@
 
               <article class="tech-card">
                 <div class="tech-icon" aria-hidden="true">
-                  <svg height="1em" style="flex:none;line-height:1" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Codex</title><path d="M19.503 0H4.496A4.496 4.496 0 000 4.496v15.007A4.496 4.496 0 004.496 24h15.007A4.496 4.496 0 0024 19.503V4.496A4.496 4.496 0 0019.503 0z" fill="#fff"></path><path d="M9.064 3.344a4.578 4.578 0 012.285-.312c1 .115 1.891.54 2.673 1.275.01.01.024.017.037.021a.09.09 0 00.043 0 4.55 4.55 0 013.046.275l.047.022.116.057a4.581 4.581 0 012.188 2.399c.209.51.313 1.041.315 1.595a4.24 4.24 0 01-.134 1.223.123.123 0 00.03.115c.594.607.988 1.33 1.183 2.17.289 1.425-.007 2.71-.887 3.854l-.136.166a4.548 4.548 0 01-2.201 1.388.123.123 0 00-.081.076c-.191.551-.383 1.023-.74 1.494-.9 1.187-2.222 1.846-3.711 1.838-1.187-.006-2.239-.44-3.157-1.302a.107.107 0 00-.105-.024c-.388.125-.78.143-1.204.138a4.441 4.441 0 01-1.945-.466 4.544 4.544 0 01-1.61-1.335c-.152-.202-.303-.392-.414-.617a5.81 5.81 0 01-.37-.961 4.582 4.582 0 01-.014-2.298.a124.a124 0 00.006-.056.a085.a085 0 00-.027-.048 4.467 4.467 0 01-1.034-1.651 3.896 3.896 0 01-.251-1.192 5.189 5.189 0 01.141-1.6c.337-1.112.982-1.985 1.933-2.618.212-.141.413-.251.601-.33.215-.089.43-.164.646-.227.a098.a098 0 00.065-.066 4.51 4.51 0 01.829-1.615 4.535 4.535 0 011.837-1.388zm3.482 10.565a.637.637 0 000 1.272h3.636a.637.637 0 100-1.272h-3.636zM8.462 9.23a.637.637 0 00-1.106.631l1.272 2.224-1.266 2.136a.636.636 0 101.095.649l1.454-2.455a.636.636 0 00.005-.64L8.462 9.23z" fill="url(#lobe-icons-codex-fill)"></path><defs><linearGradient gradientUnits="userSpaceOnUse" id="lobe-icons-codex-fill" x1="12" x2="12" y1="3" y2="21"><stop stop-color="#B1A7FF"></stop><stop offset=".5" stop-color="#7A9DFF"></stop><stop offset="1" stop-color="#3941FF"></stop></linearGradient></defs></svg>
+                  <svg height="1em" style="flex:none;line-height:1" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Codex</title><path d="M19.503 0H4.496A4.496 4.496 0 000 4.496v15.007A4.496 4.496 0 004.496 24h15.007A4.496 4.496 0 0024 19.503V4.496A4.496 4.496 0 0019.503 0z" fill="#fff"></path><path d="M9.064 3.344a4.578 4.578 0 012.285-.312c1 .115 1.891.54 2.673 1.275.01.01.024.017.037.021a.09.09 0 00.043 0 4.55 4.55 0 013.046.275l.047.022.116.057a4.581 4.581 0 012.188 2.399c.209.51.313 1.041.315 1.595a4.24 4.24 0 01-.134 1.223.123.123 0 00.03.115c.594.607.988 1.33 1.183 2.17.289 1.425-.007 2.71-.887 3.854l-.136.166a4.548 4.548 0 01-2.201 1.388.123.123 0 00-.081.076c-.191.551-.383 1.023-.74 1.494-.9 1.187-2.222 1.846-3.711 1.838-1.187-.006-2.239-.44-3.157-1.302a.107.107 0 00-.105-.024c-.388.125-.78.143-1.204.138a4.441 4.441 0 01-1.945-.466 4.544 4.544 0 01-1.61-1.335c-.152-.202-.303-.392-.414-.617a5.81 5.81 0 01-.37-.961 4.582 4.582 0 01-.014-2.298.124.124 0 00.006-.056.085.085 0 00-.027-.048 4.467 4.467 0 01-1.034-1.651 3.896 3.896 0 01-.251-1.192 5.189 5.189 0 01.141-1.6c.337-1.112.982-1.985 1.933-2.618.212-.141.413-.251.601-.33.215-.089.43-.164.646-.227a.098.098 0 00.065-.066 4.51 4.51 0 01.829-1.615 4.535 4.535 0 011.837-1.388zm3.482 10.565a.637.637 0 000 1.272h3.636a.637.637 0 100-1.272h-3.636zM8.462 9.23a.637.637 0 00-1.106.631l1.272 2.224-1.266 2.136a.636.636 0 101.095.649l1.454-2.455a.636.636 0 00.005-.64L8.462 9.23z" fill="url(#lobe-icons-codex-fill)"></path><defs><linearGradient gradientUnits="userSpaceOnUse" id="lobe-icons-codex-fill" x1="12" x2="12" y1="3" y2="21"><stop stop-color="#B1A7FF"></stop><stop offset=".5" stop-color="#7A9DFF"></stop><stop offset="1" stop-color="#3941FF"></stop></linearGradient></defs></svg>
                 </div>
                 <h3 class="tech-name">CodeX</h3>
                 <p class="tech-desc" data-i18n="stack.codex">
@@ -1395,14 +1420,75 @@
         </div>
       </section>
 
-      <section class="section reveal" id="contact" aria-labelledby="contact-title">
+      <section class="section reveal" id="listening" aria-labelledby="listening-title">
         <div class="container">
           <div class="panel">
             <div class="section-head">
               <div class="section-index" aria-hidden="true">IV</div>
               <div>
+                <p class="section-kicker" data-i18n="listening.kicker">Listening</p>
+                <div class="section-title-row">
+                  <h2 class="section-title" id="listening-title" data-i18n="listening.title">我在聼</h2>
+                  <span class="section-note" data-i18n="listening.note">播放器由 Spotify 提供，在不受支持的區域可能無法正常顯示</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="listening-wrap">
+              <iframe
+                data-testid="embed-iframe"
+                class="spotify-embed"
+                style="border-radius:12px"
+                src="https://open.spotify.com/embed/track/0K2WjMLZYr09LKwurGRYRE?utm_source=generator&theme=0"
+                width="100%"
+                height="152"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title="Spotify player 1"
+              ></iframe>
+
+              <iframe
+                data-testid="embed-iframe"
+                class="spotify-embed"
+                style="border-radius:12px"
+                src="https://open.spotify.com/embed/track/5b7OgznPJJr1vHNYGyvxau?utm_source=generator&theme=0"
+                width="100%"
+                height="152"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title="Spotify player 2"
+              ></iframe>
+
+              <iframe
+                data-testid="embed-iframe"
+                class="spotify-embed"
+                style="border-radius:12px"
+                src="https://open.spotify.com/embed/track/3spdoTYpuCpmq19tuD0bOe?utm_source=generator&theme=0"
+                width="100%"
+                height="152"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title="Spotify player 3"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="panel">
+            <div class="section-head">
+              <div class="section-index" aria-hidden="true">V</div>
+              <div>
                 <p class="section-kicker" data-i18n="contact.kicker">Contact</p>
-                <h2 class="section-title" id="contact-title" data-i18n="contact.title">聯係我</h2>
+                <h2 class="section-title" id="contact-title" data-i18n="contact.title">聯繫我</h2>
               </div>
             </div>
 
@@ -1418,8 +1504,9 @@
     </main>
 
     <footer class="site-footer">
-      <div class="footer-inner" data-i18n="footer">
-        ©2026 HYSN.NET
+      <div class="footer-inner">
+        <div data-i18n="footer">©2026 HYSN.NET</div>
+        <div class="footer-legal" data-i18n="footerLegal">本網站所展示之 C++ 標誌為 Standard C++ Foundation 相關方之商標；Claude Code 標誌為 Anthropic 之商標；Codex 標誌為 OpenAI 之商標。所有商標均為其各自持有人之財產，本站使用僅供說明目的，不構成任何形式之關聯或背書。</div>
       </div>
     </footer>
   </div>
@@ -1432,13 +1519,14 @@
           about: "關於我",
           stack: "技術棧",
           projects: "我的項目",
-          contact: "聯係我"
+          listening: "我在聼",
+          contact: "聯繫我"
         },
         hero: {
           kicker: "Harrison的個人網站",
           subtitle: "—— Immanuel Kant",
           ctaPrimary: "閱讀關於我",
-          ctaSecondary: "聯係我"
+          ctaSecondary: "聯繫我"
         },
         about: {
           kicker: "About",
@@ -1465,12 +1553,18 @@
           item2: "更多項目將逐步公開",
           item3: "構想與內容仍在整理中"
         },
+        listening: {
+          kicker: "Listening",
+          title: "我在聼",
+          note: "播放器由 Spotify 提供，在不受支持的區域可能無法正常顯示"
+        },
         contact: {
           kicker: "Contact",
-          title: "聯係我",
+          title: "聯繫我",
           body: "若您有意探討西方哲學、人工智能或相關議題，或願為本站提供建議，歡迎來信交流。"
         },
         footer: "©2026 HYSN.NET",
+        footerLegal: "本網站所展示之 C++ 標誌為 Standard C++ Foundation 相關方之商標；Claude Code 標誌為 Anthropic 之商標；Codex 標誌為 OpenAI 之商標。所有商標均為其各自持有人之財產，本站使用僅供說明目的，不構成任何形式之關聯或背書。",
         ui: {
           openMenu: "開啟導覽",
           closeMenu: "關閉導覽",
@@ -1484,6 +1578,7 @@
           about: "About",
           stack: "Tech Stack",
           projects: "Projects",
+          listening: "Listening",
           contact: "Contact"
         },
         hero: {
@@ -1517,12 +1612,18 @@
           item2: "More projects will be published gradually",
           item3: "Ideas and content are still being refined"
         },
+        listening: {
+          kicker: "Listening",
+          title: "What I’m Listening To",
+          note: "The players are provided by Spotify and may not display properly in unsupported regions."
+        },
         contact: {
           kicker: "Contact",
           title: "Contact",
           body: "If you would like to discuss Western philosophy, artificial intelligence, or related questions—or offer suggestions for this site—you are warmly welcome to write."
         },
         footer: "©2026 HYSN.NET",
+        footerLegal: "The C++ logo shown on this site is a trademark of parties related to the Standard C++ Foundation; the Claude Code logo is a trademark of Anthropic; the Codex logo is a trademark of OpenAI. All trademarks are the property of their respective owners. Their use on this site is for explanatory purposes only and does not imply any affiliation or endorsement.",
         ui: {
           openMenu: "Open menu",
           closeMenu: "Close menu",
@@ -1536,6 +1637,7 @@
           about: "Über mich",
           stack: "Tech Stack",
           projects: "Projekte",
+          listening: "Ich höre gerade",
           contact: "Kontakt"
         },
         hero: {
@@ -1569,12 +1671,18 @@
           item2: "Weitere Projekte werden schrittweise veröffentlicht",
           item3: "Ideen und Inhalte werden noch ausgearbeitet"
         },
+        listening: {
+          kicker: "Hören",
+          title: "Ich höre gerade",
+          note: "Die Player werden von Spotify bereitgestellt und funktionieren in nicht unterstützten Regionen möglicherweise nicht korrekt."
+        },
         contact: {
           kicker: "Kontakt",
           title: "Kontakt",
           body: "Wenn Sie sich über westliche Philosophie, künstliche Intelligenz oder verwandte Themen austauschen oder Anregungen für diese Website geben möchten, freue ich mich über eine Nachricht."
         },
         footer: "©2026 HYSN.NET",
+        footerLegal: "Das auf dieser Website gezeigte C++-Logo ist eine Marke von mit der Standard C++ Foundation verbundenen Parteien; das Claude-Code-Logo ist eine Marke von Anthropic; das Codex-Logo ist eine Marke von OpenAI. Alle Marken sind Eigentum ihrer jeweiligen Inhaber. Ihre Verwendung auf dieser Website dient ausschließlich erläuternden Zwecken und stellt keinerlei Verbindung oder Billigung dar.",
         ui: {
           openMenu: "Menü öffnen",
           closeMenu: "Menü schließen",
