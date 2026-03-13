@@ -241,6 +241,8 @@
       isolation: isolate;
       --nav-pointer-x: 50%;
       --nav-pointer-y: 50%;
+      --nav-glow-opacity: 0;
+      --nav-edge-opacity: 0;
     }
 
     .nav::before {
@@ -540,11 +542,27 @@
 
       .nav::before {
         background:
-          radial-gradient(140px circle at var(--nav-pointer-x) var(--nav-pointer-y), color-mix(in srgb, var(--glass-reflect) 88%, transparent), transparent 72%),
+          radial-gradient(160px circle at var(--nav-pointer-x) var(--nav-pointer-y), rgba(255,255,255, calc(var(--nav-glow-opacity) * 0.26)), rgba(255,255,255,0) 72%),
           linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.06) 38%, rgba(255,255,255,0.02) 100%),
           linear-gradient(90deg, rgba(255,255,255,0.08), transparent 24%, transparent 76%, rgba(255,255,255,0.04));
-        opacity: 0.96;
-        transition: opacity 260ms ease;
+      }
+
+      .nav::after {
+        inset: 0;
+        height: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 1px;
+        border-radius: inherit;
+        background:
+          linear-gradient(180deg, rgba(255,255,255, calc(0.20 + var(--nav-edge-opacity) * 0.12)), rgba(255,255,255,0.03)) border-box,
+          radial-gradient(150px circle at var(--nav-pointer-x) var(--nav-pointer-y), rgba(255,255,255, calc(var(--nav-edge-opacity) * 0.22)), rgba(255,255,255,0) 72%) border-box;
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        mask-composite: exclude;
+        opacity: 1;
       }
 
       .nav:hover {
@@ -2245,22 +2263,75 @@
     function setupDesktopNavGlass() {
       if (prefersReducedMotion.matches) return;
 
-      const resetPointer = () => {
-        nav.style.setProperty("--nav-pointer-x", "50%");
-        nav.style.setProperty("--nav-pointer-y", "50%");
+      let currentX = 50;
+      let currentY = 50;
+      let targetX = 50;
+      let targetY = 50;
+      let currentGlow = 0;
+      let targetGlow = 0;
+      let currentEdge = 0;
+      let targetEdge = 0;
+      let rafId = 0;
+
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+      const writeStyles = () => {
+        nav.style.setProperty("--nav-pointer-x", currentX.toFixed(2) + "%");
+        nav.style.setProperty("--nav-pointer-y", currentY.toFixed(2) + "%");
+        nav.style.setProperty("--nav-glow-opacity", currentGlow.toFixed(3));
+        nav.style.setProperty("--nav-edge-opacity", currentEdge.toFixed(3));
       };
 
-      nav.addEventListener("pointermove", (event) => {
+      const tick = () => {
+        rafId = 0;
+        currentX += (targetX - currentX) * 0.16;
+        currentY += (targetY - currentY) * 0.16;
+        currentGlow += (targetGlow - currentGlow) * 0.14;
+        currentEdge += (targetEdge - currentEdge) * 0.14;
+        writeStyles();
+
+        const moving =
+          Math.abs(targetX - currentX) > 0.08 ||
+          Math.abs(targetY - currentY) > 0.08 ||
+          Math.abs(targetGlow - currentGlow) > 0.01 ||
+          Math.abs(targetEdge - currentEdge) > 0.01;
+
+        if (moving) {
+          rafId = window.requestAnimationFrame(tick);
+        } else if (targetGlow === 0 && targetEdge === 0) {
+          currentX = targetX = 50;
+          currentY = targetY = 50;
+          writeStyles();
+        }
+      };
+
+      const ensureTick = () => {
+        if (!rafId) rafId = window.requestAnimationFrame(tick);
+      };
+
+      const updateTargetFromPointer = (event) => {
         if (window.innerWidth <= 900) return;
         const rect = nav.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
-        nav.style.setProperty("--nav-pointer-x", x.toFixed(2) + "%");
-        nav.style.setProperty("--nav-pointer-y", y.toFixed(2) + "%");
+        const x = clamp(((event.clientX - rect.left) / rect.width) * 100, 0, 100);
+        const y = clamp(((event.clientY - rect.top) / rect.height) * 100, 0, 100);
+        const edgeDistance = Math.min(x, 100 - x, y, 100 - y);
+        const edgeStrength = clamp((18 - edgeDistance) / 18, 0, 1);
+        targetX = x;
+        targetY = y;
+        targetGlow = 1;
+        targetEdge = edgeStrength;
+        ensureTick();
+      };
+
+      nav.addEventListener("pointerenter", updateTargetFromPointer);
+      nav.addEventListener("pointermove", updateTargetFromPointer);
+      nav.addEventListener("pointerleave", () => {
+        targetGlow = 0;
+        targetEdge = 0;
+        ensureTick();
       });
 
-      nav.addEventListener("pointerleave", resetPointer);
-      resetPointer();
+      writeStyles();
     }
 
     window.addEventListener("hashchange", () => {
