@@ -139,8 +139,8 @@
 
     .doc {
       width: 100%;
-      max-width: 680px;
-      padding: clamp(32px, 4vw, 56px) clamp(24px, 3.5vw, 48px);
+      max-width: 640px;
+      padding: clamp(36px, 4.5vw, 60px) clamp(24px, 3.5vw, 52px);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--panel);
@@ -180,7 +180,7 @@
     }
 
     .doc__ornament {
-      margin: 20px 0 28px;
+      margin: 22px 0 34px;
       color: var(--accent-2);
       font-size: 1.1rem;
       opacity: 0.55;
@@ -241,16 +241,46 @@
       margin-right: 4px;
     }
 
-    /* Meta footer inside doc */
+    /* Meta note inside doc — a closing italic whisper before the printer's mark */
     .doc__meta {
-      margin-top: 36px;
-      padding-top: 20px;
-      border-top: 1px dashed var(--line);
+      margin-top: 40px;
       font-family: var(--serif);
       font-style: italic;
       font-size: 0.88rem;
       line-height: 1.65;
       color: var(--muted);
+      text-align: center;
+    }
+
+    /* ── Printer's mark — echoes Aldus Manutius's dolphin-and-anchor ── */
+    .printers-mark {
+      margin: 40px auto 0;
+      padding-top: 36px;
+      border-top: 1px dashed var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .printers-mark__device {
+      width: 56px;
+      height: 56px;
+      opacity: 0.9;
+    }
+    .printers-mark__device svg { width: 100%; height: 100%; }
+    .printers-mark__year {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.36em;
+      color: var(--muted);
+    }
+    .printers-mark__motto {
+      margin-top: 4px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
     }
 
     /* ── Page footer ── */
@@ -263,7 +293,7 @@
     }
 
     @media (max-width: 560px) {
-      .doc { padding: 28px 22px; }
+      .doc { padding: 32px 22px; }
       .doc__lede { font-size: 1.02rem; }
     }
 
@@ -326,6 +356,17 @@
         本頁最後更新於 MMXXVI 年四月。<br/>
         此頁非律師起草；若本頁所述與本站實際行為有異，以實際為準。
       </p>
+
+      <div class="printers-mark" aria-hidden="true">
+        <div class="printers-mark__device">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <rect width="64" height="64" rx="14" fill="var(--bg, #F8F4EC)"/>
+            <path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="var(--accent-2, #8B6F3F)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="printers-mark__year">Anno MMXXVI</div>
+        <div class="printers-mark__motto">— in officina domestica</div>
+      </div>
     </article>
   </main>
 
