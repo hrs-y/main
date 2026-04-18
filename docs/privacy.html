@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>隱私 · HYSN.NET</title>
+  <meta name="description" content="HYSN.NET 的隱私說明——一紙坦白。" />
+  <meta name="theme-color" content="#F8F4EC" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F8F4EC'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%231B3A5C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <script>
+    (function () {
+      var theme = "light";
+      try {
+        var stored = localStorage.getItem("hysn-theme");
+        if (stored === "dark" || stored === "light") theme = stored;
+        else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+      } catch (e) {
+        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;500;600&display=swap" />
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #F8F4EC;
+      --bg-warm: #F3EEE4;
+      --panel: rgba(245, 240, 230, 0.80);
+      --panel-solid: #F3EEE3;
+      --text: #1F1B16;
+      --text-secondary: #524838;
+      --muted: #766B5A;
+      --muted-light: #A39A89;
+      --line: rgba(31, 27, 22, 0.12);
+      --line-strong: rgba(31, 27, 22, 0.24);
+      --accent: #1B3A5C;
+      --accent-hover: #264F7A;
+      --accent-soft: rgba(27, 58, 92, 0.09);
+      --accent-2: #8B6F3F;
+      --shadow: 0 8px 32px rgba(31, 27, 22, 0.06);
+      --radius: 16px;
+      --serif: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
+      --body: "EB Garamond", "Noto Serif TC", Georgia, serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", "Menlo", monospace;
+      --transition: 300ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #141110;
+      --bg-warm: #1B1816;
+      --panel: rgba(27, 24, 22, 0.82);
+      --panel-solid: #201D1A;
+      --text: #EFE8DC;
+      --text-secondary: #BFB5A4;
+      --muted: #938875;
+      --muted-light: #615647;
+      --line: rgba(239, 232, 220, 0.10);
+      --line-strong: rgba(239, 232, 220, 0.22);
+      --accent: #8AB0D4;
+      --accent-hover: #A3C2DE;
+      --accent-soft: rgba(138, 176, 212, 0.14);
+      --accent-2: #D4A866;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: var(--text);
+      background: var(--bg);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.78;
+      letter-spacing: 0.005em;
+      transition: background-color var(--transition), color var(--transition);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button {
+      font: inherit; color: inherit; background: none; border: 0; cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+    }
+    .brand svg { width: 26px; height: 26px; }
+
+    .theme-toggle {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      transition: color var(--transition), transform var(--transition);
+    }
+    .theme-toggle:hover { color: var(--text); transform: rotate(15deg); }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 32px 20px 72px;
+    }
+
+    .doc {
+      width: 100%;
+      max-width: 680px;
+      padding: clamp(32px, 4vw, 56px) clamp(24px, 3.5vw, 48px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .doc { background: var(--panel-solid); }
+    }
+
+    .doc__kicker {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .doc__kicker-sep {
+      display: inline-block;
+      margin: 0 8px;
+      color: var(--muted-light);
+    }
+
+    .doc__title {
+      margin: 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: 0.005em;
+    }
+
+    .doc__ornament {
+      margin: 20px 0 28px;
+      color: var(--accent-2);
+      font-size: 1.1rem;
+      opacity: 0.55;
+    }
+
+    .doc__lede {
+      margin: 0 0 26px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      text-wrap: balance;
+    }
+
+    .doc__body p {
+      margin: 0 0 18px;
+      font-family: "Noto Serif TC", var(--body);
+      color: var(--text-secondary);
+    }
+    .doc__body p:last-of-type { margin-bottom: 0; }
+
+    .doc__body strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .doc__body a {
+      color: var(--accent);
+      border-bottom: 1px solid var(--line);
+      transition: border-color var(--transition);
+    }
+    .doc__body a:hover { border-bottom-color: var(--accent); }
+
+    /* Third-party list — em-dash bullets */
+    .doc__list {
+      list-style: none;
+      padding: 4px 0 4px 2px;
+      margin: 14px 0 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 2px solid var(--line);
+      padding-left: 18px;
+    }
+    .doc__list li {
+      margin: 0;
+      font-family: "Noto Serif TC", var(--body);
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.65;
+    }
+    .doc__list strong {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--text);
+      margin-right: 4px;
+    }
+
+    /* Meta footer inside doc */
+    .doc__meta {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--line);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    /* ── Page footer ── */
+    footer {
+      padding: 20px 28px 32px;
+      text-align: center;
+      color: var(--muted-light);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 560px) {
+      .doc { padding: 28px 22px; }
+      .doc__lede { font-size: 1.02rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/" aria-label="HYSN.NET home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="var(--bg, #F8F4EC)"/>
+        <path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="var(--accent, #1B3A5C)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>HYSN.NET</span>
+    </a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
+      <span id="themeIcon" aria-hidden="true">☼</span>
+    </button>
+  </header>
+
+  <main>
+    <article class="doc">
+      <div class="doc__kicker">
+        <span>Appendix</span>
+        <span class="doc__kicker-sep" aria-hidden="true">·</span>
+        <span>MMXXVI</span>
+      </div>
+
+      <h1 class="doc__title">隱私</h1>
+
+      <div class="doc__ornament" aria-hidden="true">❦</div>
+
+      <p class="doc__lede">
+        這是一個個人網站。以下是您造訪時實際發生的事——以及不會發生的事。
+      </p>
+
+      <div class="doc__body">
+        <p>
+          本站以靜態 HTML 呈現。您的瀏覽器會在本地儲存兩項偏好設定——<strong>深淺主題</strong>與<strong>語言</strong>——兩者僅存於您的裝置上，不會傳回伺服器。除此之外，本站不使用分析工具，不設其他 Cookie，不設帳號、表單或訂閱。
+        </p>
+
+        <p>
+          至於本站所載入的第三方資源，它們各有自家的隱私實踐：
+        </p>
+
+        <ul class="doc__list">
+          <li><strong>Google Fonts</strong>載入字型時，會向 Google 傳送您的 IP 位址與 User Agent。</li>
+          <li><strong>jsDelivr</strong>提供部分技術圖示的 CDN，可能記錄 IP 位址。</li>
+          <li><strong>Spotify</strong>嵌入於「我在聽」一節，若您與之互動，Spotify 將依其自家政策放置 Cookie 並記錄行為。</li>
+        </ul>
+
+        <p>
+          若您希望完全規避，建議使用擋廣告或隱私工具，或略過該節。若您對本站之處理有任何疑問或要求，請來信 <a href="mailto:harrison@hysn.net">harrison@hysn.net</a>。
+        </p>
+      </div>
+
+      <p class="doc__meta">
+        本頁最後更新於 MMXXVI 年四月。<br/>
+        此頁非律師起草；若本頁所述與本站實際行為有異，以實際為準。
+      </p>
+    </article>
+  </main>
+
+  <footer>&copy;2026 HYSN.NET</footer>
+
+  <script>
+    (function() {
+      var root = document.documentElement;
+      var toggle = document.getElementById("themeToggle");
+      var icon = document.getElementById("themeIcon");
+      var meta = document.querySelector('meta[name="theme-color"]');
+
+      function apply(theme, persist) {
+        var next = theme === "dark" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        icon.textContent = next === "dark" ? "\u263e" : "\u263c";
+        toggle.setAttribute("aria-label", next === "dark" ? "切換為淺色模式" : "切換為深色模式");
+        if (meta) meta.setAttribute("content", next === "dark" ? "#141110" : "#F8F4EC");
+        if (persist) { try { localStorage.setItem("hysn-theme", next); } catch (e) {} }
+      }
+
+      apply(root.getAttribute("data-theme") || "light", false);
+
+      toggle.addEventListener("click", function() {
+        var c = root.getAttribute("data-theme") || "light";
+        apply(c === "dark" ? "light" : "dark", true);
+      });
+
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      function handle(e) {
+        var stored = null;
+        try { stored = localStorage.getItem("hysn-theme"); } catch (err) {}
+        if (!stored) apply(e.matches ? "dark" : "light", false);
+      }
+      if (typeof prefersDark.addEventListener === "function") prefersDark.addEventListener("change", handle);
+      else if (typeof prefersDark.addListener === "function") prefersDark.addListener(handle);
+    })();
+  </script>
+</body>
+</html>
