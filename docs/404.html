@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CDIV · HYSN.NET</title>
-  <meta name="description" content="Hic sunt dracones — 此頁未見於目錄。Page not found." />
+  <title>404 · HYSN.NET</title>
+  <meta name="description" content="Hic sunt dracones — 此頁闕如。" />
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#F8F4EC" />
   <meta name="color-scheme" content="light dark" />
@@ -14,16 +14,11 @@
     (function () {
       var theme = "light";
       try {
-        var storedTheme = localStorage.getItem("hysn-theme");
-        if (storedTheme === "dark" || storedTheme === "light") {
-          theme = storedTheme;
-        } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          theme = "dark";
-        }
+        var stored = localStorage.getItem("hysn-theme");
+        if (stored === "dark" || stored === "light") theme = stored;
+        else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
       } catch (e) {
-        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          theme = "dark";
-        }
+        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
       }
       document.documentElement.setAttribute("data-theme", theme);
     })();
@@ -31,118 +26,49 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    rel="preload"
-    as="style"
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
-    onload="this.onload=null;this.rel='stylesheet'"
-  />
-  <noscript>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&family=Noto+Serif+TC:wght@400;500&display=swap" />
 
   <style>
-    /* ══════════════════════════════════════════
-       COLOR SYSTEM — matches HYSN.NET
-       ══════════════════════════════════════════ */
     :root {
       color-scheme: light;
       --bg: #F8F4EC;
-      --bg-warm: #F3EEE4;
-      --bg-soft: rgba(248, 244, 236, 0.82);
-      --panel: rgba(245, 240, 230, 0.80);
-      --panel-solid: #F3EEE3;
       --text: #1F1B16;
-      --text-secondary: #524838;
       --muted: #766B5A;
       --muted-light: #A39A89;
       --line: rgba(31, 27, 22, 0.12);
-      --line-strong: rgba(31, 27, 22, 0.24);
-
       --accent: #1B3A5C;
-      --accent-soft: rgba(27, 58, 92, 0.09);
-      --accent-hover: #264F7A;
-
       --accent-2: #8B6F3F;
-      --accent-2-soft: rgba(139, 111, 63, 0.11);
-
-      --signal-red: #C04040;
-
-      --shadow: 0 8px 32px rgba(31, 27, 22, 0.06);
-      --shadow-md: 0 12px 40px rgba(31, 27, 22, 0.08);
-      --shadow-lg: 0 20px 56px rgba(31, 27, 22, 0.10);
-      --radius: 16px;
-      --radius-sm: 10px;
-
+      --serif: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
       --transition: 300ms cubic-bezier(.2,.8,.2,1);
-      --ease-out: cubic-bezier(.2,.8,.2,1);
-
-      --serif: "Cormorant Garamond", "Noto Serif TC", "EB Garamond", Georgia, serif;
-      --body: "EB Garamond", "Noto Serif TC", "Cormorant Garamond", Georgia, serif;
-      --mono: "JetBrains Mono", ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
     }
 
     html[data-theme="dark"] {
       color-scheme: dark;
       --bg: #141110;
-      --bg-warm: #1B1816;
-      --bg-soft: rgba(20, 17, 16, 0.85);
-      --panel: rgba(27, 24, 22, 0.82);
-      --panel-solid: #201D1A;
       --text: #EFE8DC;
-      --text-secondary: #BFB5A4;
       --muted: #938875;
       --muted-light: #615647;
       --line: rgba(239, 232, 220, 0.10);
-      --line-strong: rgba(239, 232, 220, 0.22);
-
       --accent: #8AB0D4;
-      --accent-soft: rgba(138, 176, 212, 0.14);
-      --accent-hover: #A3C2DE;
-
       --accent-2: #D4A866;
-      --accent-2-soft: rgba(212, 168, 102, 0.14);
-
-      --signal-red: #E06060;
-
-      --shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
-      --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.28);
-      --shadow-lg: 0 20px 56px rgba(0, 0, 0, 0.36);
     }
 
     * { box-sizing: border-box; }
 
-    html {
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
-
     body {
       margin: 0;
       min-height: 100vh;
-      color: var(--text);
-      background: var(--bg);
-      font-family: var(--body);
-      font-size: 17px;
-      line-height: 1.78;
-      letter-spacing: 0.005em;
-      overflow-x: hidden;
       display: flex;
       flex-direction: column;
+      color: var(--text);
+      background: var(--bg);
+      font-family: var(--serif);
       transition: background-color var(--transition), color var(--transition);
-      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      -webkit-tap-highlight-color: transparent;
-    }
+    a { color: inherit; text-decoration: none; }
 
     button {
       font: inherit;
@@ -150,7 +76,6 @@
       background: none;
       border: 0;
       cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
     }
 
     :focus-visible {
@@ -158,546 +83,177 @@
       outline-offset: 3px;
     }
 
-    .sr-only {
-      position: absolute;
-      width: 1px; height: 1px;
-      padding: 0; margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    /* ── Header — minimal (logo + theme) ── */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 16px 20px 0;
-    }
-
-    .nav {
-      width: min(1080px, calc(100% - 8px));
-      margin: 0 auto;
-      padding: 10px 20px;
+    /* ── Header ── */
+    header {
+      padding: 24px 28px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--bg-soft);
-      -webkit-backdrop-filter: blur(16px) saturate(120%);
-      backdrop-filter: blur(16px) saturate(120%);
-      box-shadow: var(--shadow);
+      justify-content: space-between;
     }
-
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-family: var(--serif);
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       letter-spacing: 0.08em;
-      color: var(--text);
     }
-    .brand-mark {
-      width: 28px; height: 28px;
-      display: inline-flex;
-    }
-    .brand-mark svg { width: 100%; height: 100%; }
-
-    .header-spacer { flex: 1; }
+    .brand svg { width: 26px; height: 26px; }
 
     .theme-toggle {
-      width: 36px; height: 36px;
+      width: 34px; height: 34px;
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      background: transparent;
-      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+      color: var(--muted);
+      transition: color var(--transition), transform var(--transition);
     }
-    .theme-toggle:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-      transform: rotate(15deg);
-    }
-    .theme-toggle__icon {
-      font-size: 1.05rem;
-      line-height: 1;
-    }
+    .theme-toggle:hover { color: var(--text); transform: rotate(15deg); }
 
     /* ── Main ── */
     main {
       flex: 1;
       display: flex;
       align-items: center;
-      padding: 40px 20px 80px;
+      justify-content: center;
+      padding: 40px 24px 80px;
     }
 
-    .errata-shell {
-      width: min(1080px, 100%);
-      margin: 0 auto;
-      padding: clamp(28px, 3vw, 44px) clamp(24px, 3vw, 40px);
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: var(--panel);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Giant "404" watermark, faded — same treatment as section-watermark */
-    .errata-watermark {
-      position: absolute;
-      top: clamp(8px, 2vw, 20px);
-      right: clamp(16px, 2.5vw, 34px);
-      font-family: var(--serif);
-      font-size: clamp(5rem, 14vw, 11rem);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--muted-light);
-      opacity: 0.16;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .errata-body {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .page {
       text-align: center;
-      gap: 24px;
-      padding: clamp(20px, 3vw, 40px) 0;
+      max-width: 560px;
     }
 
-    /* Catalog mark (top): "№ CDIV · ANNO MMXXVI · NON INVENTA" */
-    .errata-mark {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--muted);
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .errata-mark__number {
-      color: var(--accent-2);
-      font-weight: 600;
-    }
-    .errata-mark__sep {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--muted-light);
-      display: inline-block;
-    }
-    .errata-mark__status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .errata-mark__status::before {
-      content: "";
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--signal-red);
-      box-shadow: 0 0 10px rgba(192, 64, 64, 0.5);
-      animation: pulse-record 1.8s ease-in-out infinite;
-    }
-    html[data-theme="dark"] .errata-mark__status::before {
-      box-shadow: 0 0 14px rgba(224, 96, 96, 0.6);
-    }
-    @keyframes pulse-record {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.35; transform: scale(0.85); }
-    }
-
-    /* Title */
-    .errata-title {
-      margin: 0;
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 500;
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      line-height: 1.1;
-      letter-spacing: 0.01em;
-      color: var(--text);
-      text-wrap: balance;
-    }
-
-    /* Ornament */
-    .errata-ornament {
-      color: var(--accent-2);
-      font-size: 1.6rem;
-      line-height: 1;
-      opacity: 0.75;
-    }
-
-    /* Attribution */
-    .errata-attribution {
-      margin: 0;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 0.95rem;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-    }
-    .errata-attribution__dash {
-      color: var(--muted-light);
-      margin-right: 6px;
-    }
-
-    /* Divider before polyglot */
-    .errata-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin: 12px auto 0;
-      width: 100%;
-      max-width: 640px;
-      color: var(--muted-light);
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-    }
-    .errata-divider::before,
-    .errata-divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
-    /* Polyglot — three parallel quotations (like Complutensian Polyglot) */
-    .polyglot {
-      width: 100%;
-      margin-top: 8px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      text-align: left;
-    }
-    .polyglot__col {
-      padding: 20px clamp(16px, 2vw, 26px);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      position: relative;
-    }
-    .polyglot__col + .polyglot__col::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 12%;
-      bottom: 12%;
-      width: 1px;
-      background: var(--line);
-    }
-    .polyglot__lang {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      font-weight: 600;
-    }
-    .polyglot__quote {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      line-height: 1.55;
-      color: var(--text-secondary);
-      text-wrap: balance;
-    }
-    .polyglot__quote--zh {
-      font-family: "Noto Serif TC", var(--serif);
-      font-size: 1.15rem;
-      line-height: 1.7;
-    }
-    .polyglot__attr {
-      margin: 0;
+    .page__number {
       font-family: var(--serif);
       font-style: italic;
       font-size: 0.82rem;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-    }
-    .polyglot__attr--zh {
-      font-family: "Noto Serif TC", var(--serif);
-      font-style: normal;
+      letter-spacing: 0.32em;
+      color: var(--muted-light);
+      margin-bottom: clamp(32px, 8vh, 72px);
     }
 
-    /* Closing line — self-deprecating + hopeful */
-    .errata-closing {
-      margin: 12px auto 0;
-      max-width: 620px;
-      padding: 0 8px;
-      font-family: "Noto Serif TC", var(--serif);
-      font-size: 1.02rem;
-      line-height: 1.85;
-      color: var(--muted);
-      text-wrap: balance;
-      text-align: center;
-    }
-    .errata-closing em {
-      font-style: italic;
-      color: var(--text-secondary);
-    }
-
-    /* Actions */
-    .errata-actions {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 8px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 26px;
-      border-radius: 3px;
-      border: 1px solid var(--line-strong);
+    .page__title {
+      margin: 0;
       font-family: var(--serif);
-      font-size: 0.98rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      transition: transform var(--transition), border-color var(--transition), background var(--transition), color var(--transition), box-shadow var(--transition);
-    }
-    .btn--primary {
-      background: var(--accent);
-      color: var(--bg);
-      border-color: var(--accent);
-    }
-    .btn--primary:hover {
-      background: var(--accent-hover);
-      border-color: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    .btn--secondary {
-      background: transparent;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      line-height: 1.15;
       color: var(--text);
-    }
-    .btn--secondary:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-soft);
-      transform: translateY(-2px);
-    }
-    .btn__arrow {
-      transition: transform var(--transition);
-    }
-    .btn:hover .btn__arrow {
-      transform: translateX(3px);
-    }
-    .btn--primary .btn__arrow {
-      transform: rotate(180deg);
-    }
-    .btn--primary:hover .btn__arrow {
-      transform: rotate(180deg) translateX(-3px);
+      letter-spacing: 0.005em;
     }
 
-    /* ── Footer ── */
-    .site-footer {
-      padding: 20px 20px 36px;
-    }
-    .footer-inner {
-      width: min(1080px, calc(100% - 32px));
-      margin: 0 auto;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.88rem;
-      letter-spacing: 0.04em;
-    }
-    .footer-seal {
-      display: inline-block;
-      margin-bottom: 12px;
+    .page__ornament {
+      margin: clamp(18px, 3vh, 28px) 0;
       color: var(--accent-2);
-      font-size: 1rem;
-      letter-spacing: 0.4em;
+      font-size: 1.1rem;
       opacity: 0.6;
     }
 
-    /* ── Mobile ── */
-    @media (max-width: 780px) {
-      .polyglot {
-        grid-template-columns: 1fr;
-      }
-      .polyglot__col + .polyglot__col {
-        border-top: 1px solid var(--line);
-        padding-top: 24px;
-      }
-      .polyglot__col + .polyglot__col::before {
-        display: none;
-      }
-      .errata-body { padding: 10px 0; }
-      .errata-mark { font-size: 0.65rem; letter-spacing: 0.22em; gap: 10px; }
-      .errata-title { font-size: clamp(2rem, 9vw, 3rem); }
-      main { padding: 20px 16px 60px; }
+    .page__note {
+      margin: 0 0 clamp(36px, 8vh, 64px);
+      font-family: "Noto Serif TC", var(--serif);
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .page__link {
+      display: inline-block;
+      padding: 4px 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .page__link:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .page__link .arrow {
+      display: inline-block;
+      margin-right: 6px;
+      transition: transform var(--transition);
+    }
+    .page__link:hover .arrow { transform: translateX(-3px); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 20px 28px 32px;
+      text-align: center;
+      color: var(--muted-light);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        animation: none !important;
         transition-duration: 0.01ms !important;
       }
-    }
-
-    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-      .nav, .errata-shell { background: var(--panel-solid); }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav" aria-label="Primary">
-      <a class="brand" href="/" aria-label="HYSN.NET home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-            <rect width="64" height="64" rx="14" fill="var(--bg, #F8F4EC)"/>
-            <path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="var(--accent, #1B3A5C)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="brand-text">HYSN.NET</span>
-      </a>
-      <div class="header-spacer"></div>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
-        <span class="theme-toggle__icon" id="themeIcon" aria-hidden="true">☼</span>
-      </button>
-    </nav>
+  <header>
+    <a class="brand" href="/" aria-label="HYSN.NET home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="var(--bg, #F8F4EC)"/>
+        <path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="var(--accent, #1B3A5C)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>HYSN.NET</span>
+    </a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
+      <span id="themeIcon" aria-hidden="true">☼</span>
+    </button>
   </header>
 
   <main>
-    <section class="errata-shell" aria-labelledby="errata-title">
-      <span class="errata-watermark" aria-hidden="true">404</span>
-
-      <div class="errata-body">
-        <div class="errata-mark">
-          <span class="errata-mark__number">№ CDIV</span>
-          <span class="errata-mark__sep" aria-hidden="true"></span>
-          <span>Anno MMXXVI</span>
-          <span class="errata-mark__sep" aria-hidden="true"></span>
-          <span class="errata-mark__status">Non Inventa</span>
-        </div>
-
-        <h1 class="errata-title" id="errata-title">Hic sunt dracones</h1>
-
-        <div class="errata-ornament" aria-hidden="true">❦</div>
-
-        <p class="errata-attribution">
-          <span class="errata-attribution__dash">—</span>in margine globi Lenoxii, <span style="font-variant-numeric: tabular-nums;">ca. MDX</span>
-        </p>
-
-        <div class="errata-divider" aria-hidden="true">
-          <span>Collatio · Trilinguis</span>
-        </div>
-
-        <div class="polyglot" role="group" aria-label="三語並列引文">
-          <div class="polyglot__col">
-            <span class="polyglot__lang">中文 · 老子</span>
-            <p class="polyglot__quote polyglot__quote--zh">道可道，非常道；<br/>名可名，非常名。</p>
-            <p class="polyglot__attr polyglot__attr--zh">——《道德經》第一章</p>
-          </div>
-
-          <div class="polyglot__col">
-            <span class="polyglot__lang">English · Socrates</span>
-            <p class="polyglot__quote">I know one thing: that I know nothing.</p>
-            <p class="polyglot__attr">— after Plato, <em>Apology</em> 21d</p>
-          </div>
-
-          <div class="polyglot__col">
-            <span class="polyglot__lang">Deutsch · Wittgenstein</span>
-            <p class="polyglot__quote">Wovon man nicht sprechen kann, darüber muss man schweigen.</p>
-            <p class="polyglot__attr">— <em>Tractatus Logico-Philosophicus</em>, §7</p>
-          </div>
-        </div>
-
-        <p class="errata-closing">
-          此頁不在目錄之中。<br/>
-          或許<em>從未付梓</em>，或許<em>已被撕去</em>——<br/>
-          又或許，它正等待被書寫。
-        </p>
-
-        <div class="errata-actions">
-          <a class="btn btn--primary" href="/">
-            <span class="btn__arrow" aria-hidden="true">→</span>
-            <span>返回首頁</span>
-          </a>
-          <a class="btn btn--secondary" href="mailto:harrison@hysn.net?subject=Broken%20link%20on%20HYSN.NET">
-            <span>報告此頁</span>
-            <span class="btn__arrow" aria-hidden="true">✉</span>
-          </a>
-        </div>
-      </div>
-    </section>
+    <div class="page">
+      <div class="page__number">№ CDIV</div>
+      <h1 class="page__title">Hic sunt dracones</h1>
+      <div class="page__ornament" aria-hidden="true">❦</div>
+      <p class="page__note">此頁闕如。</p>
+      <a class="page__link" href="/">
+        <span class="arrow" aria-hidden="true">←</span>返回首頁
+      </a>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-seal" aria-hidden="true">❦ · ❧ · ❦</div>
-      <div>&copy;2026 HYSN.NET</div>
-    </div>
-  </footer>
+  <footer>&copy;2026 HYSN.NET</footer>
 
   <script>
     (function() {
       var root = document.documentElement;
-      var themeToggle = document.getElementById("themeToggle");
-      var themeIcon = document.getElementById("themeIcon");
-      var themeMeta = document.querySelector('meta[name="theme-color"]');
+      var toggle = document.getElementById("themeToggle");
+      var icon = document.getElementById("themeIcon");
+      var meta = document.querySelector('meta[name="theme-color"]');
 
-      function getStored() {
-        try { return localStorage.getItem("hysn-theme"); } catch (e) { return null; }
-      }
-      function setStored(v) {
-        try { localStorage.setItem("hysn-theme", v); } catch (e) {}
-      }
-
-      function applyTheme(theme, persist) {
+      function apply(theme, persist) {
         var next = theme === "dark" ? "dark" : "light";
         root.setAttribute("data-theme", next);
-        themeIcon.textContent = next === "dark" ? "\u263e" : "\u263c";
-        themeToggle.setAttribute("aria-label", next === "dark" ? "切換為淺色模式" : "切換為深色模式");
-        if (themeMeta) themeMeta.setAttribute("content", next === "dark" ? "#141110" : "#F8F4EC");
-        if (persist) setStored(next);
+        icon.textContent = next === "dark" ? "\u263e" : "\u263c";
+        toggle.setAttribute("aria-label", next === "dark" ? "切換為淺色模式" : "切換為深色模式");
+        if (meta) meta.setAttribute("content", next === "dark" ? "#141110" : "#F8F4EC");
+        if (persist) { try { localStorage.setItem("hysn-theme", next); } catch (e) {} }
       }
 
-      var current = root.getAttribute("data-theme") || "light";
-      applyTheme(current, false);
+      apply(root.getAttribute("data-theme") || "light", false);
 
-      themeToggle.addEventListener("click", function() {
+      toggle.addEventListener("click", function() {
         var c = root.getAttribute("data-theme") || "light";
-        applyTheme(c === "dark" ? "light" : "dark", true);
+        apply(c === "dark" ? "light" : "dark", true);
       });
 
-      // Respect system theme changes when user hasn't chosen explicitly
       var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-      function handleSystem(e) {
-        if (!getStored()) applyTheme(e.matches ? "dark" : "light", false);
+      function handle(e) {
+        var stored = null;
+        try { stored = localStorage.getItem("hysn-theme"); } catch (err) {}
+        if (!stored) apply(e.matches ? "dark" : "light", false);
       }
-      if (typeof prefersDark.addEventListener === "function") {
-        prefersDark.addEventListener("change", handleSystem);
-      } else if (typeof prefersDark.addListener === "function") {
-        prefersDark.addListener(handleSystem);
-      }
+      if (typeof prefersDark.addEventListener === "function") prefersDark.addEventListener("change", handle);
+      else if (typeof prefersDark.addListener === "function") prefersDark.addListener(handle);
     })();
   </script>
 </body>
