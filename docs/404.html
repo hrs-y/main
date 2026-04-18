@@ -3,133 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 · HYSN.NET</title>
-  <meta name="description" content="404 — HYSN.NET" />
-  <meta name="theme-color" content="#f3ecdd" />
-  <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F3ECDD'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%232A241C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
-  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F3ECDD'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%232A241C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F3ECDD'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%232A241C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <title>CDIV · HYSN.NET</title>
+  <meta name="description" content="Hic sunt dracones — 此頁未見於目錄。Page not found." />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#F8F4EC" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F8F4EC'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%231B3A5C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
 
   <script>
     (function () {
+      var theme = "light";
       try {
         var storedTheme = localStorage.getItem("hysn-theme");
-        var theme = storedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        document.documentElement.setAttribute("data-theme", theme);
+        if (storedTheme === "dark" || storedTheme === "light") {
+          theme = storedTheme;
+        } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          theme = "dark";
+        }
       } catch (e) {
-        document.documentElement.setAttribute(
-          "data-theme",
-          window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-        );
+        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          theme = "dark";
+        }
       }
+      document.documentElement.setAttribute("data-theme", theme);
     })();
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
 
   <style>
+    /* ══════════════════════════════════════════
+       COLOR SYSTEM — matches HYSN.NET
+       ══════════════════════════════════════════ */
     :root {
       color-scheme: light;
-      --bg: #f3ecdd;
-      --bg-elev: rgba(250, 245, 234, 0.72);
-      --bg-soft: rgba(255, 252, 245, 0.56);
-      --panel: rgba(255, 251, 244, 0.72);
-      --text: #1d1a15;
-      --muted: #6d6459;
-      --muted-strong: #53493d;
-      --line: rgba(67, 57, 42, 0.16);
-      --line-strong: rgba(67, 57, 42, 0.26);
-      --accent: #8b6c3f;
-      --accent-soft: rgba(139, 108, 63, 0.14);
-      --shadow: 0 22px 60px rgba(57, 44, 26, 0.10);
-      --shadow-strong: 0 30px 90px rgba(57, 44, 26, 0.16);
-      --radius: 28px;
-      --max-width: 1160px;
-      --transition: 280ms cubic-bezier(.2,.8,.2,1);
-      --hero-glow: radial-gradient(circle at 50% 42%, rgba(205, 176, 124, 0.20), transparent 52%);
-      --bg-wash:
-        radial-gradient(circle at top left, rgba(190, 168, 129, 0.14), transparent 34%),
-        radial-gradient(circle at 85% 18%, rgba(112, 127, 97, 0.12), transparent 26%),
-        linear-gradient(180deg, rgba(255,255,255,0.56), rgba(255,255,255,0));
-      --paper-line:
-        linear-gradient(180deg, rgba(88, 72, 49, 0.06) 0%, rgba(88, 72, 49, 0.00) 32%, rgba(88, 72, 49, 0.05) 100%);
+      --bg: #F8F4EC;
+      --bg-warm: #F3EEE4;
+      --bg-soft: rgba(248, 244, 236, 0.82);
+      --panel: rgba(245, 240, 230, 0.80);
+      --panel-solid: #F3EEE3;
+      --text: #1F1B16;
+      --text-secondary: #524838;
+      --muted: #766B5A;
+      --muted-light: #A39A89;
+      --line: rgba(31, 27, 22, 0.12);
+      --line-strong: rgba(31, 27, 22, 0.24);
+
+      --accent: #1B3A5C;
+      --accent-soft: rgba(27, 58, 92, 0.09);
+      --accent-hover: #264F7A;
+
+      --accent-2: #8B6F3F;
+      --accent-2-soft: rgba(139, 111, 63, 0.11);
+
+      --signal-red: #C04040;
+
+      --shadow: 0 8px 32px rgba(31, 27, 22, 0.06);
+      --shadow-md: 0 12px 40px rgba(31, 27, 22, 0.08);
+      --shadow-lg: 0 20px 56px rgba(31, 27, 22, 0.10);
+      --radius: 16px;
+      --radius-sm: 10px;
+
+      --transition: 300ms cubic-bezier(.2,.8,.2,1);
+      --ease-out: cubic-bezier(.2,.8,.2,1);
+
+      --serif: "Cormorant Garamond", "Noto Serif TC", "EB Garamond", Georgia, serif;
+      --body: "EB Garamond", "Noto Serif TC", "Cormorant Garamond", Georgia, serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
     }
 
     html[data-theme="dark"] {
       color-scheme: dark;
-      --bg: #131312;
-      --bg-elev: rgba(28, 27, 25, 0.76);
-      --bg-soft: rgba(26, 25, 23, 0.56);
-      --panel: rgba(24, 23, 21, 0.72);
-      --text: #eee6d8;
-      --muted: #b3aa9c;
-      --muted-strong: #d0c5b5;
-      --line: rgba(207, 186, 147, 0.14);
-      --line-strong: rgba(207, 186, 147, 0.26);
-      --accent: #bc9a66;
-      --accent-soft: rgba(188, 154, 102, 0.16);
-      --shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
-      --shadow-strong: 0 32px 92px rgba(0, 0, 0, 0.42);
-      --hero-glow: radial-gradient(circle at 50% 42%, rgba(181, 139, 83, 0.15), transparent 50%);
-      --bg-wash:
-        radial-gradient(circle at top left, rgba(140, 111, 69, 0.10), transparent 34%),
-        radial-gradient(circle at 85% 18%, rgba(103, 121, 96, 0.10), transparent 28%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-      --paper-line:
-        linear-gradient(180deg, rgba(221, 204, 171, 0.04) 0%, rgba(221, 204, 171, 0.00) 32%, rgba(221, 204, 171, 0.03) 100%);
+      --bg: #141110;
+      --bg-warm: #1B1816;
+      --bg-soft: rgba(20, 17, 16, 0.85);
+      --panel: rgba(27, 24, 22, 0.82);
+      --panel-solid: #201D1A;
+      --text: #EFE8DC;
+      --text-secondary: #BFB5A4;
+      --muted: #938875;
+      --muted-light: #615647;
+      --line: rgba(239, 232, 220, 0.10);
+      --line-strong: rgba(239, 232, 220, 0.22);
+
+      --accent: #8AB0D4;
+      --accent-soft: rgba(138, 176, 212, 0.14);
+      --accent-hover: #A3C2DE;
+
+      --accent-2: #D4A866;
+      --accent-2-soft: rgba(212, 168, 102, 0.14);
+
+      --signal-red: #E06060;
+
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+      --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.28);
+      --shadow-lg: 0 20px 56px rgba(0, 0, 0, 0.36);
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
       color: var(--text);
-      background: var(--bg-wash), var(--paper-line), var(--bg);
-      font-family: "Inter", "Noto Serif TC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.7;
-      letter-spacing: 0.01em;
+      background: var(--bg);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.78;
+      letter-spacing: 0.005em;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
       transition: background-color var(--transition), color var(--transition);
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-    }
-
-    body::before {
-      background:
-        radial-gradient(circle at 15% 10%, rgba(255,255,255,0.16), transparent 18%),
-        radial-gradient(circle at 75% 16%, rgba(255,255,255,0.08), transparent 24%),
-        radial-gradient(circle at 82% 88%, rgba(255,255,255,0.06), transparent 18%);
-      mix-blend-mode: screen;
-      opacity: 0.6;
-    }
-
-    body::after {
-      z-index: -1;
-      opacity: 0.08;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.35) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.30) 1px, transparent 1px);
-      background-size: 24px 24px;
-      mask-image: radial-gradient(circle at center, black 22%, transparent 90%);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a {
       color: inherit;
       text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     button {
@@ -138,578 +150,555 @@
       background: none;
       border: 0;
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .site-shell {
-      position: relative;
-      isolation: isolate;
-      min-height: 100vh;
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
     }
 
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ── Header — minimal (logo + theme) ── */
     .site-header {
-      position: fixed;
-      inset: 0 0 auto 0;
+      position: sticky;
+      top: 0;
       z-index: 100;
-      padding: 14px 12px 0;
+      padding: 16px 20px 0;
     }
 
     .nav {
-      width: min(var(--max-width), calc(100% - 8px));
+      width: min(1080px, calc(100% - 8px));
       margin: 0 auto;
-      padding: 12px 16px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
       border: 1px solid var(--line);
-      border-radius: 22px;
-      background: color-mix(in srgb, var(--bg-elev) 78%, transparent);
-      backdrop-filter: blur(18px) saturate(140%);
+      border-radius: 999px;
+      background: var(--bg-soft);
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+      backdrop-filter: blur(16px) saturate(120%);
       box-shadow: var(--shadow);
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      min-width: 0;
-      flex-shrink: 0;
-    }
-
-    .brand-mark {
-      display: inline-grid;
-      place-items: center;
-      width: 30px;
-      height: 30px;
-      flex-shrink: 0;
-    }
-
-    .brand-mark svg {
-      width: 30px;
-      height: 30px;
-      display: block;
-    }
-
-    .brand-text {
-      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-      font-size: 1.45rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      white-space: nowrap;
-    }
-
-    .controls {
-      display: inline-flex;
-      align-items: center;
       gap: 10px;
-      margin-left: auto;
-      flex-shrink: 0;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
     }
+    .brand-mark {
+      width: 28px; height: 28px;
+      display: inline-flex;
+    }
+    .brand-mark svg { width: 100%; height: 100%; }
 
-    .lang-switch,
+    .header-spacer { flex: 1; }
+
     .theme-toggle {
-      border: 1px solid var(--line);
-      background: var(--bg-soft);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-    }
-
-    .lang-switch {
+      width: 36px; height: 36px;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      padding: 4px;
-      border-radius: 999px;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: transparent;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
     }
-
-    .lang-btn {
-      min-width: 46px;
-      height: 38px;
-      padding: 0 12px;
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.88rem;
-      font-weight: 600;
-      transition: background var(--transition), color var(--transition), transform var(--transition);
-    }
-
-    .lang-btn:hover,
-    .lang-btn:focus-visible {
-      color: var(--text);
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    .lang-btn.is-active {
+    .theme-toggle:hover {
       background: var(--accent-soft);
-      color: var(--text);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+      border-color: var(--accent);
+      transform: rotate(15deg);
     }
-
-    .theme-toggle {
-      display: inline-grid;
-      place-items: center;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      transition: transform var(--transition), border-color var(--transition), background var(--transition);
-    }
-
-    .theme-toggle:hover,
-    .theme-toggle:focus-visible {
-      transform: translateY(-1px) rotate(8deg);
-      border-color: var(--line-strong);
-      outline: none;
-    }
-
     .theme-toggle__icon {
-      font-size: 1.06rem;
+      font-size: 1.05rem;
       line-height: 1;
-      transform: translateY(-1px);
     }
 
+    /* ── Main ── */
     main {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 108px 20px 40px;
-      position: relative;
-      overflow: clip;
-    }
-
-    .hero-ornaments {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      overflow: clip;
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(8px);
-      opacity: 0.55;
-      animation: float 13s ease-in-out infinite;
-      mix-blend-mode: screen;
-    }
-
-    .orb-a {
-      width: 320px;
-      height: 320px;
-      left: -80px;
-      top: 18%;
-      background: radial-gradient(circle, rgba(177, 151, 110, 0.24), transparent 72%);
-    }
-
-    .orb-b {
-      width: 360px;
-      height: 360px;
-      right: -120px;
-      top: 12%;
-      animation-delay: -4s;
-      background: radial-gradient(circle, rgba(103, 122, 96, 0.22), transparent 72%);
-    }
-
-    .orb-c {
-      width: 260px;
-      height: 260px;
-      left: 50%;
-      bottom: 10%;
-      transform: translateX(-50%);
-      animation-delay: -7s;
-      background: radial-gradient(circle, rgba(188, 154, 102, 0.16), transparent 72%);
-    }
-
-    .sigil {
-      position: absolute;
-      inset: 50% auto auto 50%;
-      width: min(66vw, 680px);
-      aspect-ratio: 1;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      border: 1px solid color-mix(in srgb, var(--line-strong) 72%, transparent);
-      opacity: 0.4;
-    }
-
-    .sigil::before,
-    .sigil::after {
-      content: "";
-      position: absolute;
-      inset: 9%;
-      border-radius: 50%;
-      border: 1px solid color-mix(in srgb, var(--line) 92%, transparent);
-    }
-
-    .sigil::after {
-      inset: 22%;
-      border-style: dashed;
-      opacity: 0.55;
-    }
-
-    .error-shell {
-      position: relative;
-      z-index: 2;
-      width: min(860px, 100%);
-    }
-
-    .panel {
-      position: relative;
-      overflow: clip;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0)),
-        var(--panel);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px) saturate(130%);
-      padding: clamp(28px, 4vw, 52px);
-      text-align: center;
-    }
-
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto auto 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-      opacity: 0.45;
-    }
-
-    .error-code {
-      margin: 0 0 10px;
-      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-      font-size: clamp(4rem, 14vw, 8rem);
-      line-height: 0.9;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: color-mix(in srgb, var(--accent) 78%, var(--text) 22%);
-      opacity: 0;
-      transform: translateY(16px);
-      animation: fade-up 900ms 120ms forwards;
-    }
-
-    .error-title {
-      margin: 0;
-      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-      font-size: clamp(1.8rem, 4.6vw, 3rem);
-      line-height: 1.05;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fade-up 1000ms 220ms forwards;
-    }
-
-    .error-divider {
-      width: min(120px, 24vw);
-      height: 1px;
-      margin: 22px auto 18px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0;
-      transform: translateY(16px);
-      animation: fade-up 900ms 320ms forwards;
-    }
-
-    .error-body {
-      max-width: 560px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: clamp(1rem, 1.2vw + 0.72rem, 1.08rem);
-      text-wrap: balance;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fade-up 1000ms 420ms forwards;
-    }
-
-    .error-actions {
+      flex: 1;
       display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fade-up 1000ms 560ms forwards;
+      align-items: center;
+      padding: 40px 20px 80px;
     }
 
-    .button {
+    .errata-shell {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      padding: clamp(28px, 3vw, 44px) clamp(24px, 3vw, 40px);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
       position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 600;
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition), color var(--transition);
       overflow: hidden;
     }
 
-    .button::before {
+    /* Giant "404" watermark, faded — same treatment as section-watermark */
+    .errata-watermark {
+      position: absolute;
+      top: clamp(8px, 2vw, 20px);
+      right: clamp(16px, 2.5vw, 34px);
+      font-family: var(--serif);
+      font-size: clamp(5rem, 14vw, 11rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--muted-light);
+      opacity: 0.16;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .errata-body {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+      padding: clamp(20px, 3vw, 40px) 0;
+    }
+
+    /* Catalog mark (top): "№ CDIV · ANNO MMXXVI · NON INVENTA" */
+    .errata-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .errata-mark__number {
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+    .errata-mark__sep {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--muted-light);
+      display: inline-block;
+    }
+    .errata-mark__status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .errata-mark__status::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--signal-red);
+      box-shadow: 0 0 10px rgba(192, 64, 64, 0.5);
+      animation: pulse-record 1.8s ease-in-out infinite;
+    }
+    html[data-theme="dark"] .errata-mark__status::before {
+      box-shadow: 0 0 14px rgba(224, 96, 96, 0.6);
+    }
+    @keyframes pulse-record {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.35; transform: scale(0.85); }
+    }
+
+    /* Title */
+    .errata-title {
+      margin: 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      text-wrap: balance;
+    }
+
+    /* Ornament */
+    .errata-ornament {
+      color: var(--accent-2);
+      font-size: 1.6rem;
+      line-height: 1;
+      opacity: 0.75;
+    }
+
+    /* Attribution */
+    .errata-attribution {
+      margin: 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .errata-attribution__dash {
+      color: var(--muted-light);
+      margin-right: 6px;
+    }
+
+    /* Divider before polyglot */
+    .errata-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 12px auto 0;
+      width: 100%;
+      max-width: 640px;
+      color: var(--muted-light);
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+    .errata-divider::before,
+    .errata-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* Polyglot — three parallel quotations (like Complutensian Polyglot) */
+    .polyglot {
+      width: 100%;
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      text-align: left;
+    }
+    .polyglot__col {
+      padding: 20px clamp(16px, 2vw, 26px);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+    .polyglot__col + .polyglot__col::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.15) 45%, transparent 100%);
-      transform: translateX(-120%);
-      transition: transform 620ms cubic-bezier(.2,.8,.2,1);
+      left: 0;
+      top: 12%;
+      bottom: 12%;
+      width: 1px;
+      background: var(--line);
+    }
+    .polyglot__lang {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+    .polyglot__quote {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      text-wrap: balance;
+    }
+    .polyglot__quote--zh {
+      font-family: "Noto Serif TC", var(--serif);
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+    .polyglot__attr {
+      margin: 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .polyglot__attr--zh {
+      font-family: "Noto Serif TC", var(--serif);
+      font-style: normal;
     }
 
-    .button:hover::before,
-    .button:focus-visible::before {
-      transform: translateX(120%);
+    /* Closing line — self-deprecating + hopeful */
+    .errata-closing {
+      margin: 12px auto 0;
+      max-width: 620px;
+      padding: 0 8px;
+      font-family: "Noto Serif TC", var(--serif);
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--muted);
+      text-wrap: balance;
+      text-align: center;
+    }
+    .errata-closing em {
+      font-style: italic;
+      color: var(--text-secondary);
     }
 
-    .button:hover,
-    .button:focus-visible {
+    /* Actions */
+    .errata-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 26px;
+      border-radius: 3px;
+      border: 1px solid var(--line-strong);
+      font-family: var(--serif);
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), color var(--transition), box-shadow var(--transition);
+    }
+    .btn--primary {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+    .btn--primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
       transform: translateY(-2px);
-      outline: none;
+      box-shadow: var(--shadow-md);
     }
-
-    .button.primary {
-      color: #f6f0e6;
-      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 92%, white 8%), var(--accent));
-      box-shadow: 0 14px 36px color-mix(in srgb, var(--accent) 28%, transparent);
-    }
-
-    .button.secondary {
+    .btn--secondary {
+      background: transparent;
       color: var(--text);
-      border-color: var(--line-strong);
-      background: var(--bg-soft);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .btn--secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-2px);
+    }
+    .btn__arrow {
+      transition: transform var(--transition);
+    }
+    .btn:hover .btn__arrow {
+      transform: translateX(3px);
+    }
+    .btn--primary .btn__arrow {
+      transform: rotate(180deg);
+    }
+    .btn--primary:hover .btn__arrow {
+      transform: rotate(180deg) translateX(-3px);
     }
 
+    /* ── Footer ── */
     .site-footer {
-      padding: 0 20px 40px;
+      padding: 20px 20px 36px;
     }
-
     .footer-inner {
-      width: min(var(--max-width), calc(100% - 32px));
+      width: min(1080px, calc(100% - 32px));
       margin: 0 auto;
       padding-top: 18px;
       border-top: 1px solid var(--line);
       color: var(--muted);
       text-align: center;
-      font-size: 0.94rem;
+      font-size: 0.88rem;
       letter-spacing: 0.04em;
     }
-
-    @keyframes fade-up {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .footer-seal {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--accent-2);
+      font-size: 1rem;
+      letter-spacing: 0.4em;
+      opacity: 0.6;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translate3d(0, 0, 0); }
-      50% { transform: translate3d(0, -14px, 0); }
-    }
-
-    @media (max-width: 720px) {
-      .site-header {
-        padding: 12px 10px 0;
+    /* ── Mobile ── */
+    @media (max-width: 780px) {
+      .polyglot {
+        grid-template-columns: 1fr;
       }
-
-      .nav {
-        width: calc(100% - 4px);
-        padding: 10px 12px;
+      .polyglot__col + .polyglot__col {
+        border-top: 1px solid var(--line);
+        padding-top: 24px;
       }
-
-      .brand-text {
-        font-size: 1.24rem;
+      .polyglot__col + .polyglot__col::before {
+        display: none;
       }
-
-      .panel {
-        padding: 28px 20px;
-      }
-
-      .error-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-      }
+      .errata-body { padding: 10px 0; }
+      .errata-mark { font-size: 0.65rem; letter-spacing: 0.22em; gap: 10px; }
+      .errata-title { font-size: clamp(2rem, 9vw, 3rem); }
+      main { padding: 20px 16px 60px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
       *, *::before, *::after {
         animation: none !important;
         transition-duration: 0.01ms !important;
-        transition-delay: 0ms !important;
       }
-      .error-code,
-      .error-title,
-      .error-divider,
-      .error-body,
-      .error-actions {
-        opacity: 1 !important;
-        transform: none !important;
-      }
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .nav, .errata-shell { background: var(--panel-solid); }
     }
   </style>
 </head>
 <body>
-  <div class="site-shell">
-    <header class="site-header">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="https://www.hysn.net" aria-label="HYSN.NET home">
-          <span class="brand-mark" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-              <rect width="64" height="64" rx="14" fill="#F3ECDD"/>
-              <path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="#2A241C" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <span class="brand-text">HYSN.NET</span>
-        </a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="/" aria-label="HYSN.NET home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <rect width="64" height="64" rx="14" fill="var(--bg, #F8F4EC)"/>
+            <path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="var(--accent, #1B3A5C)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">HYSN.NET</span>
+      </a>
+      <div class="header-spacer"></div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
+        <span class="theme-toggle__icon" id="themeIcon" aria-hidden="true">☼</span>
+      </button>
+    </nav>
+  </header>
 
-        <div class="controls">
-          <div class="lang-switch" role="group" aria-label="Language switcher">
-            <button class="lang-btn" type="button" data-lang="zh-Hant">繁</button>
-            <button class="lang-btn" type="button" data-lang="en">EN</button>
-            <button class="lang-btn" type="button" data-lang="de">DE</button>
+  <main>
+    <section class="errata-shell" aria-labelledby="errata-title">
+      <span class="errata-watermark" aria-hidden="true">404</span>
+
+      <div class="errata-body">
+        <div class="errata-mark">
+          <span class="errata-mark__number">№ CDIV</span>
+          <span class="errata-mark__sep" aria-hidden="true"></span>
+          <span>Anno MMXXVI</span>
+          <span class="errata-mark__sep" aria-hidden="true"></span>
+          <span class="errata-mark__status">Non Inventa</span>
+        </div>
+
+        <h1 class="errata-title" id="errata-title">Hic sunt dracones</h1>
+
+        <div class="errata-ornament" aria-hidden="true">❦</div>
+
+        <p class="errata-attribution">
+          <span class="errata-attribution__dash">—</span>in margine globi Lenoxii, <span style="font-variant-numeric: tabular-nums;">ca. MDX</span>
+        </p>
+
+        <div class="errata-divider" aria-hidden="true">
+          <span>Collatio · Trilinguis</span>
+        </div>
+
+        <div class="polyglot" role="group" aria-label="三語並列引文">
+          <div class="polyglot__col">
+            <span class="polyglot__lang">中文 · 老子</span>
+            <p class="polyglot__quote polyglot__quote--zh">道可道，非常道；<br/>名可名，非常名。</p>
+            <p class="polyglot__attr polyglot__attr--zh">——《道德經》第一章</p>
           </div>
 
-          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
-            <span class="theme-toggle__icon" id="themeIcon" aria-hidden="true">☼</span>
-          </button>
-        </div>
-      </nav>
-    </header>
+          <div class="polyglot__col">
+            <span class="polyglot__lang">English · Socrates</span>
+            <p class="polyglot__quote">I know one thing: that I know nothing.</p>
+            <p class="polyglot__attr">— after Plato, <em>Apology</em> 21d</p>
+          </div>
 
-    <main>
-      <div class="hero-ornaments" aria-hidden="true">
-        <div class="orb orb-a"></div>
-        <div class="orb orb-b"></div>
-        <div class="orb orb-c"></div>
-        <div class="sigil"></div>
+          <div class="polyglot__col">
+            <span class="polyglot__lang">Deutsch · Wittgenstein</span>
+            <p class="polyglot__quote">Wovon man nicht sprechen kann, darüber muss man schweigen.</p>
+            <p class="polyglot__attr">— <em>Tractatus Logico-Philosophicus</em>, §7</p>
+          </div>
+        </div>
+
+        <p class="errata-closing">
+          此頁不在目錄之中。<br/>
+          或許<em>從未付梓</em>，或許<em>已被撕去</em>——<br/>
+          又或許，它正等待被書寫。
+        </p>
+
+        <div class="errata-actions">
+          <a class="btn btn--primary" href="/">
+            <span class="btn__arrow" aria-hidden="true">→</span>
+            <span>返回首頁</span>
+          </a>
+          <a class="btn btn--secondary" href="mailto:harrison@hysn.net?subject=Broken%20link%20on%20HYSN.NET">
+            <span>報告此頁</span>
+            <span class="btn__arrow" aria-hidden="true">✉</span>
+          </a>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <section class="error-shell" aria-labelledby="error-title">
-        <div class="panel">
-          <p class="error-code">404</p>
-          <h1 class="error-title" id="error-title" data-i18n="error.title">此頁不存在</h1>
-          <div class="error-divider" aria-hidden="true"></div>
-          <p class="error-body" data-i18n="error.body">
-            你要找的頁面不存在，請返回首頁或上一頁。
-          </p>
-          <div class="error-actions">
-            <a class="button primary" href="https://www.hysn.net" data-i18n="error.home">返回首頁</a>
-            <button class="button secondary" type="button" onclick="history.back()" data-i18n="error.back">返回上一頁</button>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="footer-inner" data-i18n="footer">©2026 HYSN.NET</div>
-    </footer>
-  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-seal" aria-hidden="true">❦ · ❧ · ❦</div>
+      <div>&copy;2026 HYSN.NET</div>
+    </div>
+  </footer>
 
   <script>
-    const translations = {
-      "zh-Hant": {
-        error: {
-          title: "此頁不存在",
-          body: "你要找的頁面不存在，請返回首頁或上一頁。",
-          home: "返回首頁",
-          back: "返回上一頁"
-        },
-        footer: "©2026 HYSN.NET"
-      },
-      "en": {
-        error: {
-          title: "Page Not Found",
-          body: "The page you are looking for does not exist. Please return to the homepage or the previous page.",
-          home: "Back Home",
-          back: "Go Back"
-        },
-        footer: "©2026 HYSN.NET"
-      },
-      "de": {
-        error: {
-          title: "Seite Nicht Gefunden",
-          body: "Die gesuchte Seite existiert nicht. Bitte kehren Sie zur Startseite oder zur vorherigen Seite zurück.",
-          home: "Zur Startseite",
-          back: "Zurück"
-        },
-        footer: "©2026 HYSN.NET"
+    (function() {
+      var root = document.documentElement;
+      var themeToggle = document.getElementById("themeToggle");
+      var themeIcon = document.getElementById("themeIcon");
+      var themeMeta = document.querySelector('meta[name="theme-color"]');
+
+      function getStored() {
+        try { return localStorage.getItem("hysn-theme"); } catch (e) { return null; }
       }
-    };
+      function setStored(v) {
+        try { localStorage.setItem("hysn-theme", v); } catch (e) {}
+      }
 
-    const root = document.documentElement;
-    const langButtons = document.querySelectorAll(".lang-btn");
-    const themeToggle = document.getElementById("themeToggle");
-    const themeIcon = document.getElementById("themeIcon");
-    const themeMeta = document.querySelector('meta[name="theme-color"]');
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      function applyTheme(theme, persist) {
+        var next = theme === "dark" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        themeIcon.textContent = next === "dark" ? "\u263e" : "\u263c";
+        themeToggle.setAttribute("aria-label", next === "dark" ? "切換為淺色模式" : "切換為深色模式");
+        if (themeMeta) themeMeta.setAttribute("content", next === "dark" ? "#141110" : "#F8F4EC");
+        if (persist) setStored(next);
+      }
 
-    function resolveKey(obj, path) {
-      return path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : null), obj);
-    }
+      var current = root.getAttribute("data-theme") || "light";
+      applyTheme(current, false);
 
-    function detectLanguage() {
-      const stored = localStorage.getItem("hysn-lang");
-      if (stored && translations[stored]) return stored;
-      const browserLang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
-      if (browserLang.startsWith("zh")) return "zh-Hant";
-      if (browserLang.startsWith("de")) return "de";
-      return "en";
-    }
-
-    function detectTheme() {
-      const stored = localStorage.getItem("hysn-theme");
-      if (stored === "dark" || stored === "light") return stored;
-      return prefersDark.matches ? "dark" : "light";
-    }
-
-    function applyLanguage(lang, persist = false) {
-      const selected = translations[lang] ? lang : "en";
-      root.lang = selected === "zh-Hant" ? "zh-Hant" : selected;
-
-      document.querySelectorAll("[data-i18n]").forEach((element) => {
-        const key = element.getAttribute("data-i18n");
-        const value = resolveKey(translations[selected], key);
-        if (value !== null) element.textContent = value;
+      themeToggle.addEventListener("click", function() {
+        var c = root.getAttribute("data-theme") || "light";
+        applyTheme(c === "dark" ? "light" : "dark", true);
       });
 
-      langButtons.forEach((button) => {
-        button.classList.toggle("is-active", button.dataset.lang === selected);
-        button.setAttribute("aria-pressed", String(button.dataset.lang === selected));
-      });
-
-      if (persist) localStorage.setItem("hysn-lang", selected);
-    }
-
-    function applyTheme(theme, persist = false) {
-      const nextTheme = theme === "dark" ? "dark" : "light";
-      root.setAttribute("data-theme", nextTheme);
-      themeIcon.textContent = nextTheme === "dark" ? "☾" : "☼";
-      if (themeMeta) themeMeta.setAttribute("content", nextTheme === "dark" ? "#131312" : "#f3ecdd");
-      themeToggle.setAttribute("aria-label", nextTheme === "dark" ? "Switch to light mode" : "Switch to dark mode");
-      if (persist) localStorage.setItem("hysn-theme", nextTheme);
-    }
-
-    langButtons.forEach((button) => {
-      button.addEventListener("click", () => applyLanguage(button.dataset.lang, true));
-    });
-
-    themeToggle.addEventListener("click", () => {
-      const current = root.getAttribute("data-theme") || detectTheme();
-      applyTheme(current === "dark" ? "light" : "dark", true);
-    });
-
-    prefersDark.addEventListener("change", (event) => {
-      if (!localStorage.getItem("hysn-theme")) {
-        applyTheme(event.matches ? "dark" : "light", false);
+      // Respect system theme changes when user hasn't chosen explicitly
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      function handleSystem(e) {
+        if (!getStored()) applyTheme(e.matches ? "dark" : "light", false);
       }
-    });
-
-    applyLanguage(detectLanguage(), false);
-    applyTheme(detectTheme(), false);
+      if (typeof prefersDark.addEventListener === "function") {
+        prefersDark.addEventListener("change", handleSystem);
+      } else if (typeof prefersDark.addListener === "function") {
+        prefersDark.addListener(handleSystem);
+      }
+    })();
   </script>
 </body>
 </html>
