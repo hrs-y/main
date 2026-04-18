@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>牌記 · HYSN.NET</title>
+  <meta name="description" content="HYSN.NET 之牌記——構築、借力、致意，一紙誌之。" />
+  <meta name="theme-color" content="#F8F4EC" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F8F4EC'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%231B3A5C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <script>
+    (function () {
+      var theme = "light";
+      try {
+        var stored = localStorage.getItem("hysn-theme");
+        if (stored === "dark" || stored === "light") theme = stored;
+        else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+      } catch (e) {
+        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;500;600&display=swap" />
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #F8F4EC;
+      --bg-warm: #F3EEE4;
+      --panel: rgba(245, 240, 230, 0.80);
+      --panel-solid: #F3EEE3;
+      --text: #1F1B16;
+      --text-secondary: #524838;
+      --muted: #766B5A;
+      --muted-light: #A39A89;
+      --line: rgba(31, 27, 22, 0.12);
+      --line-strong: rgba(31, 27, 22, 0.24);
+      --accent: #1B3A5C;
+      --accent-hover: #264F7A;
+      --accent-2: #8B6F3F;
+      --shadow: 0 8px 32px rgba(31, 27, 22, 0.06);
+      --radius: 16px;
+      --serif: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
+      --body: "EB Garamond", "Noto Serif TC", Georgia, serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", "Menlo", monospace;
+      --transition: 300ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #141110;
+      --bg-warm: #1B1816;
+      --panel: rgba(27, 24, 22, 0.82);
+      --panel-solid: #201D1A;
+      --text: #EFE8DC;
+      --text-secondary: #BFB5A4;
+      --muted: #938875;
+      --muted-light: #615647;
+      --line: rgba(239, 232, 220, 0.10);
+      --line-strong: rgba(239, 232, 220, 0.22);
+      --accent: #8AB0D4;
+      --accent-hover: #A3C2DE;
+      --accent-2: #D4A866;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: var(--text);
+      background: var(--bg);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.78;
+      letter-spacing: 0.005em;
+      transition: background-color var(--transition), color var(--transition);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    /* ── Header ── */
+    header {
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+    }
+    .brand svg { width: 26px; height: 26px; }
+
+    .theme-toggle {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      transition: color var(--transition), transform var(--transition);
+    }
+    .theme-toggle:hover { color: var(--text); transform: rotate(15deg); }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 32px 20px 72px;
+    }
+
+    .doc {
+      width: 100%;
+      max-width: 640px;
+      padding: clamp(36px, 4.5vw, 60px) clamp(24px, 3.5vw, 52px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .doc { background: var(--panel-solid); }
+    }
+
+    .doc__kicker {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .doc__kicker-sep {
+      display: inline-block;
+      margin: 0 8px;
+      color: var(--muted-light);
+    }
+
+    .doc__title {
+      margin: 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: 0.005em;
+    }
+
+    .doc__ornament {
+      margin: 22px 0 34px;
+      color: var(--accent-2);
+      font-size: 1.1rem;
+      opacity: 0.55;
+    }
+
+    /* ── Inscription (the single dense paragraph) ── */
+    .inscription {
+      margin: 0;
+      font-family: "Noto Serif TC", var(--body);
+      font-size: 1.02rem;
+      line-height: 2.05;
+      letter-spacing: 0.015em;
+      color: var(--text-secondary);
+      text-align: justify;
+      text-justify: inter-character;
+      /* fallback for browsers without inter-character */
+      text-align-last: center;
+    }
+    .inscription strong {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+    .inscription em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* Drop cap on opening character — classical book touch */
+    .inscription::first-letter {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 2.2em;
+      font-weight: 500;
+      float: left;
+      line-height: 0.9;
+      margin: 0.1em 0.08em 0 0;
+      color: var(--accent);
+    }
+
+    /* ── Printer's mark — echoes Aldus Manutius's dolphin-and-anchor ── */
+    .printers-mark {
+      margin: 56px auto 0;
+      padding-top: 36px;
+      border-top: 1px dashed var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .printers-mark__device {
+      width: 56px;
+      height: 56px;
+      opacity: 0.9;
+    }
+    .printers-mark__device svg { width: 100%; height: 100%; }
+    .printers-mark__year {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.36em;
+      color: var(--muted);
+    }
+    .printers-mark__motto {
+      margin-top: 4px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Page footer ── */
+    footer {
+      padding: 20px 28px 32px;
+      text-align: center;
+      color: var(--muted-light);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 560px) {
+      .doc { padding: 32px 22px; }
+      .inscription { font-size: 0.98rem; line-height: 1.95; }
+      .inscription::first-letter { font-size: 2em; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/" aria-label="HYSN.NET home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="var(--bg, #F8F4EC)"/>
+        <path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="var(--accent, #1B3A5C)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>HYSN.NET</span>
+    </a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
+      <span id="themeIcon" aria-hidden="true">☼</span>
+    </button>
+  </header>
+
+  <main>
+    <article class="doc">
+      <div class="doc__kicker">
+        <span>Colophon</span>
+        <span class="doc__kicker-sep" aria-hidden="true">·</span>
+        <span>MMXXVI</span>
+      </div>
+
+      <h1 class="doc__title">牌記</h1>
+
+      <div class="doc__ornament" aria-hidden="true">❦</div>
+
+      <p class="inscription">此站名 HYSN.NET，由 Harrison 手作於 MMXXVI 年，以 HTML、CSS、JavaScript 寫就，不假任何框架之助，寄存於 GitHub Pages。其所用字體凡四——<strong>Cormorant Garamond</strong> 與 <strong>EB Garamond</strong> 擔當西文之標題與正文，<strong>Noto Serif TC</strong> 承載繁體中文，<strong>JetBrains Mono</strong> 司掌器物之名——皆取自 Google Fonts。版面以普魯士藍配古銅色為基調，置於暖米色之上，取古籍裝幀之意。部分圖示假 Devicon 之手，「我在聽」一節之播放器則借自 Spotify。至於思想之源，則謹誌於此：<em>柏拉圖</em>、<em>笛卡爾</em>、<em>康德</em>、<em>胡塞爾</em>、<em>卡繆</em>、<em>薩特</em>諸先賢——雖至今仍在門外徘徊，而其氣韻早已潛入我思之深處；亦感念 <em>Claude</em> 與 <em>ChatGPT</em> 二者，於構築此站之際多所協力。凡此種種，皆非吾所獨有；吾所能為者，不過綴合之而已。</p>
+
+      <div class="printers-mark" aria-hidden="true">
+        <div class="printers-mark__device">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <rect width="64" height="64" rx="14" fill="var(--bg, #F8F4EC)"/>
+            <path d="M20 14 C19 24,19 39,20 50 M44 14 C43 24,43 39,44 50 M20 31 C26 29,32 29,44 31" fill="none" stroke="var(--accent-2, #8B6F3F)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="printers-mark__year">Anno MMXXVI</div>
+        <div class="printers-mark__motto">— in officina domestica</div>
+      </div>
+    </article>
+  </main>
+
+  <footer>&copy;2026 HYSN.NET</footer>
+
+  <script>
+    (function() {
+      var root = document.documentElement;
+      var toggle = document.getElementById("themeToggle");
+      var icon = document.getElementById("themeIcon");
+      var meta = document.querySelector('meta[name="theme-color"]');
+
+      function apply(theme, persist) {
+        var next = theme === "dark" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        icon.textContent = next === "dark" ? "\u263e" : "\u263c";
+        toggle.setAttribute("aria-label", next === "dark" ? "切換為淺色模式" : "切換為深色模式");
+        if (meta) meta.setAttribute("content", next === "dark" ? "#141110" : "#F8F4EC");
+        if (persist) { try { localStorage.setItem("hysn-theme", next); } catch (e) {} }
+      }
+
+      apply(root.getAttribute("data-theme") || "light", false);
+
+      toggle.addEventListener("click", function() {
+        var c = root.getAttribute("data-theme") || "light";
+        apply(c === "dark" ? "light" : "dark", true);
+      });
+
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      function handle(e) {
+        var stored = null;
+        try { stored = localStorage.getItem("hysn-theme"); } catch (err) {}
+        if (!stored) apply(e.matches ? "dark" : "light", false);
+      }
+      if (typeof prefersDark.addEventListener === "function") prefersDark.addEventListener("change", handle);
+      else if (typeof prefersDark.addListener === "function") prefersDark.addListener(handle);
+    })();
+  </script>
+</body>
+</html>
