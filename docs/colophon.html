@@ -5,9 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>牌記 · HYSN.NET</title>
   <meta name="description" content="HYSN.NET 之牌記——構築、借力、致意，一紙誌之。" />
+  <meta name="author" content="Harrison" />
   <meta name="theme-color" content="#F8F4EC" />
   <meta name="color-scheme" content="light dark" />
+  <link rel="canonical" href="https://www.hysn.net/colophon.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="HYSN.NET" />
+  <meta property="og:title" content="牌記 · HYSN.NET" />
+  <meta property="og:description" content="HYSN.NET 之牌記——構築、借力、致意，一紙誌之。" />
+  <meta property="og:url" content="https://www.hysn.net/colophon.html" />
+  <meta property="og:locale" content="zh_Hant" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="牌記 · HYSN.NET" />
+  <meta name="twitter:description" content="HYSN.NET 之牌記——構築、借力、致意，一紙誌之。" />
+
   <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F8F4EC'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%231B3A5C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "牌記",
+    "url": "https://www.hysn.net/colophon.html",
+    "description": "HYSN.NET 之牌記——構築、借力、致意，一紙誌之。",
+    "inLanguage": "zh-Hant",
+    "isPartOf": { "@type": "WebSite", "url": "https://www.hysn.net/", "name": "HYSN.NET" },
+    "author": { "@type": "Person", "name": "Harrison" }
+  }
+  </script>
 
   <script>
     (function () {
@@ -42,6 +69,7 @@
       --line-strong: rgba(31, 27, 22, 0.24);
       --accent: #1B3A5C;
       --accent-hover: #264F7A;
+      --accent-soft: rgba(27, 58, 92, 0.09);
       --accent-2: #8B6F3F;
       --shadow: 0 8px 32px rgba(31, 27, 22, 0.06);
       --radius: 16px;
@@ -65,6 +93,7 @@
       --line-strong: rgba(239, 232, 220, 0.22);
       --accent: #8AB0D4;
       --accent-hover: #A3C2DE;
+      --accent-soft: rgba(138, 176, 212, 0.14);
       --accent-2: #D4A866;
       --shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
     }
@@ -108,6 +137,37 @@
       letter-spacing: 0.08em;
     }
     .brand svg { width: 26px; height: 26px; }
+
+    .header-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      transition: border-color 220ms ease;
+    }
+    .lang-switch:hover { border-color: var(--line-strong); }
+    .lang-btn {
+      min-width: 32px;
+      height: 26px;
+      padding: 0 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      transition: background 220ms ease, color 220ms ease;
+    }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.is-active { background: var(--accent-soft); color: var(--text); }
 
     .theme-toggle {
       width: 34px; height: 34px;
@@ -277,9 +337,16 @@
       </svg>
       <span>HYSN.NET</span>
     </a>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
-      <span id="themeIcon" aria-hidden="true">☼</span>
-    </button>
+    <div class="header-controls">
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button class="lang-btn" type="button" data-lang="zh-Hant">繁</button>
+        <button class="lang-btn" type="button" data-lang="zh-Hans">簡</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
+        <span id="themeIcon" aria-hidden="true">☼</span>
+      </button>
+    </div>
   </header>
 
   <main>
@@ -290,11 +357,11 @@
         <span>MMXXVI</span>
       </div>
 
-      <h1 class="doc__title">牌記</h1>
+      <h1 class="doc__title" data-i18n="title">牌記</h1>
 
       <div class="doc__ornament" aria-hidden="true">❦</div>
 
-      <p class="inscription">此站名 HYSN.NET，由 Harrison 手作於 MMXXVI 年，以 HTML、CSS、JavaScript 寫就，不假任何框架之助，寄存於 GitHub Pages。其所用字體凡四——<strong>Cormorant Garamond</strong> 與 <strong>EB Garamond</strong> 擔當西文之標題與正文，<strong>Noto Serif TC</strong> 承載繁體中文，<strong>JetBrains Mono</strong> 司掌器物之名——皆取自 Google Fonts。版面以普魯士藍配古銅色為基調，置於暖米色之上，取古籍裝幀之意。部分圖示假 Devicon 之手，「我在聽」一節之播放器則借自 Spotify。至於思想之源，則謹誌於此：<em>柏拉圖</em>、<em>笛卡爾</em>、<em>康德</em>、<em>胡塞爾</em>、<em>卡繆</em>、<em>薩特</em>諸先賢——雖至今仍在門外徘徊，而其氣韻早已潛入我思之深處；亦感念 <em>Claude</em> 與 <em>ChatGPT</em> 二者，於構築此站之際多所協力。凡此種種，皆非吾所獨有；吾所能為者，不過綴合之而已。</p>
+      <p class="inscription" data-i18n-html="inscription">此站名 HYSN.NET，由 Harrison 手作於 MMXXVI 年，以 HTML、CSS、JavaScript 寫就，不假任何框架之助，寄存於 GitHub Pages。其所用字體凡四——<strong>Cormorant Garamond</strong> 與 <strong>EB Garamond</strong> 擔當西文之標題與正文，<strong>Noto Serif TC</strong> 承載繁體中文，<strong>JetBrains Mono</strong> 司掌器物之名——皆取自 Google Fonts。版面以普魯士藍配古銅色為基調，置於暖米色之上，取古籍裝幀之意。部分圖示假 Devicon 之手，「我在聽」一節之播放器則借自 Spotify。至於思想之源，則謹誌於此：<em>柏拉圖</em>、<em>笛卡爾</em>、<em>康德</em>、<em>胡塞爾</em>、<em>卡繆</em>、<em>薩特</em>諸先賢——雖至今仍在門外徘徊，而其氣韻早已潛入我思之深處；亦感念 <em>Claude</em> 與 <em>ChatGPT</em> 二者，於構築此站之際多所協力。凡此種種，皆非吾所獨有；吾所能為者，不過綴合之而已。</p>
 
       <div class="printers-mark" aria-hidden="true">
         <div class="printers-mark__device">
@@ -313,35 +380,97 @@
 
   <script>
     (function() {
+      var translations = {
+        "zh-Hant": {
+          title: "牌記",
+          inscription: "此站名 HYSN.NET，由 Harrison 手作於 MMXXVI 年，以 HTML、CSS、JavaScript 寫就，不假任何框架之助，寄存於 GitHub Pages。其所用字體凡四——<strong>Cormorant Garamond</strong> 與 <strong>EB Garamond</strong> 擔當西文之標題與正文，<strong>Noto Serif TC</strong> 承載繁體中文，<strong>JetBrains Mono</strong> 司掌器物之名——皆取自 Google Fonts。版面以普魯士藍配古銅色為基調，置於暖米色之上，取古籍裝幀之意。部分圖示假 Devicon 之手，「我在聽」一節之播放器則借自 Spotify。至於思想之源，則謹誌於此：<em>柏拉圖</em>、<em>笛卡爾</em>、<em>康德</em>、<em>胡塞爾</em>、<em>卡繆</em>、<em>薩特</em>諸先賢——雖至今仍在門外徘徊，而其氣韻早已潛入我思之深處；亦感念 <em>Claude</em> 與 <em>ChatGPT</em> 二者，於構築此站之際多所協力。凡此種種，皆非吾所獨有；吾所能為者，不過綴合之而已。",
+          ui: { toggleToDark: "切換為深色模式", toggleToLight: "切換為淺色模式" }
+        },
+        "zh-Hans": {
+          title: "牌记",
+          inscription: "此站名 HYSN.NET，由 Harrison 手作于 MMXXVI 年，以 HTML、CSS、JavaScript 写就，不假任何框架之助，寄存于 GitHub Pages。其所用字体凡四——<strong>Cormorant Garamond</strong> 与 <strong>EB Garamond</strong> 担当西文之标题与正文，<strong>Noto Serif TC</strong> 承载繁体中文，<strong>JetBrains Mono</strong> 司掌器物之名——皆取自 Google Fonts。版面以普鲁士蓝配古铜色为基调，置于暖米色之上，取古籍装帧之意。部分图标假 Devicon 之手，「我在听」一节之播放器则借自 Spotify。至于思想之源，则谨志于此：<em>柏拉图</em>、<em>笛卡尔</em>、<em>康德</em>、<em>胡塞尔</em>、<em>加缪</em>、<em>萨特</em>诸先贤——虽至今仍在门外徘徊，而其气韵早已潜入我思之深处；亦感念 <em>Claude</em> 与 <em>ChatGPT</em> 二者，于构筑此站之际多所协力。凡此种种，皆非吾所独有；吾所能为者，不过缀合之而已。",
+          ui: { toggleToDark: "切换为深色模式", toggleToLight: "切换为浅色模式" }
+        },
+        en: {
+          title: "Colophon",
+          inscription: "This site, named HYSN.NET, was hand-crafted by Harrison in the year MMXXVI, written in plain HTML, CSS, and JavaScript without the aid of any framework, and hosted on GitHub Pages. Four typefaces are employed—<strong>Cormorant Garamond</strong> and <strong>EB Garamond</strong> bear the headings and body of Western text, <strong>Noto Serif TC</strong> carries the Traditional Chinese, and <strong>JetBrains Mono</strong> attends to the names of tools—all drawn from Google Fonts. The palette pairs Prussian blue with antique bronze upon a warm cream, after the manner of old book bindings. Some icons are borrowed from Devicon, and the players in the &ldquo;Listening&rdquo; section from Spotify. As for the sources of thought, let them be inscribed here: <em>Plato</em>, <em>Descartes</em>, <em>Kant</em>, <em>Husserl</em>, <em>Camus</em>, <em>Sartre</em>—venerable figures whose thresholds I am still pacing outside, yet whose breath has long entered the depths of my thinking; I also acknowledge <em>Claude</em> and <em>ChatGPT</em>, both of whom assisted much in the construction of this site. None of these are mine alone; what I have done is merely to gather them together.",
+          ui: { toggleToDark: "Switch to dark mode", toggleToLight: "Switch to light mode" }
+        }
+      };
+
       var root = document.documentElement;
       var toggle = document.getElementById("themeToggle");
       var icon = document.getElementById("themeIcon");
       var meta = document.querySelector('meta[name="theme-color"]');
+      var langButtons = Array.from(document.querySelectorAll(".lang-btn"));
 
-      function apply(theme, persist) {
+      var storage = {
+        get: function(k) { try { return localStorage.getItem(k); } catch(e) { return null; } },
+        set: function(k, v) { try { localStorage.setItem(k, v); } catch(e) {} }
+      };
+
+      function detectLanguage() {
+        var stored = storage.get("hysn-lang");
+        if (stored && translations[stored]) return stored;
+        var bl = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        if (bl.indexOf("zh") === 0) {
+          if (bl.indexOf("hans") !== -1 || bl.indexOf("cn") !== -1 || bl.indexOf("sg") !== -1 || bl.indexOf("my") !== -1) return "zh-Hans";
+          return "zh-Hant";
+        }
+        return "en";
+      }
+
+      function applyLanguage(lang, persist) {
+        var sel = translations[lang] ? lang : "en";
+        root.lang = sel;
+        var t = translations[sel];
+        document.querySelectorAll("[data-i18n]").forEach(function(el) {
+          var v = t[el.getAttribute("data-i18n")];
+          if (typeof v === "string") el.textContent = v;
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach(function(el) {
+          var v = t[el.getAttribute("data-i18n-html")];
+          if (typeof v === "string") el.innerHTML = v;
+        });
+        langButtons.forEach(function(b) {
+          var on = b.dataset.lang === sel;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", String(on));
+        });
+        var ct = root.getAttribute("data-theme") || "light";
+        toggle.setAttribute("aria-label", ct === "dark" ? t.ui.toggleToLight : t.ui.toggleToDark);
+        if (persist) storage.set("hysn-lang", sel);
+      }
+
+      function applyTheme(theme, persist) {
         var next = theme === "dark" ? "dark" : "light";
         root.setAttribute("data-theme", next);
         icon.textContent = next === "dark" ? "\u263e" : "\u263c";
-        toggle.setAttribute("aria-label", next === "dark" ? "切換為淺色模式" : "切換為深色模式");
+        var sel = translations[root.lang] ? root.lang : detectLanguage();
+        toggle.setAttribute("aria-label", next === "dark" ? translations[sel].ui.toggleToLight : translations[sel].ui.toggleToDark);
         if (meta) meta.setAttribute("content", next === "dark" ? "#141110" : "#F8F4EC");
-        if (persist) { try { localStorage.setItem("hysn-theme", next); } catch (e) {} }
+        if (persist) storage.set("hysn-theme", next);
       }
 
-      apply(root.getAttribute("data-theme") || "light", false);
+      applyLanguage(detectLanguage(), false);
+      applyTheme(root.getAttribute("data-theme") || "light", false);
 
       toggle.addEventListener("click", function() {
         var c = root.getAttribute("data-theme") || "light";
-        apply(c === "dark" ? "light" : "dark", true);
+        applyTheme(c === "dark" ? "light" : "dark", true);
+      });
+
+      document.addEventListener("click", function(e) {
+        var lb = e.target.closest(".lang-btn");
+        if (lb) applyLanguage(lb.dataset.lang, true);
       });
 
       var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-      function handle(e) {
-        var stored = null;
-        try { stored = localStorage.getItem("hysn-theme"); } catch (err) {}
-        if (!stored) apply(e.matches ? "dark" : "light", false);
+      function handleSys(e) {
+        if (!storage.get("hysn-theme")) applyTheme(e.matches ? "dark" : "light", false);
       }
-      if (typeof prefersDark.addEventListener === "function") prefersDark.addEventListener("change", handle);
-      else if (typeof prefersDark.addListener === "function") prefersDark.addListener(handle);
+      if (typeof prefersDark.addEventListener === "function") prefersDark.addEventListener("change", handleSys);
+      else if (typeof prefersDark.addListener === "function") prefersDark.addListener(handleSys);
     })();
   </script>
 </body>
