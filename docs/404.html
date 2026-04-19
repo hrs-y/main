@@ -5,9 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 · HYSN.NET</title>
   <meta name="description" content="Hic sunt dracones — 此頁闕如。" />
+  <meta name="author" content="Harrison" />
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#F8F4EC" />
   <meta name="color-scheme" content="light dark" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HYSN.NET" />
+  <meta property="og:title" content="404 · HYSN.NET" />
+  <meta property="og:description" content="Hic sunt dracones — 此頁闕如。" />
+  <meta property="og:locale" content="zh_Hant" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="404 · HYSN.NET" />
+  <meta name="twitter:description" content="Hic sunt dracones — 此頁闕如。" />
   <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F8F4EC'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%231B3A5C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
 
   <script>
@@ -36,7 +47,9 @@
       --muted: #766B5A;
       --muted-light: #A39A89;
       --line: rgba(31, 27, 22, 0.12);
+      --line-strong: rgba(31, 27, 22, 0.24);
       --accent: #1B3A5C;
+      --accent-soft: rgba(27, 58, 92, 0.09);
       --accent-2: #8B6F3F;
       --serif: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
       --transition: 300ms cubic-bezier(.2,.8,.2,1);
@@ -49,7 +62,9 @@
       --muted: #938875;
       --muted-light: #615647;
       --line: rgba(239, 232, 220, 0.10);
+      --line-strong: rgba(239, 232, 220, 0.22);
       --accent: #8AB0D4;
+      --accent-soft: rgba(138, 176, 212, 0.14);
       --accent-2: #D4A866;
     }
 
@@ -99,6 +114,37 @@
       letter-spacing: 0.08em;
     }
     .brand svg { width: 26px; height: 26px; }
+
+    .header-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      transition: border-color 220ms ease;
+    }
+    .lang-switch:hover { border-color: var(--line-strong); }
+    .lang-btn {
+      min-width: 32px;
+      height: 26px;
+      padding: 0 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      transition: background 220ms ease, color 220ms ease;
+    }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.is-active { background: var(--accent-soft); color: var(--text); }
 
     .theme-toggle {
       width: 34px; height: 34px;
@@ -204,9 +250,16 @@
       </svg>
       <span>HYSN.NET</span>
     </a>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
-      <span id="themeIcon" aria-hidden="true">☼</span>
-    </button>
+    <div class="header-controls">
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button class="lang-btn" type="button" data-lang="zh-Hant">繁</button>
+        <button class="lang-btn" type="button" data-lang="zh-Hans">簡</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
+        <span id="themeIcon" aria-hidden="true">☼</span>
+      </button>
+    </div>
   </header>
 
   <main>
@@ -214,9 +267,9 @@
       <div class="page__number">№ CDIV</div>
       <h1 class="page__title">Hic sunt dracones</h1>
       <div class="page__ornament" aria-hidden="true">❦</div>
-      <p class="page__note">此頁闕如。</p>
+      <p class="page__note" data-i18n="note">此頁闕如。</p>
       <a class="page__link" href="/">
-        <span class="arrow" aria-hidden="true">←</span>返回首頁
+        <span class="arrow" aria-hidden="true">←</span><span data-i18n="back">返回首頁</span>
       </a>
     </div>
   </main>
@@ -225,35 +278,96 @@
 
   <script>
     (function() {
+      var translations = {
+        "zh-Hant": {
+          note: "此頁闕如。",
+          back: "返回首頁",
+          ui: { toggleToDark: "切換為深色模式", toggleToLight: "切換為淺色模式" }
+        },
+        "zh-Hans": {
+          note: "此页阙如。",
+          back: "返回首页",
+          ui: { toggleToDark: "切换为深色模式", toggleToLight: "切换为浅色模式" }
+        },
+        en: {
+          note: "This page is missing.",
+          back: "Back to Home",
+          ui: { toggleToDark: "Switch to dark mode", toggleToLight: "Switch to light mode" }
+        }
+      };
+
       var root = document.documentElement;
       var toggle = document.getElementById("themeToggle");
       var icon = document.getElementById("themeIcon");
       var meta = document.querySelector('meta[name="theme-color"]');
+      var langButtons = Array.from(document.querySelectorAll(".lang-btn"));
 
-      function apply(theme, persist) {
+      var storage = {
+        get: function(k) { try { return localStorage.getItem(k); } catch(e) { return null; } },
+        set: function(k, v) { try { localStorage.setItem(k, v); } catch(e) {} }
+      };
+
+      function resolveKey(obj, path) {
+        return path.split(".").reduce(function(a, k) { return a && a[k] !== undefined ? a[k] : null; }, obj);
+      }
+
+      function detectLanguage() {
+        var stored = storage.get("hysn-lang");
+        if (stored && translations[stored]) return stored;
+        var bl = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        if (bl.indexOf("zh") === 0) {
+          if (bl.indexOf("hans") !== -1 || bl.indexOf("cn") !== -1 || bl.indexOf("sg") !== -1 || bl.indexOf("my") !== -1) return "zh-Hans";
+          return "zh-Hant";
+        }
+        return "en";
+      }
+
+      function applyLanguage(lang, persist) {
+        var sel = translations[lang] ? lang : "en";
+        root.lang = sel;
+        document.querySelectorAll("[data-i18n]").forEach(function(el) {
+          var v = resolveKey(translations[sel], el.getAttribute("data-i18n"));
+          if (v !== null) el.textContent = v;
+        });
+        langButtons.forEach(function(b) {
+          var on = b.dataset.lang === sel;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", String(on));
+        });
+        var ct = root.getAttribute("data-theme") || "light";
+        toggle.setAttribute("aria-label", ct === "dark" ? translations[sel].ui.toggleToLight : translations[sel].ui.toggleToDark);
+        if (persist) storage.set("hysn-lang", sel);
+      }
+
+      function applyTheme(theme, persist) {
         var next = theme === "dark" ? "dark" : "light";
         root.setAttribute("data-theme", next);
         icon.textContent = next === "dark" ? "\u263e" : "\u263c";
-        toggle.setAttribute("aria-label", next === "dark" ? "切換為淺色模式" : "切換為深色模式");
+        var sel = root.lang && translations[root.lang] ? root.lang : detectLanguage();
+        toggle.setAttribute("aria-label", next === "dark" ? translations[sel].ui.toggleToLight : translations[sel].ui.toggleToDark);
         if (meta) meta.setAttribute("content", next === "dark" ? "#141110" : "#F8F4EC");
-        if (persist) { try { localStorage.setItem("hysn-theme", next); } catch (e) {} }
+        if (persist) storage.set("hysn-theme", next);
       }
 
-      apply(root.getAttribute("data-theme") || "light", false);
+      applyLanguage(detectLanguage(), false);
+      applyTheme(root.getAttribute("data-theme") || "light", false);
 
       toggle.addEventListener("click", function() {
         var c = root.getAttribute("data-theme") || "light";
-        apply(c === "dark" ? "light" : "dark", true);
+        applyTheme(c === "dark" ? "light" : "dark", true);
+      });
+
+      document.addEventListener("click", function(e) {
+        var lb = e.target.closest(".lang-btn");
+        if (lb) applyLanguage(lb.dataset.lang, true);
       });
 
       var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-      function handle(e) {
-        var stored = null;
-        try { stored = localStorage.getItem("hysn-theme"); } catch (err) {}
-        if (!stored) apply(e.matches ? "dark" : "light", false);
+      function handleSys(e) {
+        if (!storage.get("hysn-theme")) applyTheme(e.matches ? "dark" : "light", false);
       }
-      if (typeof prefersDark.addEventListener === "function") prefersDark.addEventListener("change", handle);
-      else if (typeof prefersDark.addListener === "function") prefersDark.addListener(handle);
+      if (typeof prefersDark.addEventListener === "function") prefersDark.addEventListener("change", handleSys);
+      else if (typeof prefersDark.addListener === "function") prefersDark.addListener(handleSys);
     })();
   </script>
 </body>
