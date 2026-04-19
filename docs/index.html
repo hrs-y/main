@@ -5,11 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HYSN.NET</title>
   <meta name="description" content="HYSN.NET — Harrison的個人網站，關於人工智能、西方哲學、古典漢語與技術實踐。" />
+  <meta name="author" content="Harrison" />
   <meta name="theme-color" content="#F8F4EC" />
   <meta name="color-scheme" content="light dark" />
+  <link rel="canonical" href="https://www.hysn.net/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HYSN.NET" />
+  <meta property="og:title" content="HYSN.NET" />
+  <meta property="og:description" content="HYSN.NET — Harrison的個人網站，關於人工智能、西方哲學、古典漢語與技術實踐。" />
+  <meta property="og:url" content="https://www.hysn.net/" />
+  <meta property="og:locale" content="zh_Hant" />
+  <meta property="og:locale:alternate" content="zh_Hans" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="HYSN.NET" />
+  <meta name="twitter:description" content="HYSN.NET — Harrison的個人網站，關於人工智能、西方哲學、古典漢語與技術實踐。" />
   <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F8F4EC'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%231B3A5C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
   <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F8F4EC'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%231B3A5C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F8F4EC'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%231B3A5C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.hysn.net/#website",
+        "url": "https://www.hysn.net/",
+        "name": "HYSN.NET",
+        "description": "HYSN.NET — Harrison的個人網站，關於人工智能、西方哲學、古典漢語與技術實踐。",
+        "inLanguage": ["zh-Hant", "zh-Hans", "en"],
+        "publisher": { "@id": "https://www.hysn.net/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.hysn.net/#person",
+        "name": "Harrison",
+        "url": "https://www.hysn.net/",
+        "knowsAbout": ["Artificial Intelligence", "Western Philosophy", "Classical Chinese", "Software Engineering"]
+      }
+    ]
+  }
+  </script>
 
   <script>
     (function () {
@@ -1282,8 +1321,31 @@
       letter-spacing: 0.4em;
       opacity: 0.6;
     }
+    .footer-nav {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 22px;
+      font-family: var(--serif);
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
+    }
+    .footer-nav a {
+      color: var(--muted);
+      border-bottom: 1px solid transparent;
+      transition: color 220ms ease, border-color 220ms ease;
+    }
+    .footer-nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .footer-nav__sep {
+      color: var(--muted-light);
+      opacity: 0.55;
+    }
     .footer-legal {
-      margin-top: 10px;
+      margin-top: 14px;
       font-size: 0.78rem;
       line-height: 1.7;
       color: var(--muted-light);
@@ -1566,8 +1628,8 @@
           <div class="controls">
             <div class="lang-switch" role="group" aria-label="Language switcher">
               <button class="lang-btn" type="button" data-lang="zh-Hant">繁</button>
+              <button class="lang-btn" type="button" data-lang="zh-Hans">簡</button>
               <button class="lang-btn" type="button" data-lang="en">EN</button>
-              <button class="lang-btn" type="button" data-lang="de">DE</button>
             </div>
             <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
               <span class="theme-toggle__icon" id="themeIcon" aria-hidden="true">☼</span>
@@ -1594,7 +1656,7 @@
             </div>
             <p class="bookend-attribution">
               <span class="bookend-dash">—</span><span class="bookend-author">Immanuel Kant</span>
-              <span class="bookend-source" data-i18n="hero.source">Grundlegung zur Metaphysik der Sitten</span>
+              <span class="bookend-source" data-i18n="hero.source">《道德形而上學的基礎》</span>
             </p>
           </div>
 
@@ -1889,6 +1951,11 @@
       <div class="footer-inner">
         <div class="footer-seal" aria-hidden="true">❦ · ❧ · ❦</div>
         <div data-i18n="footer">&copy;2026 HYSN.NET</div>
+        <nav class="footer-nav" aria-label="Site navigation">
+          <a href="/colophon.html" data-i18n="footerNav.colophon">牌記</a>
+          <span class="footer-nav__sep" aria-hidden="true">·</span>
+          <a href="/privacy.html" data-i18n="footerNav.privacy">隱私</a>
+        </nav>
         <div class="footer-legal" data-i18n="footerLegal">本網站所展示之 C++ 標誌為 Standard C++ Foundation 相關方之商標；Claude Code 標誌為 Anthropic 之商標；Codex 標誌為 OpenAI 之商標。所有商標均為其各自持有人之財產，本站使用僅供說明目的，不構成任何形式之關聯或背書。</div>
       </div>
     </footer>
@@ -1947,6 +2014,7 @@
           body: "若您有意探討西方哲學、人工智能或相關議題，或願為本站提供建議，歡迎來信交流。"
         },
         footer: "\u00a92026 HYSN.NET",
+        footerNav: { colophon: "牌記", privacy: "隱私" },
         footerLegal: "本網站所展示之 C++ 標誌為 Standard C++ Foundation 相關方之商標；Claude Code 標誌為 Anthropic 之商標；Codex 標誌為 OpenAI 之商標。所有商標均為其各自持有人之財產，本站使用僅供說明目的，不構成任何形式之關聯或背書。",
         ui: { openMenu: "開啟導覽", closeMenu: "關閉導覽", toggleToDark: "切換為深色模式", toggleToLight: "切換為淺色模式" }
       },
@@ -2001,62 +2069,64 @@
           body: "If you would like to discuss Western philosophy, artificial intelligence, or related questions\u2014or offer suggestions for this site\u2014you are warmly welcome to write."
         },
         footer: "\u00a92026 HYSN.NET",
+        footerNav: { colophon: "Colophon", privacy: "Privacy" },
         footerLegal: "The C++ logo shown on this site is a trademark of parties related to the Standard C++ Foundation; the Claude Code logo is a trademark of Anthropic; the Codex logo is a trademark of OpenAI. All trademarks are the property of their respective owners. Their use on this site is for explanatory purposes only and does not imply any affiliation or endorsement.",
         ui: { openMenu: "Open menu", closeMenu: "Close menu", toggleToDark: "Switch to dark mode", toggleToLight: "Switch to light mode" }
       },
-      de: {
-        nav: { home: "Start", about: "\u00dcber mich", stack: "Werkzeuge", projects: "Projekte", listening: "Ich h\u00f6re gerade", contact: "Kontakt" },
+      "zh-Hans": {
+        nav: { home: "首页", about: "关于我", stack: "工具", projects: "项目", listening: "我在听", contact: "联系我" },
         hero: {
-          kicker: "Harrisons pers\u00f6nliche Website",
-          source: "Grundlegung zur Metaphysik der Sitten",
-          ctaPrimary: "\u00dcber mich lesen",
-          ctaSecondary: "Kontakt"
+          kicker: "Harrison的个人网站",
+          source: "《道德形而上学的基础》",
+          ctaPrimary: "阅读关于我",
+          ctaSecondary: "联系我"
         },
-        about: { kicker: "\u00dcber mich", title: "\u00dcber mich",
-          body1: "Ich bin ein Student und bewege mich auf mehreren Wegen, die auf den ersten Blick verschieden wirken, im Innersten aber miteinander verbunden sind.",
-          body2: "K\u00fcnstliche Intelligenz fasziniert mich nicht nur als Technik, sondern auch durch die tieferen Fragen, die sie hervorruft: K\u00f6nnen Maschinen denken? Wo liegen die Grenzen der Intelligenz? Solche Fragen f\u00fchren mich ganz nat\u00fcrlich in den langen Strom der westlichen Philosophie. Von den Fragen des Sokrates bis zu Wittgensteins Sprachspielen hat mich die Philosophie gelehrt, vor der Gewissheit erst den Zweifel und vor der Antwort erst die Frage zu lernen.",
-          body3: "Programmieren ist die Weise, in der ich Gedanken zur Form bringe. Code zu schreiben und ein Argument zu entwickeln, haben ein \u00e4hnliches Ger\u00fcst: Probleme zerlegen, Logik aufbauen und immer wieder \u00fcberarbeiten, bis aus Chaos Ordnung wird.",
-          body4: "Das klassische Chinesisch ist f\u00fcr mich ein Weg zur\u00fcck zu den kulturellen Wurzeln meiner eigenen Tradition. Die Alten trugen weite Bedeutungen in \u00e4u\u00dferst verdichteter Sprache, und diese \u00c4sthetik des \u201eWeniger ist mehr\u201c pr\u00e4gt mein Denken und Schreiben tief. Diese vier Bereiche sind f\u00fcr mich keine getrennten Interessen, sondern verschiedene Ausdrucksformen derselben Bewegung: zu verstehen, wie die Welt funktioniert, wie Sprache Denken formt und wie wir zwischen Tradition und Avantgarde unseren eigenen Ort finden."
+        about: { kicker: "About", title: "关于我",
+          body1: "我是一名学生，行走在几条看似迥异、实则相通的道路上。",
+          body2: "我着迷于人工智能——不仅是技术本身，更是它所引发的深层问题：机器能否思考？智慧的边界在哪里？这些追问自然地将我引向西方哲学的长河。从苏格拉底的诘问到维特根斯坦的语言游戏，哲学教会我在确信之前先学会怀疑，在回答之前先学会提问。",
+          body3: "编程是我将想法落地的方式。写代码与写论证有着相似的骨架：拆解问题、构建逻辑、反复迭代，直到混沌化为秩序。",
+          body4: "而古典汉语是我回望自身文化根源的路径。古人以极精炼的文字承载广阔的意涵，这种「少即是多」的美学，深刻影响了我思考与表达的方式。这四者在我看来并非四个独立的兴趣，而是同一种冲动的不同面向——理解世界如何运作，语言如何塑造思想，以及我们如何在传统与前沿之间找到自己的位置。"
         },
-        stack: { kicker: "Werkzeuge", title: "Werkzeuge",
-          cpp: "Eine Sprache der Pr\u00e4zision, Leistung und Kontrolle; ich nutze sie, um Algorithmen und Grundlagen der Informatik zu lernen.",
-          claude: "Eine Arbeitsweise f\u00fcr tiefe Zusammenarbeit und langes Kontextdenken; ich nutze sie zur Projektplanung.",
-          codex: "Gut darin, Konzepte rasch in ausf\u00fchrbare Prototypen zu verwandeln; es unterst\u00fctzt mich bei der eigentlichen Programmierarbeit."
+        stack: { kicker: "Instruments", title: "工具",
+          cpp: "一门讲究精确、性能与控制力的语言，我借助它来学习算法与计算机原理。",
+          claude: "偏向深度协作与长上下文推理的编码方式，我使用它来规划项目。",
+          codex: "擅长把概念快速推进为可执行原型，它协助我进行编码工作。"
         },
         projects: {
-          kicker: "Projekte", title: "Projekte",
-          filterLabel: "Filter",
-          filterAll: "Alle",
-          statusPublished: "Ver\u00f6ffentlicht",
-          statusProgress: "In Arbeit",
-          statusPlanning: "In Planung",
-          ofRecords: "/ 3 Eintr\u00e4ge",
-          metaCreated: "Erstellt",
-          metaStack: "Stack",
-          metaLang: "Sprache",
-          metaStatus: "Status",
-          progressLabel: "Fortschritt",
+          kicker: "Projects", title: "项目",
+          filterLabel: "筛选",
+          filterAll: "全部",
+          statusPublished: "已公开",
+          statusProgress: "进行中",
+          statusPlanning: "构思中",
+          ofRecords: "／ 共 3 条",
+          metaCreated: "时间",
+          metaStack: "技术",
+          metaLang: "语言",
+          metaStatus: "状态",
+          progressLabel: "完成度",
           p1Title: "HYSN.NET",
-          p1Desc: "Diese pers\u00f6nliche Website ist selbst ein Projekt: ein handgefertigter Garten, in dem klassische Typografie auf moderne Webpraxis trifft.",
-          p1LinkText: "Zur\u00fcck nach oben",
+          p1Desc: "这个个人网站本身就是一个项目：一处手作的自留地，以古典排版承载现代技术实践。",
+          p1LinkText: "返回页首",
           p2Title: "Blog",
-          p2Desc: "Ein Notizbuch der Gedanken. Essays und Fragmente zu KI, Philosophie und klassischem Chinesisch.",
-          p3Title: "Weiteres folgt",
-          p3Desc: "Einige Ideen rund um Sprache, Werkzeuge und Gedankenexperimente, noch in der Ausformung.",
-          p3Status: "Entwurf"
+          p2Desc: "思想的札记。关于 AI、哲学与古典汉语的断想与长文。",
+          p3Title: "更多项目",
+          p3Desc: "关于语言、工具与思想实验的若干构想，仍在酝酿之中。",
+          p3Status: "研拟中"
         },
         listening: {
-          kicker: "H\u00f6ren", title: "Ich h\u00f6re gerade",
-          note: "Die Player werden von Spotify bereitgestellt und funktionieren in nicht unterst\u00fctzten Regionen m\u00f6glicherweise nicht korrekt."
+          kicker: "Listening", title: "我在听",
+          note: "播放器由 Spotify 提供，在不受支持的区域可能无法正常显示"
         },
         contact: {
-          kicker: "Kontakt",
-          source: "Horaz, Episteln I, 2, 40",
-          body: "Wenn Sie sich \u00fcber westliche Philosophie, k\u00fcnstliche Intelligenz oder verwandte Themen austauschen oder Anregungen f\u00fcr diese Website geben m\u00f6chten, freue ich mich \u00fcber eine Nachricht."
+          kicker: "Contact",
+          source: "贺拉斯《书信集》第一卷第二篇",
+          body: "若您有意探讨西方哲学、人工智能或相关议题，或愿为本站提供建议，欢迎来信交流。"
         },
         footer: "\u00a92026 HYSN.NET",
-        footerLegal: "Das auf dieser Website gezeigte C++-Logo ist eine Marke von mit der Standard C++ Foundation verbundenen Parteien; das Claude-Code-Logo ist eine Marke von Anthropic; das Codex-Logo ist eine Marke von OpenAI. Alle Marken sind Eigentum ihrer jeweiligen Inhaber. Ihre Verwendung auf dieser Website dient ausschlie\u00dflich erl\u00e4uternden Zwecken und stellt keinerlei Verbindung oder Billigung dar.",
-        ui: { openMenu: "Men\u00fc \u00f6ffnen", closeMenu: "Men\u00fc schlie\u00dfen", toggleToDark: "Zum Dunkelmodus wechseln", toggleToLight: "Zum Hellmodus wechseln" }
+        footerNav: { colophon: "牌记", privacy: "隐私" },
+        footerLegal: "本网站所展示之 C++ 标志为 Standard C++ Foundation 相关方之商标；Claude Code 标志为 Anthropic 之商标；Codex 标志为 OpenAI 之商标。所有商标均为其各自持有人之财产，本站使用仅供说明目的，不构成任何形式之关联或背书。",
+        ui: { openMenu: "打开导览", closeMenu: "关闭导览", toggleToDark: "切换为深色模式", toggleToLight: "切换为浅色模式" }
       }
     };
 
@@ -2086,8 +2156,10 @@
       var stored = storage.get("hysn-lang");
       if (stored && translations[stored]) return stored;
       var bl = (navigator.language || navigator.userLanguage || "en").toLowerCase();
-      if (bl.startsWith("zh")) return "zh-Hant";
-      if (bl.startsWith("de")) return "de";
+      if (bl.startsWith("zh")) {
+        if (bl.indexOf("hans") !== -1 || bl.indexOf("cn") !== -1 || bl.indexOf("sg") !== -1 || bl.indexOf("my") !== -1) return "zh-Hans";
+        return "zh-Hant";
+      }
       return "en";
     }
 
