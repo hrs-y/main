@@ -5,9 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>隱私 · HYSN.NET</title>
   <meta name="description" content="HYSN.NET 的隱私說明——一紙坦白。" />
+  <meta name="author" content="Harrison" />
   <meta name="theme-color" content="#F8F4EC" />
   <meta name="color-scheme" content="light dark" />
+  <link rel="canonical" href="https://www.hysn.net/privacy.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="HYSN.NET" />
+  <meta property="og:title" content="隱私 · HYSN.NET" />
+  <meta property="og:description" content="HYSN.NET 的隱私說明——一紙坦白。" />
+  <meta property="og:url" content="https://www.hysn.net/privacy.html" />
+  <meta property="og:locale" content="zh_Hant" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="隱私 · HYSN.NET" />
+  <meta name="twitter:description" content="HYSN.NET 的隱私說明——一紙坦白。" />
+
   <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F8F4EC'/%3E%3Cpath%20d='M20%2014C19%2024%2019%2039%2020%2050M44%2014C43%2024%2043%2039%2044%2050M20%2031C26%2029%2032%2029%2044%2031'%20fill='none'%20stroke='%231B3A5C'%20stroke-width='4.2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "隱私",
+    "url": "https://www.hysn.net/privacy.html",
+    "description": "HYSN.NET 的隱私說明——一紙坦白。",
+    "inLanguage": "zh-Hant",
+    "isPartOf": { "@type": "WebSite", "url": "https://www.hysn.net/", "name": "HYSN.NET" },
+    "author": { "@type": "Person", "name": "Harrison" }
+  }
+  </script>
 
   <script>
     (function () {
@@ -117,6 +144,37 @@
       letter-spacing: 0.08em;
     }
     .brand svg { width: 26px; height: 26px; }
+
+    .header-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      transition: border-color 220ms ease;
+    }
+    .lang-switch:hover { border-color: var(--line-strong); }
+    .lang-btn {
+      min-width: 32px;
+      height: 26px;
+      padding: 0 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      transition: background 220ms ease, color 220ms ease;
+    }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.is-active { background: var(--accent-soft); color: var(--text); }
 
     .theme-toggle {
       width: 34px; height: 34px;
@@ -314,9 +372,16 @@
       </svg>
       <span>HYSN.NET</span>
     </a>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
-      <span id="themeIcon" aria-hidden="true">☼</span>
-    </button>
+    <div class="header-controls">
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button class="lang-btn" type="button" data-lang="zh-Hant">繁</button>
+        <button class="lang-btn" type="button" data-lang="zh-Hans">簡</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色">
+        <span id="themeIcon" aria-hidden="true">☼</span>
+      </button>
+    </div>
   </header>
 
   <main>
@@ -327,35 +392,35 @@
         <span>MMXXVI</span>
       </div>
 
-      <h1 class="doc__title">隱私</h1>
+      <h1 class="doc__title" data-i18n="title">隱私</h1>
 
       <div class="doc__ornament" aria-hidden="true">❦</div>
 
-      <p class="doc__lede">
+      <p class="doc__lede" data-i18n="lede">
         這是一個個人網站。以下是您造訪時實際發生的事——以及不會發生的事。
       </p>
 
       <div class="doc__body">
-        <p>
+        <p data-i18n-html="p1">
           本站以靜態 HTML 呈現。您的瀏覽器會在本地儲存兩項偏好設定——<strong>深淺主題</strong>與<strong>語言</strong>——兩者僅存於您的裝置上，不會傳回伺服器。除此之外，本站不使用分析工具，不設其他 Cookie，不設帳號、表單或訂閱。
         </p>
 
-        <p>
+        <p data-i18n="p2">
           至於本站所載入的第三方資源，它們各有自家的隱私實踐：
         </p>
 
         <ul class="doc__list">
-          <li><strong>Google Fonts</strong>載入字型時，會向 Google 傳送您的 IP 位址與 User Agent。</li>
-          <li><strong>jsDelivr</strong>提供部分技術圖示的 CDN，可能記錄 IP 位址。</li>
-          <li><strong>Spotify</strong>嵌入於「我在聽」一節，若您與之互動，Spotify 將依其自家政策放置 Cookie 並記錄行為。</li>
+          <li data-i18n-html="li1"><strong>Google Fonts</strong>載入字型時，會向 Google 傳送您的 IP 位址與 User Agent。</li>
+          <li data-i18n-html="li2"><strong>jsDelivr</strong>提供部分技術圖示的 CDN，可能記錄 IP 位址。</li>
+          <li data-i18n-html="li3"><strong>Spotify</strong>嵌入於「我在聽」一節，若您與之互動，Spotify 將依其自家政策放置 Cookie 並記錄行為。</li>
         </ul>
 
-        <p>
+        <p data-i18n-html="p3">
           若您希望完全規避，建議使用擋廣告或隱私工具，或略過該節。若您對本站之處理有任何疑問或要求，請來信 <a href="mailto:harrison@hysn.net">harrison@hysn.net</a>。
         </p>
       </div>
 
-      <p class="doc__meta">
+      <p class="doc__meta" data-i18n-html="meta">
         本頁最後更新於 MMXXVI 年四月。<br/>
         此頁非律師起草；若本頁所述與本站實際行為有異，以實際為準。
       </p>
@@ -377,35 +442,118 @@
 
   <script>
     (function() {
+      var translations = {
+        "zh-Hant": {
+          title: "隱私",
+          lede: "這是一個個人網站。以下是您造訪時實際發生的事——以及不會發生的事。",
+          p1: "本站以靜態 HTML 呈現。您的瀏覽器會在本地儲存兩項偏好設定——<strong>深淺主題</strong>與<strong>語言</strong>——兩者僅存於您的裝置上，不會傳回伺服器。除此之外，本站不使用分析工具，不設其他 Cookie，不設帳號、表單或訂閱。",
+          p2: "至於本站所載入的第三方資源，它們各有自家的隱私實踐：",
+          li1: "<strong>Google Fonts</strong>載入字型時，會向 Google 傳送您的 IP 位址與 User Agent。",
+          li2: "<strong>jsDelivr</strong>提供部分技術圖示的 CDN，可能記錄 IP 位址。",
+          li3: "<strong>Spotify</strong>嵌入於「我在聽」一節，若您與之互動，Spotify 將依其自家政策放置 Cookie 並記錄行為。",
+          p3: "若您希望完全規避，建議使用擋廣告或隱私工具，或略過該節。若您對本站之處理有任何疑問或要求，請來信 <a href=\"mailto:harrison@hysn.net\">harrison@hysn.net</a>。",
+          meta: "本頁最後更新於 MMXXVI 年四月。<br/>此頁非律師起草；若本頁所述與本站實際行為有異，以實際為準。",
+          ui: { toggleToDark: "切換為深色模式", toggleToLight: "切換為淺色模式" }
+        },
+        "zh-Hans": {
+          title: "隐私",
+          lede: "这是一个个人网站。以下是您造访时实际发生的事——以及不会发生的事。",
+          p1: "本站以静态 HTML 呈现。您的浏览器会在本地储存两项偏好设置——<strong>深浅主题</strong>与<strong>语言</strong>——两者仅存于您的设备上，不会传回服务器。除此之外，本站不使用分析工具，不设其他 Cookie，不设账号、表单或订阅。",
+          p2: "至于本站所载入的第三方资源，它们各有自家的隐私实践：",
+          li1: "<strong>Google Fonts</strong>加载字体时，会向 Google 发送您的 IP 地址与 User Agent。",
+          li2: "<strong>jsDelivr</strong>提供部分技术图标的 CDN，可能记录 IP 地址。",
+          li3: "<strong>Spotify</strong>嵌入于「我在听」一节，若您与之互动，Spotify 将依其自家政策放置 Cookie 并记录行为。",
+          p3: "若您希望完全规避，建议使用挡广告或隐私工具，或略过该节。若您对本站之处理有任何疑问或要求，请来信 <a href=\"mailto:harrison@hysn.net\">harrison@hysn.net</a>。",
+          meta: "本页最后更新于 MMXXVI 年四月。<br/>此页非律师起草；若本页所述与本站实际行为有异，以实际为准。",
+          ui: { toggleToDark: "切换为深色模式", toggleToLight: "切换为浅色模式" }
+        },
+        en: {
+          title: "Privacy",
+          lede: "This is a personal website. Below is what actually happens when you visit\u2014and what does not.",
+          p1: "This site is served as static HTML. Your browser stores two preferences locally\u2014<strong>theme</strong> and <strong>language</strong>\u2014both kept only on your device and never sent back to a server. Beyond that, the site uses no analytics, sets no other cookies, and offers no accounts, forms, or subscriptions.",
+          p2: "As for the third-party resources loaded by this site, each has its own privacy practices:",
+          li1: "<strong>Google Fonts</strong>: when loading fonts, sends your IP address and User Agent to Google.",
+          li2: "<strong>jsDelivr</strong>: serves the CDN for some technology icons and may log IP addresses.",
+          li3: "<strong>Spotify</strong>: embedded in the &ldquo;Listening&rdquo; section; if you interact with it, Spotify will set cookies and log behavior according to its own policy.",
+          p3: "If you wish to avoid them entirely, please use an ad or privacy blocker, or skip that section. For any questions or requests regarding how this site handles your visit, write to <a href=\"mailto:harrison@hysn.net\">harrison@hysn.net</a>.",
+          meta: "Last updated in April MMXXVI.<br/>This page was not drafted by a lawyer; should anything stated here diverge from the site's actual behavior, the actual behavior prevails.",
+          ui: { toggleToDark: "Switch to dark mode", toggleToLight: "Switch to light mode" }
+        }
+      };
+
       var root = document.documentElement;
       var toggle = document.getElementById("themeToggle");
       var icon = document.getElementById("themeIcon");
       var meta = document.querySelector('meta[name="theme-color"]');
+      var langButtons = Array.from(document.querySelectorAll(".lang-btn"));
 
-      function apply(theme, persist) {
+      var storage = {
+        get: function(k) { try { return localStorage.getItem(k); } catch(e) { return null; } },
+        set: function(k, v) { try { localStorage.setItem(k, v); } catch(e) {} }
+      };
+
+      function detectLanguage() {
+        var stored = storage.get("hysn-lang");
+        if (stored && translations[stored]) return stored;
+        var bl = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        if (bl.indexOf("zh") === 0) {
+          if (bl.indexOf("hans") !== -1 || bl.indexOf("cn") !== -1 || bl.indexOf("sg") !== -1 || bl.indexOf("my") !== -1) return "zh-Hans";
+          return "zh-Hant";
+        }
+        return "en";
+      }
+
+      function applyLanguage(lang, persist) {
+        var sel = translations[lang] ? lang : "en";
+        root.lang = sel;
+        var t = translations[sel];
+        document.querySelectorAll("[data-i18n]").forEach(function(el) {
+          var v = t[el.getAttribute("data-i18n")];
+          if (typeof v === "string") el.textContent = v;
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach(function(el) {
+          var v = t[el.getAttribute("data-i18n-html")];
+          if (typeof v === "string") el.innerHTML = v;
+        });
+        langButtons.forEach(function(b) {
+          var on = b.dataset.lang === sel;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", String(on));
+        });
+        var ct = root.getAttribute("data-theme") || "light";
+        toggle.setAttribute("aria-label", ct === "dark" ? t.ui.toggleToLight : t.ui.toggleToDark);
+        if (persist) storage.set("hysn-lang", sel);
+      }
+
+      function applyTheme(theme, persist) {
         var next = theme === "dark" ? "dark" : "light";
         root.setAttribute("data-theme", next);
         icon.textContent = next === "dark" ? "\u263e" : "\u263c";
-        toggle.setAttribute("aria-label", next === "dark" ? "切換為淺色模式" : "切換為深色模式");
+        var sel = translations[root.lang] ? root.lang : detectLanguage();
+        toggle.setAttribute("aria-label", next === "dark" ? translations[sel].ui.toggleToLight : translations[sel].ui.toggleToDark);
         if (meta) meta.setAttribute("content", next === "dark" ? "#141110" : "#F8F4EC");
-        if (persist) { try { localStorage.setItem("hysn-theme", next); } catch (e) {} }
+        if (persist) storage.set("hysn-theme", next);
       }
 
-      apply(root.getAttribute("data-theme") || "light", false);
+      applyLanguage(detectLanguage(), false);
+      applyTheme(root.getAttribute("data-theme") || "light", false);
 
       toggle.addEventListener("click", function() {
         var c = root.getAttribute("data-theme") || "light";
-        apply(c === "dark" ? "light" : "dark", true);
+        applyTheme(c === "dark" ? "light" : "dark", true);
+      });
+
+      document.addEventListener("click", function(e) {
+        var lb = e.target.closest(".lang-btn");
+        if (lb) applyLanguage(lb.dataset.lang, true);
       });
 
       var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-      function handle(e) {
-        var stored = null;
-        try { stored = localStorage.getItem("hysn-theme"); } catch (err) {}
-        if (!stored) apply(e.matches ? "dark" : "light", false);
+      function handleSys(e) {
+        if (!storage.get("hysn-theme")) applyTheme(e.matches ? "dark" : "light", false);
       }
-      if (typeof prefersDark.addEventListener === "function") prefersDark.addEventListener("change", handle);
-      else if (typeof prefersDark.addListener === "function") prefersDark.addListener(handle);
+      if (typeof prefersDark.addEventListener === "function") prefersDark.addEventListener("change", handleSys);
+      else if (typeof prefersDark.addListener === "function") prefersDark.addListener(handleSys);
     })();
   </script>
 </body>
