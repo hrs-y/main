@@ -334,6 +334,10 @@
       outline: none;
     }
 
+    /* Icon + text spans — icon hidden by default (mobile), text shown inline */
+    .nav-link__icon { display: none; }
+    .nav-link__text { display: inline; }
+
     .controls {
       display: inline-flex;
       align-items: center;
@@ -1560,12 +1564,155 @@
         box-shadow: var(--shadow-md);
         border-color: var(--line-strong);
       }
-      html[lang="de"] .nav-link {
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 0.86rem;
-        letter-spacing: 0.03em;
+
+      /* ── Dock-mode nav (desktop) — inspired by React Bits <Dock /> ── */
+      .nav-panel {
+        border-left: none;
+        padding-left: 0;
+        gap: 14px;
       }
+
+      .nav-links {
+        gap: 4px;
+        padding: 3px 6px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--accent-soft);
+        align-items: center;
+      }
+
+      .nav-link {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        flex: 0 0 auto;
+        justify-content: center;
+        border-radius: 50%;
+        background: transparent;
+        border-color: transparent;
+        color: var(--muted);
+        font-size: 0;
+        letter-spacing: 0;
+        transition:
+          width 140ms var(--ease-out),
+          height 140ms var(--ease-out),
+          background 220ms ease,
+          border-color 220ms ease,
+          color 220ms ease,
+          box-shadow 220ms ease;
+      }
+
+      .nav-link__icon {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+      }
+      .nav-link__icon svg {
+        width: 50%;
+        height: 50%;
+        max-width: 26px;
+        max-height: 26px;
+        display: block;
+      }
+
+      .nav-link__text {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 50%;
+        transform: translate(-50%, -6px);
+        padding: 5px 13px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+        -webkit-backdrop-filter: blur(16px) saturate(120%);
+        backdrop-filter: blur(16px) saturate(120%);
+        box-shadow: var(--shadow);
+        font-family: var(--serif);
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text);
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 200ms var(--ease-out), transform 240ms var(--ease-out);
+      }
+
+      .nav-link:hover,
+      .nav-link:focus-visible {
+        color: var(--accent);
+        background: var(--bg-soft);
+        border-color: var(--line);
+        box-shadow: 0 4px 12px rgba(31, 27, 22, 0.06);
+      }
+      html[data-theme="dark"] .nav-link:hover,
+      html[data-theme="dark"] .nav-link:focus-visible {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+      }
+
+      .nav-link[aria-current="true"] {
+        color: var(--accent);
+        background: var(--bg-soft);
+        border-color: var(--accent);
+      }
+
+      .nav-link:hover .nav-link__text,
+      .nav-link:focus-visible .nav-link__text {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      html[lang="de"] .nav-link {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 0;
+        letter-spacing: 0;
+      }
+
+      /* ── Lang switch + theme toggle — echo the dock tray ── */
+      .lang-switch {
+        background: var(--accent-soft);
+        padding: 3px;
+      }
+      .lang-switch:hover { border-color: var(--line); }
+
+      .lang-btn {
+        height: 34px;
+        min-width: 36px;
+        border: 1px solid transparent;
+        transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+      }
+      .lang-btn:hover {
+        color: var(--accent);
+        background: var(--bg-soft);
+      }
+      .lang-btn.is-active {
+        background: var(--bg-soft);
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .theme-toggle {
+        width: 40px;
+        height: 40px;
+        background: var(--accent-soft);
+        border-color: var(--line);
+        color: var(--muted);
+        transition: background 220ms ease, border-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+      }
+      .theme-toggle:hover {
+        color: var(--accent);
+        background: var(--bg-soft);
+        border-color: var(--line);
+        box-shadow: 0 4px 12px rgba(31, 27, 22, 0.06);
+      }
+      html[data-theme="dark"] .theme-toggle:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+      }
+      .theme-toggle__icon { font-size: 1rem; }
     }
 
     @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -1616,13 +1763,43 @@
         </button>
 
         <div class="nav-panel" id="navPanel">
-          <div class="nav-links">
-            <a class="nav-link" href="#home" data-i18n="nav.home">Home</a>
-            <a class="nav-link" href="#about" data-i18n="nav.about">About</a>
-            <a class="nav-link" href="#stack" data-i18n="nav.stack">Instruments</a>
-            <a class="nav-link" href="#projects" data-i18n="nav.projects">Projects</a>
-            <a class="nav-link" href="#listening" data-i18n="nav.listening">我在聼</a>
-            <a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a>
+          <div class="nav-links" id="navLinks">
+            <a class="nav-link" href="#home">
+              <span class="nav-link__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 L12 4 L21 12"/><path d="M5 10 V20 H19 V10"/><path d="M10 20 V14 H14 V20"/></svg>
+              </span>
+              <span class="nav-link__text" data-i18n="nav.home">Home</span>
+            </a>
+            <a class="nav-link" href="#about">
+              <span class="nav-link__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20 C5 15.5 8 13.5 12 13.5 S19 15.5 19 20"/></svg>
+              </span>
+              <span class="nav-link__text" data-i18n="nav.about">About</span>
+            </a>
+            <a class="nav-link" href="#stack">
+              <span class="nav-link__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.8"/><path d="M12 7 L7 20"/><path d="M12 7 L17 20"/><path d="M9.2 14 L14.8 14"/></svg>
+              </span>
+              <span class="nav-link__text" data-i18n="nav.stack">Instruments</span>
+            </a>
+            <a class="nav-link" href="#projects">
+              <span class="nav-link__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="16" rx="1.5"/><path d="M9 9 H15"/><path d="M9 12 H15"/><path d="M9 15 H13"/></svg>
+              </span>
+              <span class="nav-link__text" data-i18n="nav.projects">Projects</span>
+            </a>
+            <a class="nav-link" href="#listening">
+              <span class="nav-link__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 17 V4"/><path d="M14 4 Q17 5 19 7"/><ellipse cx="11" cy="17" rx="3" ry="2.2"/></svg>
+              </span>
+              <span class="nav-link__text" data-i18n="nav.listening">我在聼</span>
+            </a>
+            <a class="nav-link" href="#contact">
+              <span class="nav-link__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M3 8 L12 14 L21 8"/></svg>
+              </span>
+              <span class="nav-link__text" data-i18n="nav.contact">Contact</span>
+            </a>
           </div>
 
           <div class="controls">
@@ -2363,6 +2540,59 @@
       });
     }
 
+    /* ── Dock magnification — mouse-proximity scaling (desktop only) ── */
+    function setupDockMagnification() {
+      var navLinksEl = document.getElementById("navLinks");
+      var items = Array.from(document.querySelectorAll(".nav-link"));
+      if (!navLinksEl || !items.length) return;
+
+      var BASE = 40, MAG = 54, DIST = 140;
+      var desktopMQ = window.matchMedia("(min-width: 901px)");
+      var rafId = 0;
+      var mouseX = null;
+
+      function resetSizes() {
+        items.forEach(function(item) {
+          item.style.width = "";
+          item.style.height = "";
+        });
+      }
+
+      function update() {
+        rafId = 0;
+        if (mouseX === null) return;
+        items.forEach(function(item) {
+          var rect = item.getBoundingClientRect();
+          var cx = rect.left + rect.width / 2;
+          var d = Math.abs(mouseX - cx);
+          var size = d >= DIST
+            ? BASE
+            : BASE + (MAG - BASE) * (1 - d / DIST);
+          item.style.width = size + "px";
+          item.style.height = size + "px";
+        });
+      }
+
+      navLinksEl.addEventListener("mousemove", function(e) {
+        if (!desktopMQ.matches || prefersReducedMotion.matches) return;
+        mouseX = e.clientX;
+        if (!rafId) rafId = requestAnimationFrame(update);
+      });
+
+      navLinksEl.addEventListener("mouseleave", function() {
+        mouseX = null;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
+        resetSizes();
+      });
+
+      function onMQChange(e) { if (!e.matches) resetSizes(); }
+      if (typeof desktopMQ.addEventListener === "function") {
+        desktopMQ.addEventListener("change", onMQChange);
+      } else if (typeof desktopMQ.addListener === "function") {
+        desktopMQ.addListener(onMQChange);
+      }
+    }
+
     document.addEventListener("keydown", function(e) {
       if (e.key === "Escape" && nav.classList.contains("is-open")) {
         toggleMenu(false);
@@ -2380,6 +2610,7 @@
     setupRevealObserver();
     setupSectionObserver();
     setupProjectFilter();
+    setupDockMagnification();
   </script>
 </body>
 </html>
